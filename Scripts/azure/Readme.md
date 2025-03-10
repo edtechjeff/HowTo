@@ -29,3 +29,8 @@ Set-AzContext -SubscriptionName "your-subscription-name"
 Get-AzContext
 ```
 
+- Uninstall Microsoft Graph Modules
+```
+Uninstall-Module Microsoft.Graph -AllVersions -Force
+```
+
