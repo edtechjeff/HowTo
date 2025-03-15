@@ -7,9 +7,7 @@ $outputFile = "C:\Temp\Folder_Permissions.csv"
 # Define groups to exclude
 $excludedGroups = @(
     "NT AUTHORITY\SYSTEM",
-    "BUILTIN\Administrators",
-    "HBP\File Admin",
-    "HBP\ESIadmin"
+    "BUILTIN\Administrators"
 )
 
 # Initialize an array to store results
