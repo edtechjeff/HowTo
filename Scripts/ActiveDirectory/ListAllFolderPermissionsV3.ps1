@@ -1,5 +1,5 @@
 # Define the folder to scan (Change this to your target folder)
-$folderPath = "C:\SharedFolder"
+$folderPath = "d:\Cogen Data"
 
 # Define output file
 $outputFile = "C:\Temp\Folder_Permissions.csv"
@@ -9,6 +9,9 @@ $excludedGroups = @(
     "NT AUTHORITY\SYSTEM",
     "BUILTIN\Administrators",
     "HBP\File Admin",
+    "HBP\File Administrator",
+    "HBP\Exchange Trusted Subsystem",
+    "HBP\Administrator",
     "HBP\ESIadmin"
 )
 
