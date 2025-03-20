@@ -3,7 +3,8 @@
   - The specified service does not exist.
 
 # Check to see if this registry is there
-`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WIMMount`
+
+'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WIMMount'
 
 # The Registry Key
 Windows Registry Editor Version 5.00
@@ -36,7 +37,48 @@ Windows Registry Editor Version 5.00
 }
 ```
 
----
-
 # Check to see if the following File is there
-`C:\windows\system32\drivers\wimmount.sys” exists on the computer`
+- c:\windows\system32\drivers\wimmount.sys” exists on the computer
+
+# Sysprep Issues
+
+## Disable Bitlocker
+```
+manage-bde -off C:
+```
+## Check Status of Bitlocker
+```
+manage-bde -status
+```
+# Remove AppxPackage
+## 'Will remove remove OneDriveSync Package. You can get the package name from the Sysprep LOG' 
+```
+get-AppxPackage Microsoft.OneDriveSync | Remove-AppxPackage
+```
+
+## 'Will remove remove WebExperienc Package. You can get the package name from the Sysprep LOG' 
+```
+get-AppxPackage MicrosoftWindows.Client.Webexperience | Remove-AppxPackage
+```
+
+## Disable Reserved Storage State
+```
+DISM.exe /Online /Set-ReservedStorageState /State:Disabled
+```
+
+## Get Reserved Storage State
+```
+Get-WindowsReservedStorageState
+```
+
+## Remove Update Cache on Local Machine
+```
+net stop wuauserv
+net stop bits
+del /s /q C:\Windows\SoftwareDistribution\*
+net start wuauserv
+net start bits
+```
+## Info about Storage State
+https://www.elevenforum.com/t/enable-or-disable-reserved-storage-in-windows-11.21389/
+

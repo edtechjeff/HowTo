@@ -100,6 +100,14 @@ The next driver is what is call the Intel Rapid Storage Driver. This driver is i
 
 ## This pretty well gets you a basic setup for Imaging Windows 11 with WDS. Along with this article I will be posting more information on how to use what I have came up with based on the scripts and what ways you can use it. But for now hope this helps get you. Refer to the original article with more information on the scripts and original intended purpose and how it all works. Again I will post how I have been using it. Till then keep on learning something new. 
 
+# WDS Option 67
+
+- 64-bit systems,
+    - boot\x64\wdsmgfw.efi
+- 32-bit systems
+    - boot\x86\wdsmgfw.efi
+- Legacy Boot
+    - boot\x86\pxeboot.com
 
 
 
