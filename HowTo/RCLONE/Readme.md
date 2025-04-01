@@ -23,6 +23,12 @@ rclone config
 
 ![alt text](Pictures/1.png)
 
+5. Type N for New remote
+![alt text](Pictures/2.png)
+
+
+
+
 ## Command to Mount SharePoint 
 
 ```
