@@ -97,12 +97,7 @@ rclone --vfs-cache-mode writes mount OneDrive: *
 
 ![alt text](Pictures/19.png)
 
-
-
-
-## Command to Mount SharePoint 
-
-
+# Another use case for RClone is the ability to use it to copy files. 
 
 ## Command (Example of copying file from D drive on local machine to Z drive the mounted SharePoint folder)
 
