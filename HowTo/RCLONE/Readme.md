@@ -24,11 +24,13 @@ rclone config
 ![Alt text](HowTo\HowTo\Assets\RClone\1.png)
 
 ## Command to Mount SharePoint 
+
 ```
 rclone --vfs-cache-mode writes mount sharepoint: *
 ```
 
 ## Command (Example of copying file from D drive on local machine to Z drive the mounted SharePoint folder)
+
 ```
 rclone copy D:\ Z:\ --fast-list --progress --create-empty-src-dirs
 ```
