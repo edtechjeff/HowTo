@@ -95,7 +95,7 @@ rclone --vfs-cache-mode writes mount OneDrive: *
 
 20. Now you see the you have mounted your OneDrive as the Z Drive. I used a wild card * to pull the next available drive.  You can also code it to what ever drive letter you want
 
-![alt text](Pictures/20.png)
+![alt text](Pictures/19.png)
 
 
 
