@@ -23,18 +23,81 @@ rclone config
 
 ![alt text](Pictures/1.png)
 
-5. Type N for New remote
+5. Type N for New remote and give it a name. Pay attention to the name the command we will use later is Case Sensitive
 
 ![alt text](Pictures/2.png)
+
+6. Now you will be presented with a list of cloud sources. Scroll through the list and find OneDrive. For this example 36 will be what we are looking for. 
+
+![alt text](Pictures/3.png)
+
+![alt text](Pictures/4.png)
+
+7. In this example we are going to be using our M365 credentials to log onto our OneDrive. It is optional to setup an enterprise application, but for us just press enter
+
+![alt text](Pictures/5.png)
+
+8. Press enter again
+
+![alt text](Pictures/6.png)
+
+9. Now select your region
+
+![alt text](Pictures/7.png)
+
+10. Again, just press enter
+
+![alt text](Pictures/8.png)
+
+11. Again, just press enter
+
+![alt text](Pictures/9.png)
+
+12. Again, just press enter
+
+![alt text](Pictures/10.png)
+
+13. In another window, it will log you on with your M365 credentials. 
+
+![alt text](Pictures/11.png)
+
+14. Now select option 1 for Onedrive. Notice at this point you can also do sharepoint
+
+![alt text](Pictures/11.png)
+
+15. At this point you will be presented with what you want to connect to. In my example I have 2. I am going to connect to option 2
+
+![alt text](Pictures/12.png)
+
+16. Just press enter to accept the defaults
+
+![alt text](Pictures/13.png)
+
+17. It will create a token at this point and show you the token. Just accept the defaults
+
+![alt text](Pictures/14.png)
+
+18. Now you see you have configured the connection
+
+![alt text](Pictures/15.png)
+
+19. Press q and enter to quit
+
+![alt text](Pictures/16.png)
+
+19. Now you can run the following command to map to OneDrive. 
+
+```
+rclone --vfs-cache-mode writes mount sharepoint: *
+```
+
 
 
 
 
 ## Command to Mount SharePoint 
 
-```
-rclone --vfs-cache-mode writes mount sharepoint: *
-```
+
 
 ## Command (Example of copying file from D drive on local machine to Z drive the mounted SharePoint folder)
 
