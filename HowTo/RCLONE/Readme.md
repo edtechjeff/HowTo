@@ -63,7 +63,7 @@ rclone config
 
 14. Now select option 1 for Onedrive. Notice at this point you can also do sharepoint
 
-![alt text](Pictures/12.png)
+![alt text](Pictures/12.png) 
 
 15. At this point you will be presented with what you want to connect to. In my example I have 2. I am going to connect to option 2
 
