@@ -21,7 +21,7 @@ Now you have the pre-requisites setup
 rclone config
 ```
 
-![alt text](../../../../Assets/RClone/1.png)
+![alt text](/Pictures/RClone/1.png)
 
 ## Command to Mount SharePoint 
 
