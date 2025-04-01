@@ -63,27 +63,27 @@ rclone config
 
 14. Now select option 1 for Onedrive. Notice at this point you can also do sharepoint
 
-![alt text](Pictures/11.png)
+![alt text](Pictures/12.png)
 
 15. At this point you will be presented with what you want to connect to. In my example I have 2. I am going to connect to option 2
 
-![alt text](Pictures/12.png)
+![alt text](Pictures/13.png)
 
 16. Just press enter to accept the defaults
 
-![alt text](Pictures/13.png)
+![alt text](Pictures/14.png)
 
 17. It will create a token at this point and show you the token. Just accept the defaults
 
-![alt text](Pictures/14.png)
+![alt text](Pictures/15.png)
 
 18. Now you see you have configured the connection
 
-![alt text](Pictures/15.png)
+![alt text](Pictures/16.png)
 
 19. Press q and enter to quit
 
-![alt text](Pictures/16.png)
+![alt text](Pictures/17.png)
 
 19. Now you can run the following command to map to OneDrive. 
 
