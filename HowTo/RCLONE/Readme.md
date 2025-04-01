@@ -67,7 +67,7 @@ rclone config
 
 15. At this point you will be presented with what you want to connect to. In my example I have 2. I am going to connect to option 2
 
-![alt text](Pictures/13.png)
+
 
 16. Just press enter to accept the defaults
 
