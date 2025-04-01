@@ -9,24 +9,12 @@ $groupData = Import-Csv -Path $inputFile
 
 foreach ($group in $groupData) {
     $groupName = $group."GroupName"   # Explicitly reference the column
-    $members = $group."Members" -split ";"
 
     # Check if group exists, if not create it
     if (-not (Get-ADGroup -Filter { Name -eq $groupName })) {
         New-ADGroup -Name $groupName -GroupScope Global -Path "OU=YourOU,DC=YourDomain,DC=com"
         Write-Host "Created group: $groupName"
-    }
-
-    # Add members
-    foreach ($member in $members) {
-        $user = Get-ADUser -Filter { SamAccountName -eq $member } -ErrorAction SilentlyContinue
-        if ($user) {
-            Add-ADGroupMember -Identity $groupName -Members $user
-            Write-Host "Added $member to $groupName"
-        } else {
-            Write-Host "User $member not found, skipping..."
-        }
+    } else {
+        Write-Host "Group $groupName already exists, skipping..."
     }
 }
-# This script creates Active Directory groups and adds members from a CSV file
-# Note: Update the OU and Domain in the New-ADGroup command as per your environment
