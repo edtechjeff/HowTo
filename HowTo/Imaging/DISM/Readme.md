@@ -102,12 +102,13 @@ The next driver is what is call the Intel Rapid Storage Driver. This driver is i
 
 # WDS Option 67
 
-- 64-bit systems,
-    - boot\x64\wdsmgfw.efi
+- 64-bit systems UEFI,
+    - \boot\x64\wdsmgfw.efi
 - 32-bit systems
-    - boot\x86\wdsmgfw.efi
+    - \boot\x86\wdsmgfw.efi
 - Legacy Boot
-    - boot\x86\pxeboot.com
+    - \boot\x86\pxeboot.com
+    - Alternate: \Boot\PXEboot.n12 (skips the PXE prompt) 
 
 
 
