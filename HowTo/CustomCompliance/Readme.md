@@ -49,6 +49,8 @@ From a script breakdown
 
 Now you have your PowerShell script created its time for the JSON
 
+I will be totally honest. I am not a JSON person and I used ChatGPT to assist this with me. That got me almost there but I still had many hours to look at the output of the JSON and figure out what was really needed. This is a partial of the full JSON file called AntiVirusCheck.json located in the repo. I want to break down the sections. Once I figured out the sections, it really made it easier for me to work with. 
+
 ```
 {
     "Rules": [
@@ -66,53 +68,22 @@ Now you have your PowerShell script created its time for the JSON
             "Description": "To continue to use this device you have to activate RealtimeProtection"
           }
         ]
-      },
-      {
-        "ruleType": "script",
-        "SettingName": "AMServiceEnabled",
-        "Operator": "IsEquals",
-        "Operand": "true",
-        "DataType": "Boolean",
-        "MoreInfoUrl": "https://google.com",
-        "RemediationStrings": [
-          {
-            "Language": "en_US",
-            "Title": "The AntiMalware Service is not running.",
-            "Description": "To continue to use this device you have to ensure the AM service is enabled"
-          }
-        ]
-      },
-      {
-        "ruleType": "script",
-        "SettingName": "AntiSpyware",
-        "Operator": "IsEquals",
-        "Operand": "true",
-        "DataType": "Boolean",
-        "MoreInfoUrl": "https://google.com",
-        "RemediationStrings": [
-          {
-            "Language": "en_US",
-            "Title": "Antispyware is not enabled.",
-            "Description": "To continue to use this device you must enable antispyware protection"
-          }
-        ]
-      },
-      {
-        "ruleType": "script",
-        "SettingName": "AntiVirus",
-        "Operator": "IsEquals",
-        "Operand": "true",
-        "DataType": "Boolean",
-        "MoreInfoUrl": "https://google.com",
-        "RemediationStrings": [
-          {
-            "Language": "en_US",
-            "Title": "Antivirus is not enabled.",
-            "Description": "To continue to use this device you must enable antivirus protection"
-          }
-        ]
       }
     ]
-  }
+}
 
   ```
+
+- ruleType = Important is the rule type since we are using a script to pull the information I put in script
+- SettingName = This is equal to the name that you put in the PowerShell script and will also be displayed in the compliance report
+- Operator = This is to set what we are looking for. There are other values that can be used
+- Operand = We are looking for a true value here so that is what that is used for
+- DataType = Since we are doing JSON this is the value type that is needed
+- MoreInfoURL = Can be used to direct users to the correct website or what ever they need to do. I left pretty generic for now
+- RemediationStrings = This area is kind of interesting, You can even put multiple languages in here depending on your use case
+    - Language = en_US
+    - Title = gives a title to the message
+    - Description = gives the message to the user if you have it setup to
+
+So pretty easy once you understand what you need. There are other variables that can be used 
+
