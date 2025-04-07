@@ -140,31 +140,31 @@ Follow these steps to create a custom compliance policy in Microsoft Intune:
 
 5. Select the PowerShell script and click select
 
-![alt text](Assets/10.png)
+![alt text](Assets/11.png)
 
 6. Click on the folder to browse to your JSON file
 
-![alt text](Assets/11.png)
+![alt text](Assets/12.png)
 
 7. At this point if you have the correct JSON file and the script your screen should look like this. **Please note that all the fields that you created are displayed with their expected values**
 
-![alt text](Assets/12.png)
+![alt text](Assets/13.png)
 
 8. Click Next
 
-![alt text](Assets/13.png)
+![alt text](Assets/14.png)
 
 9. Click Next again
 
-![alt text](Assets/14.png)
+![alt text](Assets/15.png)
 
 10. Add the assignments to the correct group and click next
 
-![alt text](Assets/15.png)
+![alt text](Assets/16.png)
 
 11. Click Create
 
-![alt text](Assets/16.png)
+![alt text](Assets/17.png)
 
 ## Step 5: Monitor Compliance
 1. After the policy is deployed, monitor compliance status under **Devices > Monitor > Compliance policies**.
