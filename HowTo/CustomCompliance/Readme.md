@@ -124,19 +124,19 @@ Follow these steps to create a custom compliance policy in Microsoft Intune:
 
 1. Click on Create Policy
 
-![alt text](Assets/6.png)
+![alt text](Assets/7.png)
 
 2. Select the platform and click create
 
-![alt text](Assets/7.png)
+![alt text](Assets/8.png)
 
 3. Fill in the information
 
-![alt text](Assets/8.png)
+![alt text](Assets/9.png)
 
 4. Expand the Custom Compliance section and slide it over to required
 
-![alt text](Assets/9.png)
+![alt text](Assets/10.png)
 
 5. Select the PowerShell script and click select
 
