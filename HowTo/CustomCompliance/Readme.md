@@ -164,7 +164,6 @@ Follow these steps to create a custom compliance policy in Microsoft Intune:
 
 11. Click Create
 
-![alt text](Assets/17.png)
 
 ## Step 5: Monitor Compliance
 1. After the policy is deployed, monitor compliance status under **Devices > Monitor > Compliance policies**.
