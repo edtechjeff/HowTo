@@ -168,7 +168,19 @@ Follow these steps to create a custom compliance policy in Microsoft Intune:
 ## Step 5: Monitor Compliance
 1. After the policy is deployed, monitor compliance status under **Devices > Monitor > Compliance policies**.
 
-![Monitor Compliance](https://via.placeholder.com/800x400?text=Monitor+Compliance)
-
 You have successfully created a custom compliance policy in Intune!
 
+## Extra
+
+After you have applied it to the group and the compliance has ran, you can then browse to the device in Intune and look at the compliance results. From this screen you can tell that it all reports back good except for Real-Time Protection. Guess we need to look into that. 
+
+![alt text](Assets/17.png)
+
+Also if you want to monitor things at the client level you can view the logs at 
+- C:\ProgramData\Microsoft\IntuneManagementExtension\Logs\HealthScripts.log
+
+I would use some type of log viewer like CMTrace or what ever you have and look for those values. As you can see from the screen shot that it did run and the values returned
+
+![alt text](Assets/18.png)
+
+I hope this helped you. I know I spent allot of time to figure this out and to be honest its well worth it. There are many use cases that you can use for this, again like I always say its only limited to your imagination.  Have fun out there. 
