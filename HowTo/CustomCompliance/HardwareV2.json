@@ -1,0 +1,60 @@
+{
+    "Rules":[ 
+        { 
+           "SettingName":"BiosVersion",
+           "Operator":"GreaterEquals",
+           "DataType":"Version",
+           "Operand":"2.3",
+           "MoreInfoUrl":"https://bing.com",
+           "RemediationStrings":[ 
+              { 
+                 "Language":"en_US",
+                 "Title":"BIOS Version needs to be upgraded to at least 2.3. Value discovered was {ActualValue}.",
+                 "Description": "BIOS must be updated. Please refer to the link above"
+              }
+           ]
+        },
+        { 
+           "SettingName":"TPMChipPresent",
+           "Operator":"IsEquals",
+           "DataType":"Boolean",
+           "Operand":true,
+           "MoreInfoUrl":"https://bing.com",
+           "RemediationStrings":[ 
+              {
+                 "Language": "en_US",
+                 "Title": "TPM chip must be enabled.",
+                 "Description": "TPM chip must be enabled. Please refer to the link above"
+              }
+           ]
+        },
+        {
+           "SettingName":"Manufacturer",
+           "Operator":"IsEquals",
+           "DataType":"String",
+           "Operand":"Microsoft Corporation",
+           "MoreInfoUrl":"https://bing.com",
+           "RemediationStrings":[ 
+              { 
+                 "Language": "en_US",
+                 "Title": "Only Microsoft devices are supported.",
+                 "Description": "You are not currently using a Microsoft device."
+              }
+           ]
+        },
+        {
+         "SettingName":"TPMVersion",
+         "Operator":"IsEquals",
+         "DataType":"String",
+         "Operand":"2.0",
+         "MoreInfoUrl":"https://bing.com",
+         "RemediationStrings":[ 
+            { 
+               "Language": "en_US",
+               "Title": "Only devices with TPM 2.0 are supported.",
+               "Description": "You are not currently using a device with TPM 2.0."
+            }
+         ]
+      }
+     ]
+    }

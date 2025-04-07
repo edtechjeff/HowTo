@@ -1,0 +1,3 @@
+Below you will find the basic steps for creating  a custom compliance policy. Its pretty basic how to do it, but you may ask, Why would I need one? Good question. In the following example we have created a standard policy but for some reason the Microsoft Defender Antimalware and also the Real-time protection is showing up as Not compliant. Why is that? In this environment we are using a third party anti virus and so its not registering correctly. How do we address this? Custom Compliance Policy. 
+
+![alt text](Assets/1.png)

@@ -1,0 +1,65 @@
+{
+    "Rules": [
+      {
+        "ruleType": "script",
+        "SettingName": "RTPEnabled",
+        "Operator": "IsEquals",
+        "Operand": "true",
+        "DataType": "Boolean",
+        "MoreInfoUrl": "https://google.com",
+        "RemediationStrings": [
+          {
+            "Language": "en_US",
+            "Title": "This machine has no active RealtimeProtection.",
+            "Description": "To continue to use this device you have to activate RealtimeProtection"
+          }
+        ]
+      },
+      {
+        "ruleType": "script",
+        "SettingName": "AMServiceEnabled",
+        "Operator": "IsEquals",
+        "Operand": "true",
+        "DataType": "Boolean",
+        "MoreInfoUrl": "https://google.com",
+        "RemediationStrings": [
+          {
+            "Language": "en_US",
+            "Title": "The AntiMalware Service is not running.",
+            "Description": "To continue to use this device you have to ensure the AM service is enabled"
+          }
+        ]
+      },
+      {
+        "ruleType": "script",
+        "SettingName": "AntiSpyware",
+        "Operator": "IsEquals",
+        "Operand": "true",
+        "DataType": "Boolean",
+        "MoreInfoUrl": "https://google.com",
+        "RemediationStrings": [
+          {
+            "Language": "en_US",
+            "Title": "Antispyware is not enabled.",
+            "Description": "To continue to use this device you must enable antispyware protection"
+          }
+        ]
+      },
+      {
+        "ruleType": "script",
+        "SettingName": "AntiVirus",
+        "Operator": "IsEquals",
+        "Operand": "true",
+        "DataType": "Boolean",
+        "MoreInfoUrl": "https://google.com",
+        "RemediationStrings": [
+          {
+            "Language": "en_US",
+            "Title": "Antivirus is not enabled.",
+            "Description": "To continue to use this device you must enable antivirus protection"
+          }
+        ]
+      }
+    ]
+  }
+  

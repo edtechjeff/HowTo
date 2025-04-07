@@ -1,0 +1,19 @@
+{
+    "Rules": [
+        {
+            "ruleType": "script",
+            "SettingName": "RTPEnabled",
+            "Operator": "IsEquals",
+            "Operand": "true",
+            "DataType": "Boolean",
+            "MoreInfoUrl": "https://google.com",
+            "RemediationStrings": [
+                {
+                    "Language": "en_US",
+                    "Title": "This machine has no active RealtimeProtection.",
+                    "Description": "To continue to use this device you have to activate RealtimeProtection"
+                }
+            ]
+        }
+    ]
+  }
