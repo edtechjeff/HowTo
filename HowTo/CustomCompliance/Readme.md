@@ -85,5 +85,54 @@ I will be totally honest. I am not a JSON person and I used ChatGPT to assist th
     - Title = gives a title to the message
     - Description = gives the message to the user if you have it setup to
 
-So pretty easy once you understand what you need. There are other variables that can be used 
+So pretty easy once you understand what you need. There are other variables that can be used within the JSON, but I kept it to this. 
+
+Once you have your PowerShell and JSON file its time to apply the policy. Lets start creating one
+
+Follow these steps to create a custom compliance policy in Microsoft Intune:
+
+## Step 1: Sign in to Microsoft Endpoint Manager Admin Center
+1. Open a web browser and go to [Microsoft Endpoint Manager Admin Center](https://endpoint.microsoft.com/).
+2. Sign in with your administrator credentials.
+
+## Step 2: Navigate to Compliance Policies
+1. In the left-hand navigation pane, select **Devices**.
+2. Under **Policy**, select **Compliance policies**.
+
+![Compliance Policies Navigation](https://via.placeholder.com/800x400?text=Compliance+Policies+Navigation)
+
+## Step 3: Create a New Compliance Policy
+1. Click on **+ Create Policy**.
+2. In the **Create Policy** pane, select the platform for which you want to create the policy (e.g., Windows 10 and later).
+3. Click **Create**.
+
+![Create Compliance Policy](https://via.placeholder.com/800x400?text=Create+Compliance+Policy)
+
+## Step 4: Configure Policy Settings
+1. Provide a **Name** and an optional **Description** for the policy.
+2. Under **Settings**, configure the compliance rules. For example:
+    - Require a minimum OS version.
+    - Block jailbroken or rooted devices.
+3. Click **Next**.
+
+![Configure Policy Settings](https://via.placeholder.com/800x400?text=Configure+Policy+Settings)
+
+## Step 5: Assign the Policy
+1. Under the **Assignments** tab, choose the groups or users to whom the policy will apply.
+2. Click **Next**.
+
+![Assign Policy](https://via.placeholder.com/800x400?text=Assign+Policy)
+
+## Step 6: Review and Create
+1. Review the settings you configured.
+2. Click **Create** to finalize the policy.
+
+![Review and Create](https://via.placeholder.com/800x400?text=Review+and+Create)
+
+## Step 7: Monitor Compliance
+1. After the policy is deployed, monitor compliance status under **Devices > Monitor > Compliance policies**.
+
+![Monitor Compliance](https://via.placeholder.com/800x400?text=Monitor+Compliance)
+
+You have successfully created a custom compliance policy in Intune!
 
