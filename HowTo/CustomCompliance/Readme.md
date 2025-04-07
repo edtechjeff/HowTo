@@ -97,39 +97,76 @@ Follow these steps to create a custom compliance policy in Microsoft Intune:
 
 ## Step 2: Navigate to Compliance Policies
 1. In the left-hand navigation pane, select **Devices**.
-2. Under **Policy**, select **Compliance policies**.
+2. Under **Manage Devices**, select **Compliance**.
 
-![Compliance Policies Navigation](https://via.placeholder.com/800x400?text=Compliance+Policies+Navigation)
+## Step 3: Click on the Scripts tab
+1. This section is where you import your PowerShell script
 
-## Step 3: Create a New Compliance Policy
-1. Click on **+ Create Policy**.
-2. In the **Create Policy** pane, select the platform for which you want to create the policy (e.g., Windows 10 and later).
-3. Click **Create**.
+![alt text](Assets/2.png)
 
-![Create Compliance Policy](https://via.placeholder.com/800x400?text=Create+Compliance+Policy)
+2. Click Add and select Windows 10 and later
 
-## Step 4: Configure Policy Settings
-1. Provide a **Name** and an optional **Description** for the policy.
-2. Under **Settings**, configure the compliance rules. For example:
-    - Require a minimum OS version.
-    - Block jailbroken or rooted devices.
-3. Click **Next**.
+![alt text](Assets/3.png)
 
-![Configure Policy Settings](https://via.placeholder.com/800x400?text=Configure+Policy+Settings)
+3. Give the script and name fill in what ever else you want and click next
 
-## Step 5: Assign the Policy
-1. Under the **Assignments** tab, choose the groups or users to whom the policy will apply.
-2. Click **Next**.
+![alt text](Assets/4.png)
 
-![Assign Policy](https://via.placeholder.com/800x400?text=Assign+Policy)
+4. Paste in the script and leave the rest of the boxes as it and click next
 
-## Step 6: Review and Create
-1. Review the settings you configured.
-2. Click **Create** to finalize the policy.
+![alt text](Assets/5.png)
 
-![Review and Create](https://via.placeholder.com/800x400?text=Review+and+Create)
+5. Click Create
 
-## Step 7: Monitor Compliance
+![alt text](Assets/6.png)
+
+## Step 4: Click back on the Policies Tab
+
+1. Click on Create Policy
+
+![alt text](Assets/6.png)
+
+2. Select the platform and click create
+
+![alt text](Assets/7.png)
+
+3. Fill in the information
+
+![alt text](Assets/8.png)
+
+4. Expand the Custom Compliance section and slide it over to required
+
+![alt text](Assets/9.png)
+
+5. Select the PowerShell script and click select
+
+![alt text](Assets/10.png)
+
+6. Click on the folder to browse to your JSON file
+
+![alt text](Assets/11.png)
+
+7. At this point if you have the correct JSON file and the script your screen should look like this. **Please note that all the fields that you created are displayed with their expected values**
+
+![alt text](Assets/12.png)
+
+8. Click Next
+
+![alt text](Assets/13.png)
+
+9. Click Next again
+
+![alt text](Assets/14.png)
+
+10. Add the assignments to the correct group and click next
+
+![alt text](Assets/15.png)
+
+11. Click Create
+
+![alt text](Assets/16.png)
+
+## Step 5: Monitor Compliance
 1. After the policy is deployed, monitor compliance status under **Devices > Monitor > Compliance policies**.
 
 ![Monitor Compliance](https://via.placeholder.com/800x400?text=Monitor+Compliance)
