@@ -1,0 +1,35 @@
+{
+    "Rules": [
+      {
+        "ruleType": "script",
+        "SettingName": "CybereasonInstalled",
+        "Operator": "IsEquals",
+        "Operand": "true",
+        "DataType": "Boolean",
+        "MoreInfoUrl": "https://cybereason.com",
+        "RemediationStrings": [
+          {
+            "Language": "en_US",
+            "Title": "Cybereason is not installed.",
+            "Description": "To continue to use this device, Cybereason must be installed."
+          }
+        ]
+      },
+      {
+        "ruleType": "script",
+        "SettingName": "CybereasonServicesRunning",
+        "Operator": "IsEquals",
+        "Operand": "true",
+        "DataType": "Boolean",
+        "MoreInfoUrl": "https://cybereason.com",
+        "RemediationStrings": [
+          {
+            "Language": "en_US",
+            "Title": "One or more Cybereason services are not running.",
+            "Description": "Ensure all Cybereason protection services are running."
+          }
+        ]
+      }
+    ]
+  }
+  

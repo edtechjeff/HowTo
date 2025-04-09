@@ -1,0 +1,50 @@
+{
+    "Rules": [
+      {
+        "ruleType": "script",
+        "SettingName": "CybereasonInstalled",
+        "Operator": "IsEquals",
+        "Operand": "true",
+        "DataType": "Boolean",
+        "MoreInfoUrl": "https://cybereason.com",
+        "RemediationStrings": [
+          {
+            "Language": "en_US",
+            "Title": "Cybereason is not installed.",
+            "Description": "To continue to use this device, Cybereason must be installed."
+          }
+        ]
+      },
+      {
+        "ruleType": "script",
+        "SettingName": "CybereasonServicesRunning",
+        "Operator": "IsEquals",
+        "Operand": "true",
+        "DataType": "Boolean",
+        "MoreInfoUrl": "https://cybereason.com",
+        "RemediationStrings": [
+          {
+            "Language": "en_US",
+            "Title": "One or more Cybereason services are not running.",
+            "Description": "Ensure all Cybereason protection services are running."
+          }
+        ]
+      },
+      {
+        "ruleType": "script",
+        "SettingName": "RealTimeProtectionEnabled",
+        "Operator": "IsEquals",
+        "Operand": "false",
+        "DataType": "Boolean",
+        "MoreInfoUrl": "https://cybereason.com",
+        "RemediationStrings": [
+          {
+            "Language": "en_US",
+            "Title": "Real-time protection is disabled.",
+            "Description": "To ensure maximum protection, enable real-time protection in Windows Defender or Cybereason."
+          }
+        ]
+      }
+    ]
+  }
+  

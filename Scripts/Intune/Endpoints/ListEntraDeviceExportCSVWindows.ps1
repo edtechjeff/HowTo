@@ -1,4 +1,5 @@
-# Getting list of device in AutoPilot and export to CSV
+# Get a list of device in Entra ID and export to CSV
+
 # Import the required module
 Import-Module Microsoft.Graph
 
@@ -8,14 +9,20 @@ $scopes = "Device.Read.All", "Group.ReadWrite.All"  # Adjust scopes as needed
 # Authenticate to Microsoft Graph
 Connect-MgGraph -Scopes $scopes
 
-# Get a list of devices in AutoPilot and export to CSV
+# Define the output file path
+$csvPath = "C:\Temp\EntraDevices.csv"
+
 # Ensure the Temp directory exists
-$csvPath = "C:\Temp\AutoPilotDevice.csv"
 if (!(Test-Path "C:\Temp")) { New-Item -ItemType Directory -Path "C:\Temp" -Force }
 
-# Retrieve Autopilot devices and export to CSV
-Get-MgDeviceManagementWindowsAutopilotDeviceIdentity |
-    Select-Object SerialNumber, Id, AzureActiveDirectoryDeviceId |
+# Connect to Microsoft Graph if not already connected
+if (!(Get-MgContext)) {
+    Connect-MgGraph -Scopes "Directory.Read.All"
+}
+
+# Retrieve all devices from Entra ID and export to CSV
+Get-MgDevice -All -Property DisplayName, Id, DeviceId |
+    Select-Object DisplayName, Id, DeviceId |
     Export-Csv -Path $csvPath -NoTypeInformation
 
 Write-Host "Export completed: $csvPath"

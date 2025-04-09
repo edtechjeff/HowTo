@@ -1,3 +1,17 @@
+' VBA script to remove trailing commas from a CSV file
+' This script reads a CSV file, removes any trailing commas from each line,
+' and writes the cleaned lines to a new CSV file.
+' The original file is assumed to be located at "c:\alpha.csv" and the cleaned file will be saved as "c:\omega.csv".
+' The script uses file I/O operations to read and write the files line by line.
+' It is important to ensure that the file paths are correct and that the files are accessible.
+' The script uses a loop to read each line of the input file, checks for trailing commas,
+' and removes them before writing the cleaned line to the output file.
+' The script also closes the file handles after processing to free up system resources.
+' The script is designed to be run in a VBA environment, such as within Excel or Access.
+' It is a simple yet effective way to clean up CSV files that may have been improperly formatted.
+' The script can be modified to handle different file paths or to include additional error handling as needed.
+' It is a good practice to back up the original file before running such scripts to prevent data loss.
+
 Sub CommaKiller()
 
 

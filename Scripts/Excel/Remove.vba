@@ -1,3 +1,8 @@
+' Remove Groups from Column C Based on Column D in Excel
+' This VBA code removes groups listed in Column D from the group list in Column C
+' in an Excel worksheet. It uses a dictionary for fast lookups and processes the data in bulk for efficiency.
+' The code assumes that the first row contains headers and starts processing from the second row.
+
 Sub RemoveGroupsFromColumnC()
     Dim ws As Worksheet
     Dim lastRowC As Long, lastRowD As Long

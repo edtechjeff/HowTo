@@ -1,3 +1,8 @@
+' VBA code to replace old names with new names in Excel
+' based on a mapping table in columns A and B
+' The mapping table has old names in column A and new names in column B
+' and the data to be replaced is in column C
+
 Sub ReplaceOldNamesWithNew()
     Dim ws As Worksheet
     Dim lastRowA As Long, lastRowC As Long
