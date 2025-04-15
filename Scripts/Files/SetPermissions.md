@@ -49,6 +49,8 @@ To test the permissions on a single file, use the following commands:
 
 ```cmd
 icacls "Z:\Shares\Accounts\testfile.txt" /grant "AccountsTeam:(RX,W)"
+```
+```
 icacls "Z:\Shares\Accounts\testfile.txt" /deny "AccountsTeam:(D)"
 ```
 
