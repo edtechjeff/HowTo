@@ -4,7 +4,7 @@ This document explains how to use the `icacls` command to set permissions on fil
 
 ---
 
-## Script to Set Permissions
+## Scripts to Set Permissions
 
 ```cmd
 icacls "Z:\Shares\Accounts" /grant "AccountsTeam:(OI)(CI)(RX,W)" /T
@@ -13,7 +13,7 @@ icacls "Z:\Shares\Accounts" /grant "AccountsTeam:(OI)(CI)(RX,W)" /T
 icacls "Z:\Shares\Accounts" /deny "AccountsTeam:(OI)(CI)(D,DC)" /T
 ```
 
-### Explanation of the Script
+### Explanation of the Scripts
 
 1. **Grant Permissions**  
     The first command grants the `AccountsTeam` group the following permissions on the `Z:\Shares\Accounts` folder and its contents:
