@@ -16,7 +16,7 @@ $apps = Get-MgDeviceAppManagementMobileApp
 $apps | Select-Object Id, DisplayName | Format-Table -AutoSize
 
 # Optional: Export to CSV
-$apps | Select-Object Id, DisplayName | Export-Csv -Path "Intune_Apps.csv" -NoTypeInformation
+$apps | Select-Object Id, DisplayName | Export-Csv -Path "c:\temp\Intune_Apps.csv" -NoTypeInformation
 
 # Disconnect from Graph API
 Disconnect-MgGraph
