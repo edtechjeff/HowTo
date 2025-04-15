@@ -8,6 +8,8 @@ This document explains how to use the `icacls` command to set permissions on fil
 
 ```cmd
 icacls "Z:\Shares\Accounts" /grant "AccountsTeam:(OI)(CI)(RX,W)" /T
+```
+```cmd
 icacls "Z:\Shares\Accounts" /deny "AccountsTeam:(OI)(CI)(D,DC)" /T
 ```
 
@@ -50,7 +52,7 @@ To test the permissions on a single file, use the following commands:
 ```cmd
 icacls "Z:\Shares\Accounts\testfile.txt" /grant "AccountsTeam:(RX,W)"
 ```
-```
+```cmd
 icacls "Z:\Shares\Accounts\testfile.txt" /deny "AccountsTeam:(D)"
 ```
 
