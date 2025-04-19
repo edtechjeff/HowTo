@@ -1,4 +1,3 @@
-```markdown
 # Bypassing TPM, CPU, and RAM Checks for Windows 11 Installation
 
 To bypass the TPM, CPU, and RAM checks when installing Windows 11 on a virtual machine, you can modify the registry settings during the installation process. Below are the steps and registry keys you need to add:
@@ -28,8 +27,8 @@ To bypass the TPM, CPU, and RAM checks when installing Windows 11 on a virtual m
 
 ## Notes
 
-- These changes are intended for testing or evaluation purposes only. Installing Windows 11 on unsupported hardware may result in reduced performance or compatibility issues.
+- These changes are intended for testing or evaluation purposes only. 
+- Installing Windows 11 on unsupported hardware may result in reduced performance or compatibility issues.
 - Always back up your data before making changes to your system.
 
 By following these steps, you should be able to bypass the hardware checks and install Windows 11 on a virtual machine.
-```
