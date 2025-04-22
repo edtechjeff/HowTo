@@ -1,3 +1,5 @@
+# Install AD Connect to New Server and Migrate
+
 The following Windows Server releases support Azure AD Connect v2:
 
 - Windows Server 2016
