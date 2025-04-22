@@ -52,7 +52,7 @@ This guide walks you through the process of creating a configuration profile in 
 | Documents (Device)                                                     | True                                            |
 | Pictures (Device)                                                      | True                                            |
 | Show notification to users after folders have been redirected (Device) | No                                              |
-| Tenant ID (Device)                                                     | 2238ddfb-9425-4fed-8482-c2cdef1a8793           |
+| Tenant ID (Device)                                                     | [YOUR TenantID]          |
 | Silently sign in users to the OneDrive sync app with Windows credentials | Enabled                                      |
 | Use OneDrive Files On-Demand                                           | Enabled                                         |
 
