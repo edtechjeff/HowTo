@@ -1,4 +1,4 @@
-# Using some basic commands you could create a P2P VPn connection into Azure
+# Using some basic commands you could create a P2P VPN connection into Azure
 
 ```
 $location = "eastus2"
