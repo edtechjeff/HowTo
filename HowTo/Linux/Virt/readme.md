@@ -1,22 +1,46 @@
 # In progress Project Cockpit on Ubuntu
 
 ## Commands to install services
-    sudo apt install qemu qemu-kvm virt-manager bridge-utils
+```
+    sudo apt install qemu-system virt-manager bridge-utils
+```
 
 ## Additional Commands
 ## Add user to appropriate groups
+```
     sudo useradd -g $USER libvirt
     sudo useradd -g $USER libvirt-kvm
+```
 ## Enable libvirt service
+```
     sudo systemctl enable libvirtd.service && sudo systemctl start libvirtd.service
+```
+
+## Command to install Cockpit
+```
+sudo apt-get install cockpit -y
+```
+
+## Command to start and enable Cockpit
+```
+sudo systemctl enable --now cockpit.socket
+```
+
+## Command to allow your user to log onto Cockpit and have SUDO privileges
+```
+sudo usermod -aG sudo ***YOURUSERNAME***
+```
+
 
 ## Command to install Cockpit module
+   ```
     sudo apt install cockpit-machines
-
+   ```
 ## Cockpit URL
     https://serverIP:9090/
 
 ## Commands to create VM
+```
 virt-install \
  --name web_devel \
  --ram 8192 \
@@ -24,6 +48,7 @@ virt-install \
  --cdrom focal-desktop-amd64.iso \
  --network network=default,model=virtio \
  --graphics vnc,listen=0.0.0.0 --noautoconsole --hvm --vcpus=4
+```
 
  ## There are many more arguments that can be found in the virt-install manpage. However, explaining those of the example above one by one:
 
@@ -47,9 +72,11 @@ virt-install \
         allocate 4 virtual CPUs.
 
 ## Reg Commands for Virtual Windows 11
+```
 [HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig]
     "BypassTPMCheck"=dword:00000001
     "BypassSecureBootCheck"=dword:00000001
     "BypassRAMCheck"=dword:00000001
     "BypassStorageCheck"=dword:00000001
     "BypassCPUCheck"=dword:00000001
+```
