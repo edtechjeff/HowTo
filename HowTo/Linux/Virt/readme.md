@@ -1,5 +1,10 @@
 # In progress Project Cockpit on Ubuntu
 
+## Command to tell if all of your Virtulization Settings are enabled
+```
+    virt-host-validate`
+```
+
 ## Commands to install services
 ```
     sudo apt install qemu-system virt-manager bridge-utils
@@ -48,7 +53,7 @@ virt-install \
  --name web_devel \
  --ram 8192 \
  --disk path=/home/doug/vm/web_devel.img,bus=virtio,size=50 \
- --cdrom focal-desktop-amd64.iso \
+ --cdrom local-desktop-amd64.iso \
  --network network=default,model=virtio \
  --graphics vnc,listen=0.0.0.0 --noautoconsole --hvm --vcpus=4
 ```
