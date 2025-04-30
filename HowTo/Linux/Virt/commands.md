@@ -56,5 +56,21 @@ virsh autostart NAMEOFVM.xml
     </interface>
 ```
 
+### Enable QEMU Commands on VM to set Serial Number
+- Change Domain information
+```
+<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+```
 
+- Add the following lines right before the </DOMAIN>
+```
+<qemu:commandline>
+    <qemu:arg value='-smbios'/>
+    <qemu:arg value='type=1,serial=ABC123456789'/>
+  </qemu:commandline>
+```
 
+### Powershell command to ger serial number
+```
+Get-WmiObject Win32_BIOS | Select-Object SerialNumber
+```
