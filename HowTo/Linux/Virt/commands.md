@@ -74,3 +74,10 @@ virsh autostart NAMEOFVM.xml
 ```
 Get-WmiObject Win32_BIOS | Select-Object SerialNumber
 ```
+
+
+### command to create a unique UUID
+```
+uuidgen
+```
+

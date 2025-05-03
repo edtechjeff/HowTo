@@ -37,7 +37,7 @@ sudo usermod -aG sudo ***YOURUSERNAME***
 ```
 ## Command to open up Firewall ports for 9090
 ```
-ufw allow 53
+sudo ufw allow 53
 ```
 
 ## Command to install Cockpit module
