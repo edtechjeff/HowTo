@@ -1,6 +1,6 @@
-# 📘 How to Create an Intune Configuration Profile via the Settings Catalog
+# 📘 How to Create an Intune Configuration Profile via the Settings Catalog for OneDrive
 
-This guide walks you through the process of creating a configuration profile in Intune using the Settings Catalog.
+This guide walks you through the process of creating a configuration profile in Intune using the Settings Catalog for OneDrive.
 
 ## Prerequisites
 
