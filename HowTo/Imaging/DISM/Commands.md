@@ -38,6 +38,11 @@ Dism /Mount-Image /ImageFile:"C:\images\images\install.wim"  /index:3 /MountDir:
 Dism /Unmount-Image /MountDir:"C:\mount" /commit
 ```
 
+## Discard Install.WIM
+```
+Dism /Unmount-Image /MountDir:"C:\mount" /discard
+```
+
 ## capture Image
 ```
 dism /capture-image /imagefile:z:\images\edtechjeff.wim /capturedir:c:\ /name:"custom image" /Compress:Max
