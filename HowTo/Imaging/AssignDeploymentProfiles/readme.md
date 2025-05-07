@@ -63,3 +63,6 @@ Dism /mount-wim /wimfile:"C:\DATA\WIM\install.wim" /index:1 /mountdir:C:\DATA\Mo
 ```
 Dism /Commit-Image /MountDir:C:\DATA\Mount 
 ```
+## Now you have an updated WIM file that will deploy Pro and also deploy with the desired AutoPilot Deployment Profile. 
+## Now you can either deploy this WIM file either PXE or USB which ever workes best for you. 
+## Hope you have learned something and until next time.  
