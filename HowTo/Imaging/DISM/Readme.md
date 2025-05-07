@@ -89,7 +89,8 @@ Once you get the server built
 - [DellDriverPack](https://www.dell.com/support/kbdoc/en-us/000211541/winpe-11-driver-pack)
 
 - You will need to extract the files from the cab with the following command adjusting to the name and path to where you want to extract, in our case it will be:
-    - expand "WinPE11.0-Drivers-A05-TPKY4.cab" -f:* F:\Images\Drivers\WinPE ***Note: You will need to change the drive letter of the output for you setup***
+    - expand "WinPE11.0-Drivers-A05-TPKY4.cab" -f:* F:\Images\Drivers\WinPE 
+        ***Note: You will need to change the drive letter of the output for you setup***
 
 The next driver is what is call the Intel Rapid Storage Driver. This driver is important because, from what I am seeing with Dell, the storage controller is set to RAID even though there might not be a raid setup. You can manually set it to AHCI but just by adding this driver will avoid this issue. 
 
@@ -103,7 +104,8 @@ The next driver is what is call the Intel Rapid Storage Driver. This driver is i
     - Open up the ISO
     - go to sources
     - copy the Install.WIM to the correct folder
-        f:\source\11\24H2  ***Note: You will need to change the drive letter of the output for you setup***
+        f:\source\11\24H2  
+            ***Note: You will need to change the drive letter of the output for you setup***
 ---
 
 ## This pretty well gets you a basic setup for Imaging Windows 11 with WDS. Along with this article I will be posting more information on how to use what I have came up with based on the scripts and what ways you can use it. But for now hope this helps get you. Refer to the original article with more information on the scripts and original intended purpose and how it all works. Again I will post how I have been using it. Till then keep on learning something new. 
