@@ -74,6 +74,7 @@ Once you get the server built
 - [Download MaintenanceTask file](MaintenanceTask.txt), move it to the `images` folder, and rename its extension from `.txt` to `.cmd`.
 
 - [Download RemovePackages file](RemovePackages.txt), move it to the `scripts` folder, and rename its extension from `.txt` to `.ps1`.
+***Note*** Depending on what drive letter you have set as your images folder on the server you will need to edit the script to reflect that drive letter
 
 - [Download CaptureImage file](CaptureImage.txt), move it to the `scripts` folder, and rename its extension from `.txt` to `.cmd` (this will replace the existing file in that folder).
 
