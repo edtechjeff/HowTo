@@ -71,7 +71,7 @@ Once you get the server built
 ---
 
 
-- [Download the command file and put in the images folder change the extension to .CMD](MaintenanceTask.txt)
+- [Download the command file](MaintenanceTask.txt), move it to the `images` folder, and rename its extension from `.txt` to `.cmd`.
 
 - [Download this file and put in the scripts folder and change the extension to .PS1](RemovePackages.txt)
 
