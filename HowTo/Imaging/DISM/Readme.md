@@ -101,7 +101,7 @@ The next driver is what is call the Intel Rapid Storage Driver. This driver is i
 - Download ISO for Windows 11
     - Open up the ISO
     - go to sources
-    - copy the Install.WIM to the correct folder and adjusting to the name and path to where you want to extract, in our case it will be:
+    - copy the Install.WIM to the correct folder and adjusting to the name and path to where you want to copy the files to, in our case it will be:
         f:\source\11\24H2  
 ---
 
