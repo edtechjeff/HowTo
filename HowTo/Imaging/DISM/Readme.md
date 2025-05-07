@@ -105,7 +105,8 @@ The next driver is what is call the Intel Rapid Storage Driver. This driver is i
         f:\source\11\24H2  
 ---
 
-## This pretty well gets you a basic setup for Imaging Windows 11 with WDS. Refer to the original article with more information on the scripts and original intended purpose and how it all works, keep on learning something new. 
+## This pretty well gets you a basic setup for Imaging Windows 11 with WDS. 
+## Refer to the original article with more information on the scripts and original intended purpose and how it all works, keep on learning something new. 
 
 
 # Here are some options for DHCP Options. You can also use IP Helper Addresses instead of DHCP Options
