@@ -42,10 +42,13 @@ Foreach ($AutopilotProfile in $AutopilotProfiles) {
 6. You will need to download an ISO of Windows 11
 
 7. Next you will need to get the index number for what version you want to deploy. In my example I want to get PRO.
-![alt text](Assets/2.png)
+
 ```
 Dism /get-wiminfo /wimfile:"E:\sources\install.wim"
 ```
+
+![alt text](Assets/2.png)
+
 
 8. Next Export the installer you want using the following command
 ```
