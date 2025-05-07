@@ -96,7 +96,8 @@ The next driver is what is call the Intel Rapid Storage Driver. This driver is i
 - [Download this for the Intel Rapid Storage Driver](https://www.intel.com/content/www/us/en/download/19512/intel-rapid-storage-technology-driver-installation-software-with-intel-optane-memory-10th-and-11th-gen-platforms.html)
 
 - Use the following extract the drivers 
-    - SetupRST.exe -extractdrivers F:\Images\Drivers\RSTAT  ***Note: You will need to change the drive letter of the output for you setup***
+    - SetupRST.exe -extractdrivers F:\Images\Drivers\RSTAT  
+        ***Note: You will need to change the drive letter of the output for you setup***
 
 - Download ISO for Windows 11
     - Open up the ISO
