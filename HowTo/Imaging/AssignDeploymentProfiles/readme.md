@@ -11,7 +11,7 @@ Install-Module Microsoft.Graph.Intune -Force
 ```
 Connect-MGGraph
 ```
-3. Fireup Powershell ISE and run the following script
+3. Run the following script
 ```
 $AutopilotProfiles = Get-AutopilotProfile
 
