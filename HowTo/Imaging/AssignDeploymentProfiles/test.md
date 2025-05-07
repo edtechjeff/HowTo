@@ -41,7 +41,48 @@ Connect-MgGraph
 3. Export AutoPilot Profiles
 
 $AutopilotProfiles = Get-AutopilotProfile
+```markdown
+# Assign AutoPilot Profiles During Imaging Process
 
+## Table of Contents
+
+1. Import Required PowerShell Modules
+2. Log onto Microsoft Graph
+3. Export AutoPilot Profiles
+4. Rename Desired Profile
+5. Prepare Windows Image
+6. Export Specific Windows Edition
+7. Mount the WIM Image
+8. Copy AutoPilot Profile to Image
+9. Commit the Mounted Image
+10. Final Thoughts
+
+---
+
+## Troubleshooting Tips
+
+---
+
+## Next Steps
+
+---
+
+### 3. Export AutoPilot Profiles
+
+```powershell
+# Export AutoPilot Profiles to JSON files
+foreach ($AutopilotProfile in $AutopilotProfiles) {
+    $TempPath = "C:\DATA\AutopilotProfiles\"
+
+    if (!(Test-Path $TempPath)) {
+        New-Item -Path $TempPath -ItemType Directory -Force
+    }
+
+    $name = $AutopilotProfile.displayName
+    $ExportPath = Join-Path $TempPath ($name + "_AutopilotConfigurationFile.json")
+    $AutopilotProfile | ConvertTo-AutopilotConfigurationJSON | Out-File $ExportPath -Encoding ASCII
+}
+```
 foreach ($AutopilotProfile in $AutopilotProfiles) {
     $TempPath = "C:\DATA\AutopilotProfiles\"
 
