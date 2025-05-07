@@ -124,8 +124,19 @@ The next driver is what is call the Intel Rapid Storage Driver. This driver is i
 # File Explantions
 | File Name | Description|
 |-----------|-------------|
-|Apply-image V2.txt | Will pull the model number and pull in those drivers for that device
-|Apply-image.txt| Orignal menu for applying images
+| Apply-image V2.txt | Will pull the model number and pull in those drivers for that device|
+| Apply-image.txt | Orignal menu for applying images|
+| CaptureImage.txt | Updated Capture image file|
+| commands.md | file with commmand that help with DISM |
+| DeployDrivers.ps1 | Used in teh Apply-Image V2 file to install drivers |
+| MaintenanceTaks.txt | Original maintenance tasks for administration |
+| MaintenanceTaskBasic.txt | About the same just not all the same task |
+| MaintenanceTaskWithPaths.cmd | Had issue where the regular Maintenance task would not work without hardcoding the drive letter. This one will need to be changed for your environment if needed |
+| RegistryKeys.md | Just documented what registry keys you need to bypass Windows 11 requirements on a VM |
+| Removepackages.txt | Used to remove some bloatware from MSFT |
+| ResolvedIssues.md | Used to document any issues and or solutions I come accross while using this setup |
+| Unattend.txt | Basic unattend.xml file |
+| WinPEMenu.txt | Used to replace an original file in order to make things more automated |
 
 
 
