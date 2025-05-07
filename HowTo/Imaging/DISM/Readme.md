@@ -53,6 +53,8 @@ Once you get the server built
 - Go into the Scripts folder and delete the following files and or folders (You can keep these, but I like to clean things up)
     - AutoPilot
     - Apply-Recovery
+    - Apply-Image.bat
+    - WinPEMenu.cmd
 
 - Go back at the images folder
 
@@ -78,20 +80,23 @@ Once you get the server built
 
 - [Download CaptureImage file](CaptureImage.txt), move it to the `scripts` folder, and rename its extension from `.txt` to `.cmd` (this will replace the existing file in that folder).
 
+- [Download Apply-Image file](Apply-Image.txt), move it to the `scripts` folder, and rename its extension from `.txt` to `.bat` (this will replace the existing file in that folder).
+
+- [Download WinPEMenu file](WinPEMenu.txt), move it to the `scripts` folder, and rename its extension from `.txt` to `.cmd` (this will replace the existing file in that folder).
 
 - Now we have a base of what we need. You will need to download the WinPE drivers based on what manufacture you have. I am going with dell. The WinPE drivers are important part and you will need these. They will be injected into the WIM files 
 
 - [DellDriverPack](https://www.dell.com/support/kbdoc/en-us/000211541/winpe-11-driver-pack)
 
 - You will need to extract the files from the cab with the following command adjusting to the name and path to where you want to extract, in our case it will be:
-    - expand "WinPE11.0-Drivers-A05-TPKY4.cab" -f:* F:\Images\Drivers\WinPE
+    - expand "WinPE11.0-Drivers-A05-TPKY4.cab" -f:* F:\Images\Drivers\WinPE ***Note: You will need to change the drive letter of the output for you setup***
 
 The next driver is what is call the Intel Rapid Storage Driver. This driver is important because, from what I am seeing with Dell, the storage controller is set to RAID even though there might not be a raid setup. You can manually set it to AHCI but just by adding this driver will avoid this issue. 
 
 - [Download this for the Intel Rapid Storage Driver](https://www.intel.com/content/www/us/en/download/19512/intel-rapid-storage-technology-driver-installation-software-with-intel-optane-memory-10th-and-11th-gen-platforms.html)
 
 - Use the following extract the drivers 
-    - SetupRST.exe -extractdrivers F:\Images\Drivers\RSTAT
+    - SetupRST.exe -extractdrivers F:\Images\Drivers\RSTAT  ***Note: You will need to change the drive letter of the output for you setup***
 
 - Download ISO for Windows 11
     - Open up the ISO
