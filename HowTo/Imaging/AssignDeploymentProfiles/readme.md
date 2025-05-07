@@ -36,8 +36,8 @@ Foreach ($AutopilotProfile in $AutopilotProfiles) {
 5. Rename the profile you want to apply as the following:
     - ## AutopilotConfigurationFile.json
 
-## The next section is all about DISM and how to do some DISM commands. In my own environement I have most of this done already but the only item I had to do was to mount the image
-## I wanted. I will include the rest of the process based on the source material. 
+## The next section is all about DISM and how to do some DISM commands. In my own environement I have most of this done already so the only item I had to do was to mount the image
+## So if you do not know or have something setup, I will include the rest of the process based on the source material. 
 
 6. You will need to download an ISO of Windows 11
 
