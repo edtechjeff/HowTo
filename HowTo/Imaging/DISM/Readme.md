@@ -73,9 +73,10 @@ Once you get the server built
 
 - [Download MaintenanceTask file](MaintenanceTask.txt), move it to the `images` folder, and rename its extension from `.txt` to `.cmd`.
 
-- [Download this file and put in the scripts folder and change the extension to .PS1](RemovePackages.txt)
+- [Download RemovePackages file](RemovePackages.txt), move it to the `scripts` folder, and rename its extension from `.txt` to `.ps1`.
 
-- [Download this file and put in the scripts folder and change the extension to .CMD. You will be replacing the one that is in there already](CaptureImage.txt)
+- [Download CaptureImage file](CaptureImage.txt), move it to the `scripts` folder, and rename its extension from `.txt` to `.cmd` (this will replace the existing file in that folder).
+
 
 - Now we have a base of what we need. You will need to download the WinPE drivers based on what manufacture you have. I am going with dell. The WinPE drivers are important part and you will need these. They will be injected into the WIM files 
 
