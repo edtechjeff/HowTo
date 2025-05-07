@@ -122,9 +122,10 @@ The next driver is what is call the Intel Rapid Storage Driver. This driver is i
 
 
 # File Explantions
-| File Name | Description
+| File Name | Description|
+|-----------|-------------|
 |Apply-image V2.txt | Will pull the model number and pull in those drivers for that device
-|Apply-image.txt|
+|Apply-image.txt| Orignal menu for applying images
 
 
 
