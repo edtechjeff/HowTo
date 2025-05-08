@@ -43,7 +43,7 @@ Dismount-windowsImage -Path F:\VirtIO\mountBoot\ -Save
 ```
 ## Mount install.wim 
 ```
-Mount-WindowsImage -Path F:\VirtIO\mountInstall\ -ImagePath F:\VirtIO\windows_temp\sources\install.wim -Index 2
+Mount-WindowsImage -Path F:\VirtIO\mountInstall\ -ImagePath F:\VirtIO\windows_temp\sources\install.wim -Index 5
 ```
 ## Inject drivers into install.wim
 ```

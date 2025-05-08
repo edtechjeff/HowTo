@@ -25,7 +25,6 @@ network:
       routes:
         - to: 0.0.0.0/0
           via: 192.168.1.1
-          table: 100
       nameservers:
         addresses: [8.8.8.8, 8.8.4.4]
 
