@@ -100,4 +100,4 @@ sudo apt install ovmf
 ```
 find /usr/share -name 'OVMF*.fd'
 ```
-3. 
+3. Use the above creation script to use this method
