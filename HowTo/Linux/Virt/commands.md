@@ -64,7 +64,7 @@ virsh autostart NAMEOFVM.xml
 
 - Add the following lines right before the </DOMAIN>
 ```
-<qemu:commandline>
+  <qemu:commandline>
     <qemu:arg value='-smbios'/>
     <qemu:arg value='type=1,serial=ABC123456789'/>
   </qemu:commandline>
