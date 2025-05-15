@@ -37,10 +37,10 @@
 ## 2. Assign the role to your security Group
  - Click on the role you just created
  - Click on Assignments
- - Click on Assign
 
  ![alt text](./Assets/4.png)
 
+ - Click on Assign
  - Give it a name and description and click Next
  
  ![alt text](./Assets/5.png)
