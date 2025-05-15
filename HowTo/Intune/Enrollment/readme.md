@@ -15,7 +15,7 @@
 - Update enrollment token
 
 
-1. Create security role
+## 1. Create security role
  - Go to the Intune Portal
  - Tenant Administration
  - Roles
@@ -28,7 +28,7 @@
 ![alt text](./Assets/3.png)
  - Click next
  - Click Create
-2. Assign the role to your security Group
+## 2. Assign the role to your security Group
  - Click on the role you just created
  - Click on Assignments
  - Click on Assign
