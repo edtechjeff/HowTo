@@ -98,11 +98,11 @@ I just normally put in the name of the software company. Click NEXT
     ![alt text](./Assets/13.png)
 
 20. Next is Dependencies 
-## ***Note:Dependencies are great. They will help you if something else needs to be installed before this gets installed.***
+### ***Note:Dependencies are great. They will help you if something else needs to be installed before this gets installed.***
 
-## ***Just click add and then select the program or dependencey that is needed and keep the slider on for Automatically install***
+### ***Just click add and then select the program or dependencey that is needed and keep the slider on for Automatically install***
 
-## ***For this install there are none, click Next***
+### ***For this install there are none, click Next***
 
 ![alt text](./Assets/14.png)
 
