@@ -27,7 +27,7 @@
 
 ![alt text](./Assets/2.png)
 
-8. Next specifiy the name of the file and press enter
+8. Next specify the name of the file and press enter
 
 ![alt text](./Assets/3.png)
 
@@ -50,7 +50,7 @@ Press enter
 
 ## Now you have all you need to create the deployment for Intune, lets head to the console
 
-13. Goto Apps > Windows > Create
+13. Go to Apps > Windows > Create
 
 14. Select App Type > Windows app (Win32)
 
@@ -80,9 +80,9 @@ I just normally put in the name of the software company. Click NEXT
 
 ![alt text](./Assets/10.png)
 
-19. Next are the detecion Rules. MSI are really easy but there are other was to detect. What a detection script does is after the install it will look at this rule and this helps Intune verify if the application installed or not. If it fails the software may have installed but this just does not allow Intune to verify if it installed or not.
+19. Next are the detection Rules. MSI are really easy but there are other was to detect. What a detection script does is after the install it will look at this rule and this helps Intune verify if the application installed or not. If it fails the software may have installed but this just does not allow Intune to verify if it installed or not.
 
-    - Under Rules formate click on Manually configure detection script and click add
+    - Under Rules format click on Manually configure detection script and click add
 
     ![alt text](./Assets/11.png)
 
@@ -98,16 +98,16 @@ I just normally put in the name of the software company. Click NEXT
     ![alt text](./Assets/13.png)
 
 20. Next is Dependencies 
-### ***Note:Dependencies are great. They will help you if something else needs to be installed before this gets installed.***
+### ***Note: Dependencies are great. They will help you if something else needs to be installed before this gets installed.***
 
-### ***Just click add and then select the program or dependencey that is needed and keep the slider on for Automatically install***
+### ***Just click add and then select the program or dependency that is needed and keep the slider on for Automatically install***
 
 ### ***For this install there are none, click Next***
 
 ![alt text](./Assets/14.png)
 
-21. Next is Supersendence
-### ***Note: Supersendenc is used for updating from a previous version. In order to do this just click on Add find the previous version and make the sure the slider says Yes for Uninstall previous version***
+21. Next is Supersedence
+### ***Note: Supersedence is used for updating from a previous version. In order to do this just click on Add find the previous version and make the sure the slider says Yes for Uninstall previous version***
 
 ### ***For this example we do not have an older version just click NEXT***
 
