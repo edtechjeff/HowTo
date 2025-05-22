@@ -80,4 +80,3 @@ Get-WmiObject Win32_BIOS | Select-Object SerialNumber
 ```
 uuidgen
 ```
-
