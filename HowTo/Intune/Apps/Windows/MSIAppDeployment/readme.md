@@ -66,8 +66,10 @@ I just normally put in the name of the software company. Click NEXT
 
 17. You can just click next on this screen.
     - ## Note:
-        ***The nice benefit of MSI's is the fact it will automatically put in the install and uninstall strings for you. Which is nice.***
+        ***A benefit of MSI's is the fact it will automatically put in the install and uninstall strings for you. Which is nice.***
+
         ***You can add additional switches to the install if need be. Some applications have them that aids in the install of the application***
+
         ***Refer to software documentation for those switches***
 
 ![alt text](./Assets/9.png)
@@ -84,8 +86,9 @@ I just normally put in the name of the software company. Click NEXT
 
     ![alt text](./Assets/11.png)
 
-    - A side windows will pop up on the far right and on the drop down just use MSI. Click OK
+    - A side window will pop up on the far right and on the drop down just use MSI. Click OK
     ***Note:There are other options also MSI, File, Registry***
+
     ***Note:You can add multiple detection rules in the same deployment.***
     
     ![alt text](./Assets/12.png)
@@ -96,13 +99,16 @@ I just normally put in the name of the software company. Click NEXT
 
 20. Next is Dependencies 
 ## ***Note:Dependencies are great. They will help you if something else needs to be installed before this gets installed.***
+
 ## ***Just click add and then select the program or dependencey that is needed and keep the slider on for Automatically install***
+
 ## ***For this install there are none, click Next***
 
 ![alt text](./Assets/14.png)
 
 21. Next is Supersendence
 ### ***Note: Supersendenc is a great tool if you are doing an update from a previous version. In order to do this just click on Add find the previous version and make the sure the slider says Yes for Uninstall previous version***
+
 ### ***For this example we do not have an older version just click NEXT
 
 ![alt text](./Assets/15.png)
