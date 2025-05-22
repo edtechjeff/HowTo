@@ -109,7 +109,7 @@ I just normally put in the name of the software company. Click NEXT
 21. Next is Supersendence
 ### ***Note: Supersendenc is used for updating from a previous version. In order to do this just click on Add find the previous version and make the sure the slider says Yes for Uninstall previous version***
 
-### ***For this example we do not have an older version just click NEXT
+### ***For this example we do not have an older version just click NEXT***
 
 ![alt text](./Assets/15.png)
 
