@@ -26,26 +26,41 @@ IF %M%==3 GOTO NEWWIN
 IF %M%==4 GOTO EOF
 
 :APPLYWIM
+@ECHO OFF
+SETLOCAL ENABLEDELAYEDEXPANSION
 ECHO.
+
 SET count=0
-SET choice_options=""
-FOR /F "delims=" %%A in ('dir /a:-d /b %IMAGESDRIVE%:\Images\*.wim') do (
-    REM Increment %count% here so that it doesn't get incremented later
+REM Clear existing options
+FOR /F "delims=" %%A in ('dir /a:-d /b "%IMAGESDRIVE%:\Images\*.wim"') do (
     SET /a count+=1
-
-    REM Add the file name to the options array
     SET "options[!count!]=%%A"
-
-    REM Add the new option to the list of existing options
-    SET choice_options=!choice_options!!count!
 )
-FOR /L %%A in (1,1,!count!) do echo [%%A] - !options[%%A]!
+
+FOR /L %%A in (1,1,!count!) do (
+    ECHO [%%A] - !options[%%A]!
+)
+
+:PromptChoice
 ECHO.
-CHOICE /c:!choice_options! /n /m "Select Option: "
-ECHO Apply-Image.bat "%IMAGESDRIVE%:\Images\!options[%errorlevel%]!"
-CALL Apply-Image.bat "%IMAGESDRIVE%:\Images\!options[%errorlevel%]!"
-PAUSE
+SET /P userChoice="Select option [1-!count!]: "
+
+REM Validate numeric input
+SET /A validChoice=%userChoice% 2>NUL
+IF "%validChoice%"=="" GOTO InvalidChoice
+IF %validChoice% GTR %count% GOTO InvalidChoice
+IF %validChoice% LSS 1 GOTO InvalidChoice
+
+ECHO.
+ECHO Running Apply-Image.bat with !options[%userChoice%]!
+CALL Apply-Image.bat "%IMAGESDRIVE%:\Images\!options[%userChoice%]!"
 GOTO MENU
+Pause
+
+:InvalidChoice
+ECHO Invalid selection. Please choose a number between 1 and %count%.
+GOTO PromptChoice
+
 
 :CAPTUREWIM
 Call Capture-Image.cmd
