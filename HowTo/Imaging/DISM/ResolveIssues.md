@@ -82,3 +82,27 @@ net start bits
 ## Info about Storage State
 https://www.elevenforum.com/t/enable-or-disable-reserved-storage-in-windows-11.21389/
 
+## Remove Copilot for Sysprep issues for current user
+```
+Get-AppxPackage -Name Microsoft.Copilot | Remove-AppxPackage
+```
+
+## Remove Copilot for all Users
+```
+Get-AppxPackage -AllUsers *Microsoft.Copilot* | Remove-AppxPackage -AllUsers
+```
+
+## Remove povisioned copy
+```
+Get-AppxProvisionedPackage -Online |
+    Where-Object DisplayName -like "*Microsoft.Copilot*" |
+    Remove-AppxProvisionedPackage -Online
+
+```
+## Remove WebExperience. Might also cause issues
+```
+Get-AppxPackage -AllUsers *WebExperience* | Remove-AppxPackage -AllUsers
+Get-AppxProvisionedPackage -Online |
+    Where-Object DisplayName -like "*WebExperience*" |
+    Remove-AppxProvisionedPackage -Online
+```
