@@ -12,12 +12,17 @@ These two are the ones that are always getting updated. Others are there but the
 ```
 Dism /Get-ImageInfo /ImageFile:path to install.wim file
 ```
+![alt text](Images/1.png)
+
+2. Now you know which image we will do. For this example we will be updating the Enterprise WIM or Index 3
+```
+DISM /mount-wim /wimfile:"path to .wim file" /index:3 /mountdir:"path to mount dir"
+```
 ![alt text](Images/2.png)
 
-Now you know which image we will do. For this example we will be updating the Enterprise WIM or Index 3
 
-2. Run the following command to 
+3. Run the following command to 
 ```
 Dism /Add-Package /Image:"path to mount dir" /PackagePath="path to .msu file" /LogPath=log the output to a file
 ```
-![alt text](Images/1.png)
+![alt text](Images/3.png)
