@@ -8,7 +8,12 @@ My professional opionion is not to do all the updates but stick more with the cu
 
 These two are the ones that are always getting updated. Others are there but they do not seem to take as long and are more frequent on updates
 
-1. Mount your WIM
+1. Mount your WIM. In order to do this you will need to run the following command. First you might need to know which image version you are going to deploy
+```
+Dism /Get-ImageInfo /ImageFile:path to install.wim file
+```
+
+
 2. Run the following command to 
 ```
 Dism /Add-Package /Image:"path to mount dir" /PackagePath="path to .msu file" /LogPath=log the output to a file
