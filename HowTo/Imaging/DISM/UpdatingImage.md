@@ -12,7 +12,9 @@ These two are the ones that are always getting updated. Others are there but the
 ```
 Dism /Get-ImageInfo /ImageFile:path to install.wim file
 ```
+![alt text](Images/2.png)
 
+Now you know which image we will do. For this example we will be updating the Enterprise WIM or Index 3
 
 2. Run the following command to 
 ```
