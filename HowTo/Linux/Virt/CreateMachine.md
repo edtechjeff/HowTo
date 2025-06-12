@@ -1,6 +1,6 @@
 # Create Windows VM
 
-# Commands to create a Windows 11 Virtual Machine Using NAT
+# Commands to create a Windows 11 Virtual Machine Using NAT 
 
 ```
 virt-install \
@@ -71,41 +71,22 @@ virt-install \
   --pxe
 
 ```
-## Spice Enabled VM PXE and CDROM
+## Spice Enabled VM PXE and CDROM Method 2
 ```
 virt-install \
-  --name win11-0 \
+  --name win11-1 \
   --ram 8192 \
   --vcpus 4 \
   --cpu host-passthrough \
   --os-variant win11 \
   --machine q35 \
   --boot loader=/usr/share/OVMF/OVMF_CODE_4M.fd,loader.readonly=yes,loader.type=pflash,nvram.template=/usr/share/OVMF/OVMF_VARS_4M.fd,bootmenu.enable=yes \
-  --disk path=/var/lib/libvirt/images/win11-0.qcow2,size=60,bus=virtio,boot.order=1 \
+  --disk path=/var/lib/libvirt/images/win11-1.qcow2,size=60,bus=virtio,boot.order=1 \
   --disk path=/iso/virt.iso,device=cdrom,readonly=on \
   --network bridge=br0,model=virtio,boot.order=2 \
-  --graphics spice,listen=0.0.0.0,port=5900 \
+  --graphics spice,listen=0.0.0.0,port=5901 \
   --video qxl \
   --sound ich9 \
-  --channel spicevmc \
-  --pxe
-```
-```
-virt-install \
-  --name win11-0 \
-  --ram 8192 \
-  --vcpus 4 \
-  --cpu host-passthrough \
-  --os-variant win11 \
-  --machine q35 \
-  --boot loader=/usr/share/OVMF/OVMF_CODE_4M.fd,loader.readonly=yes,loader.type=pflash,nvram.template=/usr/share/OVMF/OVMF_VARS_4M.fd,bootmenu.enable=yes \
-  --disk path=/var/lib/libvirt/images/win11-0.qcow2,size=60,bus=virtio,boot.order=1 \
-  --disk path=/iso/virt.iso,device=cdrom,readonly=on \
-  --network bridge=br0,model=virtio,boot.order=2 \
-  --graphics spice,listen=0.0.0.0,port=5900 \
-  --video qxl,ram=65536,vram=65536 \
-  --sound ich9 \
-  --audio id=1,type=spice \
   --channel spicevmc \
   --pxe
 ```

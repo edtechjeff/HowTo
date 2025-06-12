@@ -1,0 +1,16 @@
+# Updating Image
+
+One of the major task to any imaging solution is the process to keep the image up to date, so after you image  you are still doing updates. 
+My professional opionion is not to do all the updates but stick more with the cumulative updates and what really needs to be updated. The two we are going to focus on
+
+- March 27, 2025-KB5054979 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Windows 11, version 24H2
+- June 10, 2025—KB5060842 (OS Build 26100.4349)
+
+These two are the ones that are always getting updated. Others are there but they do not seem to take as long and are more frequent on updates
+
+1. Mount your WIM
+2. Run the following command to 
+```
+Dism /Add-Package /Image:"path to mount dir" /PackagePath="path to .msu file" /LogPath=log the output to a file
+```
+![alt text](Images/1.png)
