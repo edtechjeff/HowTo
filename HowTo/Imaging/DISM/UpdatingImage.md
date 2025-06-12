@@ -1,4 +1,5 @@
 # Updating Image
+## Before you do any of these updates. Always do the update to a test image and apply the updates and then deploy the updated image for verification of sucess. 
 
 One of the major task to any imaging solution is the process to keep the image up to date, so after you image  you are still doing updates. 
 My professional opionion is not to do all the updates but stick more with the cumulative updates and what really needs to be updated. The two we are going to focus on
