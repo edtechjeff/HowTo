@@ -8,11 +8,12 @@ echo 2. Export Image
 echo 3. Finalize Image
 echo 4. Add Drivers
 echo 5. Remove Packages
-echo 6. Exit
-echo 7. Add Updates
+echo 6. Add Updates
+echo 7. Exit
+
 
 echo.
-set /p choice=Enter your choice (1-6): 
+set /p choice=Enter your choice (1-7): 
 if "%choice%"=="1" goto option1
 if "%choice%"=="2" goto option2
 if "%choice%"=="3" goto option3
@@ -52,12 +53,12 @@ goto RemovePackages
 :option6
 echo You chose Option 6
 cls
-goto End
+goto Updates
 
 :option7
 echo You chose Option 7
 cls
-goto Updates
+goto END
 
 REM #########################################################
 REM Mount Image

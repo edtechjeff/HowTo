@@ -1,4 +1,5 @@
-# Random DISM Commands
+# Random DISM Commands used to build the maintenance task. For reference
+# Also includes other non-dism commands also
 
 
 ## Start Network on WInPE booted machine
