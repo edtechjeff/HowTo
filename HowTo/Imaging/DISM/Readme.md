@@ -75,14 +75,16 @@ Once you get the server built
 
 - [Download MaintenanceTask file](./MaintenanceTask/), move it to the `images` folder.
 
-- [Download RemovePackages file](RemovePackages.txt), move it to the `scripts` folder, and rename its extension from `.txt` to `.ps1`.
+- [Download RemovePackages file](./Scripts/RemovePackages.ps1), move it to the `scripts` folder.
 ***Note*** Depending on what drive letter you have set as your images folder on the server you will need to edit the script to reflect that drive letter
 
-- [Download CaptureImage file](CaptureImage.txt), move it to the `scripts` folder, and rename its extension from `.txt` to `.cmd` (this will replace the existing file in that folder).
+- [Download CaptureImage file](./CaptureTask/), move it to the `scripts` folder ***(this will replace the existing file in that folder).***
 
-- [Download Apply-Image file](Apply-Image.txt), move it to the `scripts` folder, and rename its extension from `.txt` to `.bat` (this will replace the existing file in that folder).
+- [Download Apply-Image file](./ApplyImageTask/), move it to the `scripts` folder. ***(This will replace the existing file in that folder).***
+***Refer to the Readme file to choose which version. File needs to renamed to just Apply-Image.bat***
 
-- [Download WinPEMenu file](WinPEMenu.txt), move it to the `scripts` folder, and rename its extension from `.txt` to `.cmd` (this will replace the existing file in that folder).
+- [Download WinPEMenu file](./WinPEMenus/), move it to the `scripts` folder. ***(this will replace the existing file in that folder).***
+***Refer to the Readme file to choose which version. File needs to renamed to just WinPEMenu.cmd***
 
 - Now we have a base of what we need. You will need to download the WinPE drivers based on what manufacture you have. I am going with dell. The WinPE drivers are important part and you will need these. They will be injected into the WIM files 
 
@@ -119,24 +121,6 @@ The next driver is what is call the Intel Rapid Storage Driver. This driver is i
 - Legacy Boot
     - \boot\x86\pxeboot.com
     - Alternate: \Boot\PXEboot.n12 (skips the PXE prompt) 
-
-
-# File Explanations
-| File Name | Description|
-|-----------|-------------|
-| Apply-image V2.txt | Will pull the model number and pull in those drivers for that device|
-| Apply-image.txt | Original menu for applying images|
-| CaptureImage.txt | Updated Capture image file|
-| commands.md | file with command that help with DISM |
-| DeployDrivers.ps1 | Used in the Apply-Image V2 file to install drivers |
-| MaintenanceTaks.txt | Original maintenance tasks for administration |
-| MaintenanceTaskBasic.txt | About the same just not all the same task |
-| MaintenanceTaskWithPaths.cmd | Had issue where the regular Maintenance task would not work without hardcoding the drive letter. This one will need to be changed for your environment if needed |
-| RegistryKeys.md | Just documented what registry keys you need to bypass Windows 11 requirements on a VM |
-| Removepackages.txt | Used to remove some bloatware from MSFT |
-| ResolvedIssues.md | Used to document any issues and or solutions I come across while using this setup |
-| Unattend.txt | Basic unattend.xml file |
-| WinPEMenu.txt | Used to replace an original file in order to make things more automated |
 
 
 
