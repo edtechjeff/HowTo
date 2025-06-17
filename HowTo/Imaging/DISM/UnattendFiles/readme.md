@@ -4,3 +4,4 @@
 - Unattend-EnablesAdmnistrator.xml -Creates-Additional-Admin-User - Enables local admin and also creates another local admin
 - EnableBuiltInAdminBiosUpdate.xml - Enables local admin and sets the password, does BIOS Update ***Note will need to have the files copied to the image and also rename files to match***
 - EnableBuiltInAdminCreateCustomAdminAccountBiosUpdate.xml - Creates-Additional-Admin-User - Enables local admin and also creates another local admin, does BIOS Update ***Note will need to have the files copied to the image and also rename files to match***
+- Creates2AdminUsers.xml - Creates to local admin users and sets local admin account password but does not enable account
