@@ -8,7 +8,7 @@
 - Great Article about deployments and applications
     -  https://www.deploymentresearch.com/force-application-reinstall-in-microsoft-intune-win32-apps/
 
-- Restart the Microsoft Intune Management Extension Service
+- Restart the Microsoft Intune Management Extension Service (Powershell)
     ```powershell
     Restart-Service -Name "IntuneManagementExtension"
     ```
