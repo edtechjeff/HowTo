@@ -1,0 +1,285 @@
+{
+    "kind": "androidenterprise#managedConfiguration",
+    "productId": "app:com.microsoft.launcher",
+    "managedProperty": [
+        {
+            "key": "com.microsoft.launcher.Search.SearchBar.Placement",
+            "valueString": "Top"
+        },
+        {
+            "key": "com.microsoft.launcher.Search.SearchBar.Placement.UserChangeAllowed",
+            "valueBool": false
+        },
+        {
+            "key": "com.microsoft.launcher.Dock.Mode",
+            "valueString": "Show"
+        },
+        {
+            "key": "com.microsoft.launcher.Dock.Mode.UserChangeAllowed",
+            "valueBool": true
+        },
+        {
+            "key": "com.microsoft.launcher.HomeScreen.AppOrder.UserChangeAllowed",
+            "valueBool": false
+        },
+        {
+            "key": "com.microsoft.launcher.HomeScreen.GridSize",
+            "valueString": "default"
+        },
+        {
+            "key": "com.microsoft.launcher.Feed.Enable.UserChangeAllowed",
+            "valueBool": false
+        },
+        {
+            "key": "com.microsoft.launcher.Feed.Enable",
+            "valueBool": true
+        },
+        {
+            "key": "com.microsoft.launcher.Wallpaper.Url",
+            "valueString": "https://i.imgur.com/dgQvUPH.png"
+        },
+        {
+            "key": "com.microsoft.launcher.Wallpaper.Url.UserChangeAllowed",
+            "valueBool": false
+        },
+        {
+            "key": "com.microsoft.launcher.HomeScreen.Applications",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "package",
+                            "valueString": "com.microsoft.emmx"
+                        },
+                        {
+                            "key": "class",
+                            "valueString": ""
+                        }
+                    ]
+                },
+                {
+                    "managedProperty": [
+                        {
+                            "key": "package",
+                            "valueString": "com.microsoft.office.officehubrow"
+                        },
+                        {
+                            "key": "class",
+                            "valueString": ""
+                        }
+                    ]
+                },
+                {
+                    "managedProperty": [
+                        {
+                            "key": "package",
+                            "valueString": "com.azure.authenticator"
+                        },
+                        {
+                            "key": "class",
+                            "valueString": ""
+                        }
+                    ]
+                },
+                {
+                    "managedProperty": [
+                        {
+                            "key": "package",
+                            "valueString": "com.microsoft.teams"
+                        },
+                        {
+                            "key": "class",
+                            "valueString": ""
+                        }
+                    ]
+                },
+                {
+                    "managedProperty": [
+                        {
+                            "key": "package",
+                            "valueString": "com.microsoft.office.outlook"
+                        },
+                        {
+                            "key": "class",
+                            "valueString": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "com.microsoft.launcher.HomeScreen.WebLinks",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "label",
+                            "valueString": "Lets ConfigMgr Blog"
+                        },
+                        {
+                            "key": "link",
+                            "valueString": "https://letsconfigmgr.com"
+                        }
+                    ]
+                },
+                {
+                    "managedProperty": [
+                        {
+                            "key": "label",
+                            "valueString": "PDF Demo"
+                        },
+                        {
+                            "key": "link",
+                            "valueString": "https://etjdeployments.blob.core.windows.net/public-pdf/IntunePDFDemo.pdf"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "com.microsoft.launcher.HomeScreen.AppOrder",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "type",
+                            "valueString": "application"
+                        },
+                        {
+                            "key": "position",
+                            "valueInteger": 16
+                        },
+                        {
+                            "key": "package",
+                            "valueString": "com.microsoft.office.outlook"
+                        },
+                        {
+                            "key": "class",
+                            "valueString": ""
+                        }
+                    ]
+                },
+                {
+                    "managedProperty": [
+                        {
+                            "key": "type",
+                            "valueString": "weblink"
+                        },
+                        {
+                            "key": "position",
+                            "valueInteger": 17
+                        },
+                        {
+                            "key": "label",
+                            "valueString": "PDF Demo"
+                        },
+                        {
+                            "key": "link",
+                            "valueString": "https://etjdeployments.blob.core.windows.net/public-pdf/IntunePDFDemo.pdf"
+                        }
+                    ]
+                },
+                {
+                    "managedProperty": [
+                        {
+                            "key": "type",
+                            "valueString": "application"
+                        },
+                        {
+                            "key": "position",
+                            "valueInteger": 20
+                        },
+                        {
+                            "key": "package",
+                            "valueString": "com.microsoft.teams"
+                        },
+                        {
+                            "key": "class",
+                            "valueString": ""
+                        }
+                    ]
+                },
+                {
+                    "managedProperty": [
+                        {
+                            "key": "type",
+                            "valueString": "application"
+                        },
+                        {
+                            "key": "position",
+                            "valueInteger": 21
+                        },
+                        {
+                            "key": "package",
+                            "valueString": "com.microsoft.office.officehubrow"
+                        },
+                        {
+                            "key": "class",
+                            "valueString": ""
+                        }
+                    ]
+                },
+                {
+                    "managedProperty": [
+                        {
+                            "key": "type",
+                            "valueString": "application"
+                        },
+                        {
+                            "key": "position",
+                            "valueInteger": 22
+                        },
+                        {
+                            "key": "package",
+                            "valueString": "com.microsoft.emmx"
+                        },
+                        {
+                            "key": "class",
+                            "valueString": ""
+                        }
+                    ]
+                },
+                {
+                    "managedProperty": [
+                        {
+                            "key": "type",
+                            "valueString": "weblink"
+                        },
+                        {
+                            "key": "position",
+                            "valueInteger": 24
+                        },
+                        {
+                            "key": "label",
+                            "valueString": "Lets ConfigMgr Blog"
+                        },
+                        {
+                            "key": "link",
+                            "valueString": "https://letsconfigmgr.com"
+                        }
+                    ]
+                },
+                {
+                    "managedProperty": [
+                        {
+                            "key": "type",
+                            "valueString": "application"
+                        },
+                        {
+                            "key": "position",
+                            "valueInteger": 25
+                        },
+                        {
+                            "key": "package",
+                            "valueString": "com.azure.authenticator"
+                        },
+                        {
+                            "key": "class",
+                            "valueString": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

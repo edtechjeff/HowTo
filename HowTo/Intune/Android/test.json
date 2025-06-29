@@ -1,0 +1,3769 @@
+{
+    "kind": "androidenterprise#managedConfiguration",
+    "productId": "com.samsung.android.knox.kpu",
+    "managedProperty": [
+        {
+            "key": "profileName",
+            "valueString": "Knox profile"
+        },
+        {
+            "key": "schemaVersion",
+            "valueString": "41.0.0"
+        },
+        {
+            "key": "profileId",
+            "valueString": ""
+        },
+        {
+            "key": "transactionTs",
+            "valueString": ""
+        },
+        {
+            "key": "kpePartnerLicenseKey",
+            "valueString": ""
+        },
+        {
+            "key": "kpePremiumLicenseKey",
+            "valueString": ""
+        },
+        {
+            "key": "verboseMode",
+            "valueBool": false
+        },
+        {
+            "key": "appSepPolicies",
+            "valueBundle": {
+                "managedProperty": [
+                    {
+                        "key": "appSepPoliciesIsControlled",
+                        "valueBool": false
+                    },
+                    {
+                        "key": "appSepAllowListingPolicies",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "appSepAllowListingAppsLocation",
+                                    "valueString": "OUTSIDE"
+                                },
+                                {
+                                    "key": "appSepAllowListingAppsList",
+                                    "valueString": STRING_VALUE
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "key": "doPolicies",
+            "valueBundle": {
+                "managedProperty": [
+                    {
+                        "key": "doPoliciesIsControlled",
+                        "valueBool": false
+                    },
+                    {
+                        "key": "doAdvancedRestrictions",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doAdvancedRestrictionsIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doAdvancedRestrictionsWifiScan",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doAdvancedRestrictionsBLEScan",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doAdvancedRestrictionsRemoteControl",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doAdvancedRestrictionsOnDeviceAi",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doAdvancedRestrictionsAllGalaxyAi",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doAdvancedRestrictionsGalaxyAiOperation",
+                                    "valueStringArray": []
+                                },
+                                {
+                                    "key": "doAdvancedRestrictionsCCmode",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doAdvancedRestrictionsDualSim",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doAdvancedRestrictionsESim",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doAdvancedRestrictionsSimManagementOperation",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doAdvancedRestrictionsPhysicalSimControl",
+                                                "valueString": STRING_VALUE
+                                            },
+                                            {
+                                                "key": "doAdvancedRestrictionsEsimControl",
+                                                "valueString": STRING_VALUE
+                                            },
+                                            {
+                                                "key": "doAdvancedRestrictionsSimLockWithPlmn",
+                                                "valueString": ""
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doAdvancedRestrictionsSosCallWithSideKey",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doAdvancedRestrictionWIPS",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doAdvancedRestrictionWIPSIsControlled",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "doAdvancedRestrictionWIPSEnforcement",
+                                                "valueString": "OFF"
+                                            },
+                                            {
+                                                "key": "doAdvancedRestrictionWIPSAdvanceProtection",
+                                                "valueString": "OFF"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doRestrictionUsbConnectionType",
+                                    "valueString": "DEFAULT"
+                                },
+                                {
+                                    "key": "doAdvancedRestrictionsCopycontacttoSim",
+                                    "valueBool": true
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doAppMgmt",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doAppMgmtIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doAppMgmtBatteryWhitelist",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doAppMgmtNotificationWhitelist",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doAppMgmtNotificationBlocklist",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doAppMgmtAppUpdates",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doAppMgmtAppUpdatesDoType",
+                                                "valueString": "NONE"
+                                            },
+                                            {
+                                                "key": "doAppMgmtAppUpdatesDoList",
+                                                "valueString": ""
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doAppMgmtToAllowUSBDeviceAccessForApps",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doAppMgmtWhitelistAppByName",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doAppMgmtBlacklistAppByName",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doAppMgmtWhitelistAppBySignature",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doAppMgmtBlacklistAppBySignature",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doAppMgmtDisableApp",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doAppMgmtForceStopBlacklist",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doAppMgmtAllowlistWidget",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doAppMgmtBlocklistWidget",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doAppMgmtAutoLaunchApp",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doAppMgmtClearCacheBlocklist",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doAppMgmtClearDataBlocklist",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doAppMgmtHeatManagement",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doAppMgmtIsPermissionControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doAppMgmtAddApplicationsToAccessSdkControlled",
+                                    "valueBool": false
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doAuditLog",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doAuditLogIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doAuditLogPolicyConfig",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doAuditLogPolicies",
+                                                "valueStringArray": [
+                                                    "ALL"
+                                                ]
+                                            },
+                                            {
+                                                "key": "doAuditLogOutcome",
+                                                "valueString": "ALL"
+                                            },
+                                            {
+                                                "key": "doAuditLogSeverityLevel",
+                                                "valueString": "CRITICAL"
+                                            },
+                                            {
+                                                "key": "doAuditLogFrequency",
+                                                "valueString": "6"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doCallAndMsgControls",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doMsgIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doMsgAllowRCS",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doMsgDisclaimer",
+                                    "valueString": STRING_VALUE
+                                },
+                                {
+                                    "key": "doCallControls",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doBlockIncomingCallRestriction",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "doBlockIncomingCallException",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "doBlockOutgoingCallRestriction",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "doBlockOutgoingCallException",
+                                                "valueString": ""
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doMsgControls",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doBlockIncomingSMSRestriction",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "doBlockIncomingSMSException",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "doBlockOutgoingSMSRestriction",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "doBlockOutgoingSMSException",
+                                                "valueString": ""
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doCertificatePolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doCertificatePolicyIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doCertificatePolicyRevoke",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doCertificatePolicyEnableRevoke",
+                                                "valueString": "DISABLE"
+                                            },
+                                            {
+                                                "key": "doCertificatePolicyEnableOCSP",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "doCertificatePolicyRevokeAppList",
+                                                "valueString": ""
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doCertificatePolicyTrustedCA",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doCertificatePolicyBlockCertRemoval",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doCertificatePolicyToReadPrivateKeysbyApps",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doCertificatePolicyInstallCertificate",
+                                    "valueString": ""
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doClientCertificatePolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doClientCertificatePolicyIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doClientCertificatePolicyExemptPackages",
+                                    "valueString": ""
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doDateTimeChange",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doDateTimeChangePolicyIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doDateTimeChangeIsAllowed",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doDateTimeNTPServer",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doDateTimeNTPServerURL",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "doDateTimeNTPServerTimeout",
+                                                "valueInteger": 10
+                                            },
+                                            {
+                                                "key": "doDateTimeNTPServerMaxAttempts",
+                                                "valueInteger": 5
+                                            },
+                                            {
+                                                "key": "doDateTimeNTPServerPollingInterval",
+                                                "valueInteger": 43200
+                                            },
+                                            {
+                                                "key": "doDateTimeNTPServerPollingIntervalShorter",
+                                                "valueInteger": 30
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doDeviceAccountPolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doDeviceAccountPolicyIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doDeviceAccountPolicySamsungAccountConfiguration",
+                                    "valueString": STRING_VALUE
+                                },
+                                {
+                                    "key": "doDeviceAccountAdditionIsEnabled",
+                                    "valueBool": false
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doDeviceAdminPolicies",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doDeviceAdminIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doDeviceAdminWhitelist",
+                                    "valueString": ""
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doDevControls",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doDevControlsApnPolicy",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doDevControlsApnIsControlled",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doDevControlsApnConfigNames",
+                                                "valueString": "APN_1"
+                                            },
+                                            {
+                                                "key": "doDevControlsApnAllowChange",
+                                                "valueBool": true
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doDevControlsDataRoaming",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doDevControlsDataRoamingIsControlled",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doDevControlsDataRoamingTurnOn",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doDevControlsDataRoamingUserChange",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "doDevControlsVoiceCallUserChange",
+                                                "valueBool": true
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doDevControlsNetworkMode",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doDevControlsNetworkModeIsControlled",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doDevControlsNetworkModeType",
+                                                "valueString": STRING_VALUE
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doDevControlsNfc",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doDevControlsNfcIsControlled",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doDevControlsNfcTurnOn",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "doDevControlsNfcUserChange",
+                                                "valueBool": true
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doDevControlsWifi",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doDevControlsWifiIsControlled",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doDevControlsWifiHotspotSsid",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "doDevControlsWifiHotspotPassword",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "doDevControlsWifiHotspotUserChange",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "doDevControlsWifiOpenConnection",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "doDevControlsWifiMinimumSecurity",
+                                                "valueString": "WEP"
+                                            },
+                                            {
+                                                "key": "doDevControlsWifiBlockNetworkConnection",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "doDevControlsWifiAutomaticConnection",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "doDevControlsWifiPasswordToBeVisible",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "doDevControlsWifiStateChange",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "doDevControlWifiConfiguration",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doDevControlsWifiHotspotBlock",
+                                                "valueBool": false
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doDevControlsAdvancedWifi",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doDevControlsAdvancedWifiIsControlled",
+                                                "valueBool": false
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doDevControlsBt",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doDevControlsBtIsControlled",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doDevControlsBtProfiles",
+                                                "valueStringArray": []
+                                            },
+                                            {
+                                                "key": "doDevControlsBtUUIDRestrictionWhitelist",
+                                                "valueStringArray": [
+                                                    "NONE"
+                                                ]
+                                            },
+                                            {
+                                                "key": "doDevControlsBtUUIDRestrictionBlacklist",
+                                                "valueStringArray": [
+                                                    "NONE"
+                                                ]
+                                            },
+                                            {
+                                                "key": "doDevControlBtDeviceDiscoverable",
+                                                "valueBool": true
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doDevControlsBanner",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doDevControlsBannerIsControlled",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doDevControlsBannerMessage",
+                                                "valueString": ""
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doDevControlBatteryOptimization",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doDevControlBatteryOptimizationIsControlled",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doDevControlBatteryOptimizationTimeout",
+                                                "valueInteger": 600
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doDeviceCustomizationControls",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doDeviceCustomizationIsControlled",
+                                    "valueBool": false
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doDevControlKeyMapping",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doDevControlKeyMappingIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doDevControlKeyMappingIsControlledforMSTeams",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doDevControlPTTKeyMappingForApplication",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doDevControlPTTKeyMappingPackageName",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "doDevControlUseSamsungIntentForPTT",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doDevControlPTTKeyMappingIntentPress",
+                                                "valueString": "com.samsung.android.knox.intent.action.PTT_PRESS"
+                                            },
+                                            {
+                                                "key": "doDevControlPTTKeyMappingIntentRelease",
+                                                "valueString": "com.samsung.android.knox.intent.action.PTT_RELEASE"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doDevControlTopKeyMappingForApplication",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doDevControlTopKeyMappingPackageName",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "doDevControlUseSamsungIntentForTop",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doDevControlTopKeyMappingIntentPress",
+                                                "valueString": "com.samsung.android.knox.intent.action.TOP_PRESS"
+                                            },
+                                            {
+                                                "key": "doDevControlTopKeyMappingIntentRelease",
+                                                "valueString": "com.samsung.android.knox.intent.action.TOP_RELEASE"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doDevControlSideKeyMappingForApplication",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doDevControlSideKeyMappingPackageName",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "doDevControlUseSamsungIntentForSide",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doDevControlSideKeyMappingIntentPress",
+                                                "valueString": "com.samsung.android.knox.intent.action.SIDE_PRESS"
+                                            },
+                                            {
+                                                "key": "doDevControlSideKeyMappingIntentRelease",
+                                                "valueString": "com.samsung.android.knox.intent.action.SIDE_RELEASE"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doDevControlKeyMappingGenericIsControlled",
+                                    "valueBool": false
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doRestrictions",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doRestrictionsIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doRestrictionMic",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionWifi",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionWifiDirect",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionBt",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionCellular",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionTethering",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doRestrictionTetheringAllow",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "doRestrictionTetheringAllowWifi",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "doRestrictionTetheringAllowBt",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "doRestrictionTetheringAllowUsb",
+                                                "valueBool": true
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doRestrictionUsbMediaPlayer",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionUsbHostStorage",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionUsbExceptionList",
+                                    "valueStringArray": [
+                                        "OFF"
+                                    ]
+                                },
+                                {
+                                    "key": "doRestrictionUsbDebug",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionDevMode",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionShareVia",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionPowerSaver",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionDataSaver",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionVPN",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionSetting",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionEncryptSdcard",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doRestrictionSDCardAccess",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionBackuponGoogleServer",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionInstallNonGooglePlayApps",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionVideoRecording",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionAndroidBeam",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionCamera",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionClipboard",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionSmartSwitch",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doRestrictionUWB",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionFactoryReset",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doRestrictionEdgeScreen",
+                                    "valueBool": true
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doSettings",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doSettingsIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doSettingsHideBackUpAndReset",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doSettingsHideAirplaneMode",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doSettingsHideLanguage",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doSettingsHideLockScreen",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doSettingsHideBluetooth",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doSettingsHideDeveloper",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doSettingsHideWiFi",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doSettingsSystemLocale",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doSettingsSystemLocaleLanguage",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "doSettingsSystemLocaleCountry",
+                                                "valueString": ""
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doSettingsMobileDataEnable",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doSettingsAutoStartUp",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doSettingsPowerOFF",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doSettingsInputMethod",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doSettingsInputMethodPackageName",
+                                                "valueString": "com.sec.android.inputmethod"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doSettingsNoBatteryMode",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doSettingsPowerSavings",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doSettingsPowerSavingIsEnabled",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doSettingsPowerSavingLimitCPU",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doSettingsPowerSavingReduceBrightness",
+                                                "valueBool": false
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doDexPolicies",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doDexIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doDexControls",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doDexAllowConnection",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "doDexEnforceEthernet",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doDexEnforcevMAC",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doDexDisablePackages",
+                                                "valueString": ""
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doDexIsCustomized",
+                                    "valueBool": false
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doDualDar",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doDualDarIsEnabled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doDualDarTimeoutType",
+                                    "valueString": "NO_LOCKOUT"
+                                },
+                                {
+                                    "key": "doDualDarTimeoutValue",
+                                    "valueString": "5"
+                                },
+                                {
+                                    "key": "doDualDarRestrictDe",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doDualDarRestrictDeApps",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doDualDarPasswordMinLength",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doDualDarSetNewPasswordInnerLayer",
+                                    "valueString": ""
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doFirewallPolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doFirewallIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doFirewallConfigName",
+                                    "valueString": "Firewall config 1"
+                                },
+                                {
+                                    "key": "doFirewallProxy",
+                                    "valueString": "NONE"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doFotaUpdate",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doFotaUpdateIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doFotaUpdateOTA",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doFotaUpdateRecoveryMode",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doFotaUpdateAutoUpdate",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doFotaUpdateInstallLaunchClient",
+                                    "valueBool": false
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doNPA",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doNPAIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doNPAClient",
+                                    "valueString": "0"
+                                },
+                                {
+                                    "key": "doNPADataPointsProfile",
+                                    "valueString": "NPA profile 1"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doPasswordPolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doPasswordIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doPasswordBiometric",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doPasswordBioFp",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "doPasswordBioIris",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "doPasswordBioFace",
+                                                "valueBool": true
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doPasswordMultifactorAuth",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doPasswordChange",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doPasswordChangeEnforce",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doPasswordChangeEnforcetimeout",
+                                                "valueInteger": 0
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doPasswordRestriction",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doPasswordMaxCharacterSequenceLength",
+                                                "valueInteger": 0
+                                            },
+                                            {
+                                                "key": "doPasswordMaxNumericSequenceLength",
+                                                "valueInteger": 0
+                                            },
+                                            {
+                                                "key": "doPasswordMinLength",
+                                                "valueInteger": 0
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doPasswordMaxTimeToDeviceLock",
+                                    "valueInteger": 0
+                                },
+                                {
+                                    "key": "doPasswordMaxFailedAttemptToWipeData",
+                                    "valueInteger": 0
+                                },
+                                {
+                                    "key": "doPasswordMaxFailedAttemptToDisableDevice",
+                                    "valueInteger": 0
+                                },
+                                {
+                                    "key": "doPasswordQualityDefinition",
+                                    "valueString": "0"
+                                },
+                                {
+                                    "key": "doPasswordDisableKeyguardFeature",
+                                    "valueString": "0"
+                                },
+                                {
+                                    "key": "doPasswordVisibility",
+                                    "valueBool": true
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doPeripheralConfigurationPolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doPeripheralConfigurationPolicyIsControlled",
+                                    "valueBool": false
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doUcmPolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doUcmPolicyIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doUcmPolicyDevLock",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doUcmPolicyDevLockEnable",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doUcmPolicyDevLockConfigName",
+                                                "valueString": "UCM Config 1"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doUcmPolicyPlugin",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doUcmPolicyPluginEnabled",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "doUcmPolicyPluginConfigName",
+                                                "valueString": "UCM Config 2"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doVpnPolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doVpnIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doVpnType",
+                                    "valueString": "0"
+                                },
+                                {
+                                    "key": "doVpnPerAppList",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doVpnPerAppDoApps",
+                                                "valueString": STRING_VALUE
+                                            },
+                                            {
+                                                "key": "doVpnPerAppPoApps",
+                                                "valueString": STRING_VALUE
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doVpnBlacklistApps",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "doVpnBlacklistDoApps",
+                                                "valueString": STRING_VALUE
+                                            },
+                                            {
+                                                "key": "doVpnBlacklistPoApps",
+                                                "valueString": STRING_VALUE
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "doVpnOnDemand",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doVpnShowNotification",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doVpnProfileName",
+                                    "valueString": "VPN profile 1"
+                                },
+                                {
+                                    "key": "doVpnIsChaining",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doVpnProfile2Name",
+                                    "valueString": STRING_VALUE
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "doZTNAPolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doZTNAIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "doZTNARegisterApplicationPackageName",
+                                    "valueString": "com.cisco.secureclient.zta"
+                                },
+                                {
+                                    "key": "doZTNARegisterApplicationPackageNameOther",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doZTNARegisterApplicationPackageSignature",
+                                    "valueString": ""
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "key": "poPolicies",
+            "valueBundle": {
+                "managedProperty": [
+                    {
+                        "key": "poPoliciesIsControlled",
+                        "valueBool": false
+                    },
+                    {
+                        "key": "poAdvancedRestrictions",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poAdvancedRestrictionsIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poAdvancedRestrictionsOnDeviceAi",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poAdvancedRestrictionsAllGalaxyAi",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poAdvancedRestrictionsGalaxyAiOperation",
+                                    "valueStringArray": []
+                                },
+                                {
+                                    "key": "poAdvancedRestrictionsRemoteControl",
+                                    "valueBool": true
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poAppMgmt",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poAppMgmtIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poAppMgmtBatteryWhitelist",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "poAppMgmtNotificationWhitelist",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "poAppMgmtInstallApp",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "poAppMgmtToAllowUSBDeviceAccessForApps",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poAppMgmtWhitelistAppByName",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "poAppMgmtBlacklistAppByName",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "poAppMgmtWhitelistAppBySignature",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "poAppMgmtBlacklistAppBySignature",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "poAppMgmtDisableApp",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "poAppMgmtForceStopBlacklist",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "poAppMgmtAutoLaunchApp",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "poAppMgmtClearCacheBlocklist",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "poAppMgmtClearDataBlocklist",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "poAppMgmtAddApplicationsToAccessSdkControlled",
+                                    "valueBool": false
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poAuditLog",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poAuditLogIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poAuditLogPolicyConfig",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "poAuditLogPolicies",
+                                                "valueStringArray": [
+                                                    "ALL"
+                                                ]
+                                            },
+                                            {
+                                                "key": "poAuditLogOutcome",
+                                                "valueString": "ALL"
+                                            },
+                                            {
+                                                "key": "poAuditLogSeverityLevel",
+                                                "valueString": "CRITICAL"
+                                            },
+                                            {
+                                                "key": "poAuditLogFrequency",
+                                                "valueString": "6"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poCertificatePolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poCertificatePolicyIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poCertificatePolicyRevoke",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "poCertificatePolicyEnableRevoke",
+                                                "valueString": "DISABLE"
+                                            },
+                                            {
+                                                "key": "poCertificatePolicyEnableOCSP",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "poCertificatePolicyRevokeAppList",
+                                                "valueString": ""
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "poCertificatePolicyTrustedCA",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "poCertificatePolicyBlockCertRemoval",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poCertificatePolicyToReadPrivateKeysbyApps",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poCertificatePolicyInstallCertificate",
+                                    "valueString": ""
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poClientCertificatePolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poClientCertificatePolicyIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poClientCertificatePolicyExemptPackages",
+                                    "valueString": ""
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poDeviceAccountPolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poDeviceAccountPolicyIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poDeviceAccountPolicySamsungAccountConfiguration",
+                                    "valueString": STRING_VALUE
+                                },
+                                {
+                                    "key": "poDeviceAccountAdditionIsEnabled",
+                                    "valueBool": false
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poDeviceAdminPolicies",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poDeviceAdminIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poDeviceAdminWhitelist",
+                                    "valueString": ""
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poDevControlKeyMapping",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poDevControlKeyMappingIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poDevControlKeyMappingIsControlledforMSTeams",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poDevControlPTTKeyMappingForApplication",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "poDevControlPTTKeyMappingPackageName",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "poDevControlUseSamsungIntentForPTT",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "poDevControlPTTKeyMappingIntentPress",
+                                                "valueString": "com.samsung.android.knox.intent.action.PTT_PRESS"
+                                            },
+                                            {
+                                                "key": "poDevControlPTTKeyMappingIntentRelease",
+                                                "valueString": "com.samsung.android.knox.intent.action.PTT_RELEASE"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "poDevControlTopKeyMappingForApplication",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "poDevControlTopKeyMappingPackageName",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "poDevControlUseSamsungIntentForTop",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "poDevControlTopKeyMappingIntentPress",
+                                                "valueString": "com.samsung.android.knox.intent.action.TOP_PRESS"
+                                            },
+                                            {
+                                                "key": "poDevControlTopKeyMappingIntentRelease",
+                                                "valueString": "com.samsung.android.knox.intent.action.TOP_RELEASE"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "poDevControlSideKeyMappingForApplication",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "poDevControlSideKeyMappingPackageName",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "poDevControlUseSamsungIntentForSide",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "poDevControlSideKeyMappingIntentPress",
+                                                "valueString": "com.samsung.android.knox.intent.action.SIDE_PRESS"
+                                            },
+                                            {
+                                                "key": "poDevControlSideKeyMappingIntentRelease",
+                                                "valueString": "com.samsung.android.knox.intent.action.SIDE_RELEASE"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poDualDar",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poDualDarIsEnabled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poDualDarTimeoutType",
+                                    "valueString": "NO_LOCKOUT"
+                                },
+                                {
+                                    "key": "poDualDarTimeoutValue",
+                                    "valueString": "1"
+                                },
+                                {
+                                    "key": "poDualDarRestrictDe",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poDualDarRestrictDeApps",
+                                    "valueString": ""
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poFirewallPolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poFirewallIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poFirewallConfigName",
+                                    "valueString": "Firewall config 1"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poNPA",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poNPAIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poNPAClient",
+                                    "valueString": "0"
+                                },
+                                {
+                                    "key": "poNPADataPointsProfile",
+                                    "valueString": "NPA profile 1"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poPasswordPolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poPasswordIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poPasswordBiometric",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "poPasswordBioFp",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "poPasswordBioIris",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "poPasswordBioFace",
+                                                "valueBool": true
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "poPasswordMultifactorAuth",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poPasswordChange",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "poPasswordChangeEnforce",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "poPasswordChangeEnforceTimeout",
+                                                "valueInteger": 0
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "poPasswordRestriction",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "poPasswordMaxCharacterSequenceLength",
+                                                "valueInteger": 0
+                                            },
+                                            {
+                                                "key": "poPasswordMaxNumericSequenceLength",
+                                                "valueInteger": 0
+                                            },
+                                            {
+                                                "key": "poPasswordMinLength",
+                                                "valueInteger": 0
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "poPasswordMaxTimeToWorkProfileLock",
+                                    "valueInteger": 0
+                                },
+                                {
+                                    "key": "poPasswordMaxFailedAttemptToWipeData",
+                                    "valueInteger": 0
+                                },
+                                {
+                                    "key": "poPasswordMaxFailedAttemptToDisableWorkProfile",
+                                    "valueInteger": 0
+                                },
+                                {
+                                    "key": "poPasswordQualityDefinition",
+                                    "valueString": "0"
+                                },
+                                {
+                                    "key": "poPasswordDisableKeyguardFeature",
+                                    "valueString": "0"
+                                },
+                                {
+                                    "key": "poPasswordVisibility",
+                                    "valueBool": true
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poRCPPolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poRCPIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poRCPMoveFilesFromPersonalToWorkProfile",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "poRCPMoveFilesFromWorkProfileToPersonal",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poRCPDataSyncPolicy",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poRCPShareClipboardToData",
+                                    "valueBool": false
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poRestrictions",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poRestrictionsIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poRestrictionMic",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "poRestrictionShareVia",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "poRestrictionBluetooth",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "poRestrictionCamera",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "poRestrictionClipboard",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "poRestrictionVideoRecording",
+                                    "valueBool": true
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poUcmPolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poUcmPolicyIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poUcmPolicyDevLock",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "poUcmPolicyDevLockEnable",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "poUcmPolicyDevLockConfigName",
+                                                "valueString": "UCM Config 1"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "poUcmPolicyPlugin",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "poUcmPolicyPluginEnabled",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "poUcmPolicyPluginConfigName",
+                                                "valueString": "UCM Config 2"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poVpnPolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poVpnIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poVpnType",
+                                    "valueString": "1"
+                                },
+                                {
+                                    "key": "poVpnPerAppPoApps",
+                                    "valueString": STRING_VALUE
+                                },
+                                {
+                                    "key": "poVpnBlacklistPoApps",
+                                    "valueString": STRING_VALUE
+                                },
+                                {
+                                    "key": "poVpnOnDemand",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poVpnShowNotification",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "poVpnProfileName",
+                                    "valueString": "VPN profile 1"
+                                },
+                                {
+                                    "key": "poVpnIsChaining",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poVpnProfile2Name",
+                                    "valueString": STRING_VALUE
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poPoliciesWpConfig",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poPoliciesWpConfigIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poPoliciesWpConfigMoveApps",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "poPoliciesWpConfigWpName",
+                                    "valueString": STRING_VALUE
+                                },
+                                {
+                                    "key": "poPoliciesWpConfigPersonalName",
+                                    "valueString": STRING_VALUE
+                                },
+                                {
+                                    "key": "poPoliciesWpConfigStoragePath",
+                                    "valueBool": true
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "poZTNAPolicy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "poZTNAIsControlled",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "poZTNARegisterApplicationPackageName",
+                                    "valueString": "com.cisco.secureclient.zta"
+                                },
+                                {
+                                    "key": "poZTNARegisterApplicationPackageNameOther",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "poZTNARegisterApplicationPackageSignature",
+                                    "valueString": ""
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "key": "profileAppMgmtAddApplicationsToAccessSdk",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "profileAppMgmtAddPackageNameToAccessSdk",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "profileAppMgmtAddSignatureToAccessSdk",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "profileAppMgmtAddScopeToAccessSdk",
+                            "valueStringArray": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "profileDevControlsAdvancedWifiConfigurations",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "profileDevControlsAdvancedWifiName",
+                            "valueString": "Input Wi-Fi Network name here"
+                        },
+                        {
+                            "key": "profileDevControlsAdvancedWifiRoamTrigger",
+                            "valueInteger": -75
+                        },
+                        {
+                            "key": "profileDevControlsAdvancedWifiRoamDelta",
+                            "valueInteger": 10
+                        },
+                        {
+                            "key": "profileDevControlsAdvancedWifiRoamScanPeriod",
+                            "valueInteger": 10
+                        },
+                        {
+                            "key": "profileDevControlsAdvancedWifiDHCPRenewalControl",
+                            "valueBool": true
+                        },
+                        {
+                            "key": "profileDevControlsAdvancedWifiDisableNetworkBlacklisting",
+                            "valueBool": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "profileAllowedApps4ReadingPrivateKeysConfigurations",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "profileAllowedAppsPackageName",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "profileAllowedAppsHost",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "profileAllowedAppsPort",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "profileAllowedAppsAlias",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "profileAllowedAppsStorageName",
+                            "valueString": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "profileAllowedUSBDevicesForAppsConfigurations",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "profileAllowedUSBDevicesPackageName",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "profileAllowedUSBDevicesConfiguration",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileAllowedUSBDevicesProductId",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileAllowedUSBDevicesVendorId",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "configApns",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "configApnName",
+                            "valueString": "APN_1"
+                        },
+                        {
+                            "key": "configApnApn",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "configApnPreferred",
+                            "valueBool": false
+                        },
+                        {
+                            "key": "configApnMcc",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "configApnMnc",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "configApnAuthType",
+                            "valueString": "0"
+                        },
+                        {
+                            "key": "configApnType",
+                            "valueString": "default,supl,mms"
+                        },
+                        {
+                            "key": "configApnProtocol",
+                            "valueString": "IPV4V6"
+                        },
+                        {
+                            "key": "configApnRoamingProtocol",
+                            "valueString": "IPV4V6"
+                        },
+                        {
+                            "key": "configApnMms",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "configApnMmsc",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "configApnMmsProxy",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "configApnMmsPort",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "key": "configApnAdvanced",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "configApnAdvancedServer",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "configApnAdvancedProxy",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "configApnAdvancedPort",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "configApnAdvancedUname",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "configApnAdvancedPassword",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "key": "configApnMvno",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "configApnMvnoType",
+                                        "valueString": "none"
+                                    },
+                                    {
+                                        "key": "configApnMvnoValue",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "configCertificates",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "configCertificateAlias",
+                            "valueString": "cert_1"
+                        },
+                        {
+                            "key": "configCertificateData",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "configCertificateInstallInfo",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "configCertificateInstallCertType",
+                                        "valueString": "CA"
+                                    },
+                                    {
+                                        "key": "configCertificateInstallCertUsage",
+                                        "valueString": "OTHERS"
+                                    },
+                                    {
+                                        "key": "configCertificateInstallPassword",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "configCertificateProvisionings",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "configCertificateProvisioningProtocol",
+                            "valueString": "scep"
+                        },
+                        {
+                            "key": "configCertificateProvisioningProtocolType",
+                            "valueString": "provision"
+                        },
+                        {
+                            "key": "configCertificateProvisioningKeyProvider",
+                            "valueString": "AndroidKeyStore"
+                        },
+                        {
+                            "key": "configCertificateProvisioningKeyOwner",
+                            "valueString": "0"
+                        },
+                        {
+                            "key": "configCertificateProvisioningKeyAlias",
+                            "valueString": "SCEP Config 1"
+                        },
+                        {
+                            "key": "configCertificateProvisioningSubject",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "configCertificateProvisioningServerHost",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "configCertificateProvisioningServerPort",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "configCertificateProvisioningServerPath",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "configCertificateProvisioningSubjectName",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "configCertificateProvisioningExtendedPurposes",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "configCertificateProvisioningChallengePassword",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "configCertificateProvisioningSystemKeyType",
+                            "valueString": "RSA"
+                        },
+                        {
+                            "key": "configCertificateProvisioningSystemKeyPurposes",
+                            "valueString": "1"
+                        },
+                        {
+                            "key": "configCertificateProvisioningSystemKeySize",
+                            "valueString": "2048"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "profileDeviceAccountPolicyConfigurations",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "profileDeviceAccountPolicyAddAccountType",
+                            "valueString": "com.samsung.android.email"
+                        },
+                        {
+                            "key": "profileDeviceAccountPolicyAddAccountsToAdditionList",
+                            "valueString": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "profileDeviceCustomization",
+            "valueBundle": {
+                "managedProperty": [
+                    {
+                        "key": "profileDeviceName",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doSettingsDeviceName",
+                                    "valueString": ""
+                                },
+                                {
+                                    "key": "doSettingsAllowDeviceNameChangeByUser",
+                                    "valueBool": true
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "profileDeviceKeyboard",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "profileDeviceKeyboardPredictiveText",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileDeviceKeyboardSettings",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileDeviceKeyboardToolbar",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarEmoticon",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarGrammarly",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarSticker",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarGif",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarVoice",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarLiveMessage",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarHandwriting",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarClipboard",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarModes",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarTextEditPanel",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarSearch",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarSpotify",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarYouTube",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarAdjustSize",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarAremoji",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarBitmoji",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarExpression",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarMojitok",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarSamsungPass",
+                                                "valueBool": false
+                                            },
+                                            {
+                                                "key": "profileDeviceKeyboardToolbarTranslation",
+                                                "valueBool": false
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "profileDeviceQP",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "profileDeviceQPItems",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "profileDeviceQPItemAirplane",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "profileDeviceQPItemRotate",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "profileDeviceQPItemAlwaysOn",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "profileDeviceQPItemBt",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "profileDeviceQPItemDex",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "profileDeviceQPItemHotspot",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "profileDeviceQPItemNfc",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "profileDeviceQPItemSync",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "profileDeviceQPItemWifi",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "profileDeviceQPItemLocation",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "profileDeviceQPItemAllShareCast",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "profileDeviceQPItemDormantMode",
+                                                "valueBool": true
+                                            },
+                                            {
+                                                "key": "profileDeviceQPItemDolby",
+                                                "valueBool": true
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "key": "profileDeviceQPEditing",
+                                    "valueBool": true
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "profileDeviceAppSuggestion",
+                        "valueBool": false
+                    },
+                    {
+                        "key": "profileDeviceBatteryProtection",
+                        "valueBool": false
+                    },
+                    {
+                        "key": "profileDeviceLockscreen",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "profileDeviceLockscreenShortcuts",
+                                    "valueBundle": {
+                                        "managedProperty": [
+                                            {
+                                                "key": "profileDeviceLockscreenShortcutsLeft",
+                                                "valueString": ""
+                                            },
+                                            {
+                                                "key": "profileDeviceLockscreenShortcutsRight",
+                                                "valueString": ""
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "profileDeviceSettingsConfigItems",
+                        "valueBundleArray": [
+                            {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileDeviceSettingsConfigName",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileDeviceSettingsConfigOnoff",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileDeviceSettingsConfigValue",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileDeviceSettingsConfigModify",
+                                        "valueBool": true
+                                    },
+                                    {
+                                        "key": "profileDeviceSettingsConfigHide",
+                                        "valueBool": false
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "key": "profileDeviceAudioVolumes",
+                        "valueBundleArray": [
+                            {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileDeviceAudioVolumeStream",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileDeviceAudioVolumeLevel",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "key": "profileDevControlKeyMappingConfigurations",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "profileDevControlKeyMapping",
+                            "valueString": STRING_VALUE
+                        },
+                        {
+                            "key": "profileDevControlKeyMappingPackageName",
+                            "valueString": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "profileDexCustomization",
+            "valueBundle": {
+                "managedProperty": [
+                    {
+                        "key": "profileDexHomeAlignment",
+                        "valueString": "0"
+                    },
+                    {
+                        "key": "profileDexSetTimeout",
+                        "valueInteger": 30
+                    },
+                    {
+                        "key": "profileDexAllowTimeout",
+                        "valueBool": true
+                    },
+                    {
+                        "key": "profileDexLoadingLogo",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "profileDexLoadingLogoSource",
+                                    "valueString": "0"
+                                },
+                                {
+                                    "key": "profileDexLoadingLogoData",
+                                    "valueString": "None"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "profileDexWallpaper",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "profileDexWallpaperSource",
+                                    "valueString": "0"
+                                },
+                                {
+                                    "key": "profileDexWallpaperData",
+                                    "valueString": "None"
+                                },
+                                {
+                                    "key": "profileDexWallpaperWhich",
+                                    "valueString": "11"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "profileDexSkipWelcome",
+                        "valueBool": false
+                    },
+                    {
+                        "key": "profileDexSkipOverscan",
+                        "valueBool": false
+                    },
+                    {
+                        "key": "profileDexAutoLaunchAppList",
+                        "valueString": ""
+                    },
+                    {
+                        "key": "profileDexHdmiAutoStart",
+                        "valueBool": false
+                    },
+                    {
+                        "key": "profileDexHideAppsInDrawer",
+                        "valueString": ""
+                    },
+                    {
+                        "key": "profileDexMouseCursor",
+                        "valueBool": false
+                    },
+                    {
+                        "key": "profileDexAppShortcuts",
+                        "valueBundleArray": [
+                            {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileDexAppShortCutPackageName",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileDexAppShortCutClassName",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileDexAppShortCutPosX",
+                                        "valueInteger": 0
+                                    },
+                                    {
+                                        "key": "profileDexAppShortCutPosY",
+                                        "valueInteger": 0
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "key": "profileDexUrlShortcuts",
+                        "valueBundleArray": [
+                            {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileDexUrl",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileDexUrlTitle",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileDexUrlPosX",
+                                        "valueInteger": 0
+                                    },
+                                    {
+                                        "key": "profileDexUrlPosY",
+                                        "valueInteger": 0
+                                    },
+                                    {
+                                        "key": "profileDexUrlBrowser",
+                                        "valueString": "com.sec.android.app.sbrowser"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "key": "profileDexPanelButtons",
+                        "valueStringArray": []
+                    },
+                    {
+                        "key": "profileDexFileCopy",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "doDexAllowPCtoDexCopy",
+                                    "valueBool": true
+                                },
+                                {
+                                    "key": "doDexAllowDextoPCCopy",
+                                    "valueBool": true
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": "profileDexSettingsConfigItems",
+                        "valueBundleArray": [
+                            {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileDexSettingsConfigName",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileDexSettingsConfigOnoff",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileDexSettingsConfigValue",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileDexSettingsConfigModify",
+                                        "valueBool": true
+                                    },
+                                    {
+                                        "key": "profileDexSettingsConfigHide",
+                                        "valueBool": false
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "key": "profileDeXOpenLimitNumber",
+                        "valueString": ""
+                    },
+                    {
+                        "key": "ProfileDeXSettingsStabilizerMode",
+                        "valueBool": false
+                    }
+                ]
+            }
+        },
+        {
+            "key": "profileFirewall",
+            "valueBundle": {
+                "managedProperty": [
+                    {
+                        "key": "profileFirewallConfigurationName",
+                        "valueString": "Firewall config 1"
+                    },
+                    {
+                        "key": "profileFirewallAllowRules",
+                        "valueBundleArray": [
+                            {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileFirewallAllowRuleIp",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileFirewallAllowRulePort",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileFirewallAllowRulePortLocation",
+                                        "valueString": "ALL"
+                                    },
+                                    {
+                                        "key": "profileFirewallAllowRuleNetwork",
+                                        "valueString": "ALL_NETWORKS"
+                                    },
+                                    {
+                                        "key": "profileFirewallAllowRuleApp",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "key": "profileFirewallDenyRules",
+                        "valueBundleArray": [
+                            {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileFirewallDenyRuleIp",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileFirewallDenyRulePort",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileFirewallDenyRulePortLocation",
+                                        "valueString": "ALL"
+                                    },
+                                    {
+                                        "key": "profileFirewallDenyRuleNetwork",
+                                        "valueString": "ALL_NETWORKS"
+                                    },
+                                    {
+                                        "key": "profileFirewallDenyRuleApp",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "key": "profileFirewallRerouteRules",
+                        "valueBundleArray": [
+                            {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileFirewallRerouteRuleTargetIP",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileFirewallRerouteRuleTargetPort",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileFirewallRerouteRuleDestIp",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileFirewallRerouteRuleDestPort",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileFirewallRerouteRuleNetwork",
+                                        "valueString": "ALL_NETWORKS"
+                                    },
+                                    {
+                                        "key": "profileFirewallRerouteRuleApp",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "key": "profileFirewallRerouteExceptions",
+                        "valueBundleArray": [
+                            {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileFirewallRerouteExceptionIp",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileFirewallRerouteExceptionPort",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "key": "profileFirewallDomainFilters",
+                        "valueBundleArray": [
+                            {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileFirewallDomainsBlocked",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileFirewallDomainsAllowed",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileFirewallDomainScope",
+                                        "valueString": "ALL_APPLICATIONS"
+                                    },
+                                    {
+                                        "key": "profileFirewallDomainApplications",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "key": "profileFirewallDomainFilterPriority",
+                        "valueBool": false
+                    }
+                ]
+            }
+        },
+        {
+            "key": "configStaticProxy",
+            "valueBundle": {
+                "managedProperty": [
+                    {
+                        "key": "configStaticProxyServer",
+                        "valueString": ""
+                    },
+                    {
+                        "key": "configStaticProxyPort",
+                        "valueString": ""
+                    },
+                    {
+                        "key": "configStaticProxyUsername",
+                        "valueString": ""
+                    },
+                    {
+                        "key": "configStaticProxyPassword",
+                        "valueString": ""
+                    },
+                    {
+                        "key": "configStaticProxyExcludeIPs",
+                        "valueString": ""
+                    },
+                    {
+                        "key": "configStaticProxyExcludeDomains",
+                        "valueString": ""
+                    }
+                ]
+            }
+        },
+        {
+            "key": "profileNPADataPointsConfiguration",
+            "valueBundle": {
+                "managedProperty": [
+                    {
+                        "key": "profileNPADataPointsName",
+                        "valueString": "NPA profile 1"
+                    },
+                    {
+                        "key": "profileNPADataPoints",
+                        "valueBundle": {
+                            "managedProperty": [
+                                {
+                                    "key": "profileNPADataPointsSelectAll",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsApplicationId",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsProcessId",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsParentApplicaitonId",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsParentProcess",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsApplicationIdDNSRequest",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsHostIPAddress",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsReceivingHostIPAddress",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsSourcePortNumber",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsDesitnationPortNumber",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsFQDNDestinationIPAddress",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsTransportLayerProtocol",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsProcessName",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsParentProcessName",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsEncryptionHashApplication",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsEncryptionHashParentApplication",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsNumberL4BytesSent",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsNumberL4BytesReceived",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsNetworkInterface",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsStartTime",
+                                    "valueBool": false
+                                },
+                                {
+                                    "key": "profileNPADataPointsEndTime",
+                                    "valueBool": false
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "key": "profilePeripheralConfigs",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "profilePeripheralPluginName",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "profilePeripheralName",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "profilePeripheralScannerConfig",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "profilePeripheralScannerConnectivityID",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profilePeripheralScannerConnectivityType",
+                                        "valueString": "USB"
+                                    },
+                                    {
+                                        "key": "profilePeripheralScannerPrefix",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profilePeripheralScannerSuffix",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profilePeripheralScannerTimeStamp",
+                                        "valueBool": false
+                                    },
+                                    {
+                                        "key": "profilePeripheralScannerBeepsound",
+                                        "valueBool": false
+                                    },
+                                    {
+                                        "key": "profilePeripheralScannerDataMode",
+                                        "valueString": "PERIPHERAL_BARCODE_DATA_PROCESS_MODE_WEDGE"
+                                    },
+                                    {
+                                        "key": "profilePeripheralScannerCheckDuplicateBarcode",
+                                        "valueBool": false
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "configPacProxy",
+            "valueBundle": {
+                "managedProperty": [
+                    {
+                        "key": "configPacProxyPacUrl",
+                        "valueString": ""
+                    },
+                    {
+                        "key": "configPacProxyAuthConfigurations",
+                        "valueBundleArray": [
+                            {
+                                "managedProperty": [
+                                    {
+                                        "key": "configPacProxyAuthHost",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "configPacProxyAuthPort",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "configPacProxyAuthUsername",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "configPacProxyAuthPassword",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "key": "profilePermissionControl",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "profileSpecialAccessPermission",
+                            "valueStringArray": [
+                                ""
+                            ]
+                        },
+                        {
+                            "key": "profileSpecialAccessComponentName",
+                            "valueString": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "profileRCPDataSyncConfigurations",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "profileRCPApplications",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileRCPApplicationNames",
+                                        "valueStringArray": [
+                                            ""
+                                        ]
+                                    },
+                                    {
+                                        "key": "profileRCPCustomAppName",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "key": "profileRCPDataSyncProperty",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileRCPDataSyncPropertyName",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileRCPCustomPropertyName",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "key": "profileRCPAllowChangeSyncPolicy",
+                            "valueBool": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "configUcmPlugins",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "configUcmPluginName",
+                            "valueString": "UCM Config 1"
+                        },
+                        {
+                            "key": "configUcmPluginPackage",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "configUcmPluginPurpose",
+                            "valueString": "GENERAL_PURPOSE"
+                        },
+                        {
+                            "key": "configUcmPluginPinProperties",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "configUCMKeyguardInitialPin",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "configUCMKeyguardMaxRetryCount",
+                                        "valueInteger": 0
+                                    },
+                                    {
+                                        "key": "configUCMKeyguardMinLength",
+                                        "valueInteger": 0
+                                    },
+                                    {
+                                        "key": "configUCMKeyguardMaxLength",
+                                        "valueInteger": 0
+                                    },
+                                    {
+                                        "key": "configUcmPluginPinTimeoutType",
+                                        "valueString": "NONE"
+                                    },
+                                    {
+                                        "key": "configUcmPluginPinTimeoutValue",
+                                        "valueString": "1"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "key": "configUcmPluginAccessControls",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "configUcmPluginAccessType",
+                                        "valueString": "UNRESTRICTED"
+                                    },
+                                    {
+                                        "key": "configUcmPluginWhitelistedApps",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "configUcmPluginAllowlistedAppsSignature",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "key": "configUcmPluginLockedAccess",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "configUcmPluginAuthType",
+                                        "valueBool": false
+                                    },
+                                    {
+                                        "key": "configUcmPluginExemptApps",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "key": "configUcmPluginCertList",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "configUcmPluginCertAliasList",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "configUcmPluginCertAliasAccessControls",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "configUcmPluginListCertAlias",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "configUcmPluginCertAliasAllowedApps",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "configUcmPluginCertAliasAppsSignaturesList",
+                                        "valueString": ""
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "profileVpnConfigurations",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "profileVpnName",
+                            "valueString": "VPN profile 1"
+                        },
+                        {
+                            "key": "profileVpnVendor",
+                            "valueString": "0"
+                        },
+                        {
+                            "key": "profileVpnHost",
+                            "valueString": STRING_VALUE
+                        },
+                        {
+                            "key": "profileVpnVpntype",
+                            "valueString": "ipsec"
+                        },
+                        {
+                            "key": "profileVpnAddUidpid",
+                            "valueBool": false
+                        },
+                        {
+                            "key": "profileVpnProxy",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileVpnProxyIsEnabled",
+                                        "valueBool": false
+                                    },
+                                    {
+                                        "key": "profileVpnProxyServer",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnProxyPort",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnProxyPac",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnProxyAuthtype",
+                                        "valueString": "0"
+                                    },
+                                    {
+                                        "key": "profileVpnProxyUsername",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnProxyPassword",
+                                        "valueString": STRING_VALUE
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "key": "profileVpnBuiltin",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileVpnBuiltinAuthType",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnBuiltinAutoRetry",
+                                        "valueString": "2"
+                                    },
+                                    {
+                                        "key": "profileVpnBuiltinIdentifier",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnBuiltinRemoteIdentifier",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnBuiltinPsk",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnBuiltinUserCert",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnBuiltinCaCert",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnBuiltinServerCert",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnBuiltinOcspUrl",
+                                        "valueString": STRING_VALUE
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "key": "profileVpnCiscoParams",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileVpnCiscoAuth",
+                                        "valueString": "EAP-AnyConnect"
+                                    },
+                                    {
+                                        "key": "profileVpnCiscoIkeIdentity",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnCiscoUsergroup",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnCiscoCertAlias",
+                                        "valueString": STRING_VALUE
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "key": "profileVpnPulseSec",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileVpnPulseSecRealm",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnPulseSecRole",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnPulseSecCertAlias",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnPulseSecRsaSToken",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnPulseSecSnetSToken",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnPulseSecRetry",
+                                        "valueBool": false
+                                    },
+                                    {
+                                        "key": "profileVpnPulseSecSilentAuth",
+                                        "valueBool": false
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "key": "profileVpnNetMotion",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileVpnNetMotionUserName",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnNetMotionPassword",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnNetMotionDomain",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnNetMotionValidateServer",
+                                        "valueBool": false
+                                    },
+                                    {
+                                        "key": "profileVpnNetMotionCertAlias",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnNetMotionDevCertAlias",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnNetMotionServerSuffix",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnNetMotionDeviceName",
+                                        "valueString": STRING_VALUE
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "key": "profileVpnSectraMobile",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileVpnSectraMobileBaseUrl",
+                                        "valueString": "http://IP address/path/to/cert/directory"
+                                    },
+                                    {
+                                        "key": "profileVpnSectraMobileMTUSize",
+                                        "valueString": "1280"
+                                    },
+                                    {
+                                        "key": "profileVpnSectraMobileDiffService",
+                                        "valueString": "0"
+                                    },
+                                    {
+                                        "key": "profileVpnSectraMobileDTLSTunnel",
+                                        "valueBool": true
+                                    },
+                                    {
+                                        "key": "profileVpnSectraMobileTCPKeepAlive",
+                                        "valueString": "1200"
+                                    },
+                                    {
+                                        "key": "profileVpnSectraMobileDTLSInactivityTimeout",
+                                        "valueString": "30"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "key": "profileVpnUSBTethering",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileVpnUSBTetheringIsEnabled",
+                                        "valueBool": false
+                                    },
+                                    {
+                                        "key": "profileVpnUSBTetheringCACert",
+                                        "valueString": STRING_VALUE
+                                    },
+                                    {
+                                        "key": "profileVpnUSBTetheringUserCert",
+                                        "valueString": STRING_VALUE
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "profileDevControlsWifiConfigs",
+            "valueBundleArray": [
+                {
+                    "managedProperty": [
+                        {
+                            "key": "profileDevControlsWifiConfigNetworkName",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "profileDevControlsWifiConfigSecurityType",
+                            "valueString": "NONE"
+                        },
+                        {
+                            "key": "profileDevControlsWifiConfigPassword",
+                            "valueString": ""
+                        },
+                        {
+                            "key": "profileDevControlsWifiConfigSkipRandomization",
+                            "valueBool": false
+                        },
+                        {
+                            "key": "profileDevControlsWifiConfigEnterprise",
+                            "valueBundle": {
+                                "managedProperty": [
+                                    {
+                                        "key": "profileDevControlsWifiConfigEnterpriseEAP",
+                                        "valueString": "PEAP"
+                                    },
+                                    {
+                                        "key": "profileDevControlsWifiConfigEnterpriseIdentity",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileDevControlsWifiConfigCACertAlias",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileDevControlsWifiConfigDomainName",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileDevControlsWifiConfigUserCertAlias",
+                                        "valueString": ""
+                                    },
+                                    {
+                                        "key": "profileDevControlsWifiConfigPhase2Auth",
+                                        "valueString": "MSCHAPV2"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
