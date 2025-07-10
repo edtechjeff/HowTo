@@ -4,7 +4,7 @@ $result=@()
 Get-MGDeviceManagementDetectedApp -All | ForEach-Object {
     $tmp = $_
     
-    # Check if the detected app's display name contains "Sophos"
+    # Check if the detected app's display name contains "Google Drive"
     if ($tmp.DisplayName -like "*Sophos*") {
         $result += (Get-MGDeviceManagementDetectedAppManagedDevice -DetectedAppId $_.id | Select-Object -Property @{Name="Device";Expression={$_.DeviceName}}, 
             @{Name="App";Expression={$tmp.DisplayName}}, 
