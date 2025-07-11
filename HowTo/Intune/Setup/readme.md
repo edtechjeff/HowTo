@@ -26,6 +26,8 @@
 
 ### Default Entra Domain
 
+Configuration Type: Settings Catalog
+
 ![alt text](Images/DefaultEntraDomain.png)
 
 ---
@@ -38,4 +40,17 @@
 
 ### Delivery Optimization
 
+Configuration Type: Settings Catalog
+
 ![alt text](Images/DeliveryOptimization.png)
+
+---
+
+### System Resources
+
+Configuration Type: Properties Catalog
+
+![alt text](Images/SystemResources.png)
+
+---
+
