@@ -26,3 +26,7 @@
 ### Default Entra Domain
 
 ![alt text](Images/DefaultEntraDomain.png)
+
+### Time Zone
+
+![alt text](Images/TimeZone.png)
