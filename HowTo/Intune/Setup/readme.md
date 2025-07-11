@@ -30,3 +30,7 @@
 ### Time Zone
 
 ![alt text](Images/TimeZone.png)
+
+### Delivery Optimization
+
+![alt text](Images/DeliveryOptimization.png)
