@@ -20,3 +20,9 @@
 ```
 (device.managementType -eq "MDM") and (device.deviceOwnership -eq "Company") and (device.deviceTrustType -eq "AzureAD")
 ```
+
+## Policies
+
+### Default Entra Domain
+
+![alt text](Images/DefaultEntraDomain.png)
