@@ -20,6 +20,7 @@
 ```
 (device.managementType -eq "MDM") and (device.deviceOwnership -eq "Company") and (device.deviceTrustType -eq "AzureAD")
 ```
+---
 
 ## Policies
 
