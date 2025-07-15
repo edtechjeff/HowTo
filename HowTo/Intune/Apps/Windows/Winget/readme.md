@@ -36,6 +36,7 @@ winget uninstall --silent  "Mozilla"
 
 ### Install Application
 ***Note:When installing the application it is best to be specific on which version you want to install. You will get this information when you search***
+
 ***Note:You can either install via name or via ID***
 
 ![alt text](images/wingetinstall.png)
