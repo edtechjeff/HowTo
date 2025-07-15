@@ -27,4 +27,4 @@ foreach ($path in $paths) {
 ```
 winget update
 ```
-![alt text](images/wingetupdate.png)
+![alt text](images/WingetUpdate.png)
