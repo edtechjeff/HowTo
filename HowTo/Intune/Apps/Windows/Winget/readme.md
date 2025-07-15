@@ -57,5 +57,3 @@ winget update
 ```
 ![alt text](images/WingetUpdate.png)
 
-### Install Application
-```
