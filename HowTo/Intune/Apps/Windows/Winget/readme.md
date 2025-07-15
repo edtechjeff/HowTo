@@ -1,6 +1,6 @@
 # Winget to Install applications in Intune
 
-## In the following documentation you will find examples of how you can install and detect applications via Winget. 
+## In the following folders you will find examples of how you can install and detect applications via Winget. 
 
 ## The basic script used as part of detection script
 
@@ -21,3 +21,10 @@ foreach ($path in $paths) {
 }
 ```
 
+## Winget Commands
+
+### Seach for applications that can be updated via Winget
+```
+winget update
+```
+![alt text](images/wingetupdate.png)
