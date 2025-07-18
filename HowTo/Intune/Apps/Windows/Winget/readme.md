@@ -57,3 +57,10 @@ winget update
 ```
 ![alt text](images/WingetUpdate.png)
 
+
+### Update all Applications
+```
+winget upgrade --all
+```
+
+
