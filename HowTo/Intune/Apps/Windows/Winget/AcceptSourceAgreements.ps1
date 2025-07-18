@@ -1,0 +1,1 @@
+winget list --accept-source-agreements
