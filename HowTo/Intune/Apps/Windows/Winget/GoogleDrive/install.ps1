@@ -1,5 +1,5 @@
 # Define the package ID for Zoom
-$packageId = "Zoom.Zoom"
+$packageId = "Google.GoogleDrive"
 $logFile = "C:\ProgramData\ZoomInstall-Winget.log"
 
 function Write-Log {

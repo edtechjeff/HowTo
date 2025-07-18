@@ -1,4 +1,4 @@
-$packageId = "Zoom.Zoom"
+$packageId = "Google.GoogleDrive"
 $logFile = "C:\ProgramData\ZoomUninstall-Winget.log"
 
 function Write-Log {
