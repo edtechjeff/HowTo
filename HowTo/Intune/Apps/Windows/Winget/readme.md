@@ -62,5 +62,5 @@ winget update
 ```
 winget upgrade --all
 ```
-
+![alt text](images/wingetupgradeall.png)
 
