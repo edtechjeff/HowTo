@@ -1,3 +1,6 @@
+# Script to pull all the ImmutableIDs for all users
+
+```powershell
 # Install and import the MSOnline module
 Install-Module -Name MSOnline -Force -AllowClobber
 Import-Module MSOnline
@@ -15,3 +18,4 @@ $Users | Export-Csv -Path "C:\Temp2\MsolUsersImmutableIDs.csv" -NoTypeInformatio
 
 # Write to Host
 Write-Host "ImmutableID export completed. File saved to C:\Temp2\MsolUsersImmutableIDs.csv"
+````
