@@ -1,5 +1,5 @@
 # Define the folder to scan (Change this to your target folder)
-$folderPath = "C:\SharedFolder"
+$folderPath = "C:\path_to_data"
 
 # Define output file
 $outputFile = "C:\Temp\Folder_Permissions.csv"
