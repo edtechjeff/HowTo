@@ -1,4 +1,4 @@
-# Script will detect if TLS 1.2 is enabled or not and not will enable it
+# Script will detect if TLS 1.2 is enabled or not and will enable
 
 ```powershell
 Function Get-ADSyncToolsTls12RegValue {
