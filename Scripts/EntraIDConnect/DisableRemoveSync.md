@@ -1,3 +1,5 @@
+# Instructions to Turn Off Directory Synchronization:
+
 1. Install Microsoft Graph PowerShell Modules:
 
     - Open PowerShell as an administrator and run:
@@ -41,8 +43,6 @@
         ```
 
     - It should now show Null (or nothing).
-
-# Instructions to Turn Off Directory Synchronization:
 
 6. Uninstall Azure AD Connect (Recommended First Step):
 
