@@ -10,7 +10,6 @@ Connect-MsolService
 
 # Get all users and their associated ImmutableID
 $Users = Get-MsolUser -All | Select-Object DisplayName, UserPrincipalName, ImmutableId
-
 $Users
 
 # Export the result to a CSV file
