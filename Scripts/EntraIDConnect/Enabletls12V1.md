@@ -1,4 +1,4 @@
-﻿# Enable TLS on new AD Connect Server
+﻿# Enable TLS 1.2 on new AD Connect Server
 
 ```powershell
 If (-Not (Test-Path 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319'))

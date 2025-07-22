@@ -1,4 +1,7 @@
-﻿Function Get-ADSyncToolsTls12RegValue
+﻿# Script to check if TLS 1.2 is enabled
+
+```powershell
+Function Get-ADSyncToolsTls12RegValue
 {
     [CmdletBinding()]
     Param
@@ -49,4 +52,4 @@ $regSettings += Get-ADSyncToolsTls12RegValue $regKey 'Enabled'
 $regSettings += Get-ADSyncToolsTls12RegValue $regKey 'DisabledByDefault'
 
 $regSettings
-
+```
