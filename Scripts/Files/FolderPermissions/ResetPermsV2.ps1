@@ -34,7 +34,7 @@ try {
     $defaultRules = @(
         @{ Group = "BUILTIN\Administrators"; Rights = "FullControl" },
         @{ Group = "NT AUTHORITY\SYSTEM"; Rights = "FullControl" },
-        @{ Group = "addman\sec_HARb_file_admin"; Rights = "Modify" }
+        @{ Group = "addman\sec_file_admin"; Rights = "Modify" }
     )
 
     foreach ($rule in $defaultRules) {
