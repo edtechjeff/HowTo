@@ -1,4 +1,4 @@
-# Script to enable TLS 1.2
+# Enable TLS 1.2 on new AD Connect Server V2
 ## ***Note: Updated version to handle changes better if already on the system***
 
 ```powershell
