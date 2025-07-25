@@ -25,7 +25,7 @@
 ![alt text](../../Assets/WDAC/image3.png)
 ---
 ### Here you will need to slide over Managed installer and also turn audit mode off. I would suggest Audit mode the first time just to cover yourself. Click Next
-![alt text](../../Assets/WDAC/image4.png)
+![alt text](../../Assets/WDAC/Image4.png)
 ---
 ### Here you will see all the rules and also where you can add additional rules
 ![alt text](../../Assets/WDAC/image5.png)
