@@ -19,49 +19,49 @@
 ![alt text](../../Assets/WDAC/Image1.png)
 ---
 ### Click next and leave the defaults
-![alt text](../../Assets/WDAC/Image2.png)
+![alt text](../../Assets/WDAC/image2.png)
 ---
 ### Here you have 3 options. My professional opinion is it goes from left to right most restrictive to least restrictive. I have worked with the different settings and I do feel like the Allow Microsoft Mode is a good place to start and go from there depending on your applications. These policies do have already built in allows that can make things easier.  Also in this link [here](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/design/example-appcontrol-base-policies) are some Microsoft pre-built policies to also try out. But for me I am going to build my own. Select the option you would like give the policy a location and name you would like to name it and click next.
-![alt text](../../Assets/WDAC/Image3.png)
+![alt text](../../Assets/WDAC/image3.png)
 ---
 ### Here you will need to slide over Managed installer and also turn audit mode off. I would suggest Audit mode the first time just to cover yourself. Click Next
-![alt text](../../Assets/WDAC/Image4.png)
+![alt text](../../Assets/WDAC/image4.png)
 ---
 ### Here you will see all the rules and also where you can add additional rules
-![alt text](../../Assets/WDAC/Image5.png)
+![alt text](../../Assets/WDAC/image5.png)
 ---
 ### Click on Add Custom
 ---
-![alt text](../../Assets/WDAC/Image6.png)
+![alt text](../../Assets/WDAC/image6.png)
 ---
 ### For this example we are going to do a Rule Type of Publisher. In the links provided it details about the different types. I am going to open it up a little bit and only need the Issuing CA and Publisher to match. Click Next 
-![alt text](../../Assets/WDAC/Image7.png)
+![alt text](../../Assets/WDAC/image7.png)
 ---
 ### Here is the result of what you just did, Click Next it will start to build the policy
-![alt text](../../Assets/WDAC/Image8.png)
+![alt text](../../Assets/WDAC/image8.png)
 ### Final screen you can now close the wizard
-![alt text](../../Assets/WDAC/Image9.png)
+![alt text](../../Assets/WDAC/image9.png)
 ---
 # Intune Policies
 ### Switch into Intune console and go into Endpoint Security > App Control for Business
 ### First thing you need to do is create an Managed Installer Policy. 
-![alt text](../../Assets/WDAC/Image10.png)
+![alt text](../../Assets/WDAC/image10.png)
 ---
 ### This policy there is no configuration, click on Add and go through the prompts. Let if finish and when you are done it should be ready.
 ### Click on App Control for Business tab
 <br>
 </br>
 
-![alt text](../../Assets/WDAC/Image11.png)
+![alt text](../../Assets/WDAC/image11.png)
 ---
 ### Click on Create Policy, give it a name and click next
-![alt text](../../Assets/WDAC/Image12.png)
+![alt text](../../Assets/WDAC/image12.png)
 ---
 ### Expand out App Control for Business, leave the one drop down box set to Enter xml Data and then click on select file. 
-![alt text](../../Assets/WDAC/Image13.png)
+![alt text](../../Assets/WDAC/image13.png)
 ---
 ### Browse to the policy you created and once you do the screen will look like this. Click Next, 
-![alt text](../../Assets/WDAC/Image14.png)
+![alt text](../../Assets/WDAC/image14.png)
 ---
 ### Click next on Scope tags and assign to your group you want to apply this policy to and click next and then create
 ---
@@ -75,44 +75,44 @@ Currently I have the policy setup to block
 
 ### Bring up the App Control Wizard but this time click on Policy Editor. 
 * For my setups I tend to modify the policy that I created and start to allow from there.
-![alt text](../../Assets/WDAC/Image15.png)
+![alt text](../../Assets/WDAC/image15.png)
 ---
 ### Click Browse and find your file you created
-![alt text](../../Assets/WDAC/Image16.png)
+![alt text](../../Assets/WDAC/image16.png)
 ---
 ### On this screen you do have the option to save it as a new file. I do not do this. What will happen is will add some version numbers to the end once you save it. I prefer this, click next and next again
-![alt text](../../Assets/WDAC/Image17.png)
+![alt text](../../Assets/WDAC/image17.png)
 ---
 ### Click on Add Custom in the upper right hand corner
-![alt text](../../Assets/WDAC/Image18.png)
+![alt text](../../Assets/WDAC/image18.png)
 ---
 ### You will get the following screen. The first one is what it looks like before you set any options
-![alt text](../../Assets/WDAC/Image19.png)
+![alt text](../../Assets/WDAC/image19.png)
 ---
 ### This is what it looks like after you set options. You have many ways of doing this. I usually do Publisher. Click Create Rule
 *NOTE: Make sure on the reference device has the same application version as the version you are deploying*
 <br>
-![alt text](../../Assets/WDAC/Image20.png)
+![alt text](../../Assets/WDAC/image20.png)
 ---
 ### It will look something like the following, click next
-![alt text](../../Assets/WDAC/Image21.png)
+![alt text](../../Assets/WDAC/image21.png)
 ---
 ### Its finished and if you note that the name and with a version number. Very important you keep track of version numbers. You can close down the Wizard.
-![alt text](../../Assets/WDAC/Image22.png)
+![alt text](../../Assets/WDAC/image22.png)
 ---
 ## Updating the Policy
 ### Go back into Intune > Endpoint Security > App Control for Business and click on the policy we are going to edit scroll down till you see the section called Configuration settings and click on Edit
-![alt text](../../Assets/WDAC/Image23.png)
+![alt text](../../Assets/WDAC/image23.png)
 ---
 ### On this screen, call me crazy, but I always manually remove the XML and then click on the folder icon to browse to the new file
-![alt text](../../Assets/WDAC/Image24.png)
+![alt text](../../Assets/WDAC/image24.png)
 ---
 ### Now its update and click review and save
-![alt text](../../Assets/WDAC/Image25.png)
+![alt text](../../Assets/WDAC/image25.png)
 ---
 ### Sync the device and give it few minutes for the policy to take effect. Once you do that and you try to open Putty, it will now open.
 
 # *Please Note: A reboot might be necessary the device to take full effect*
 
-![alt text](../../Assets/WDAC/Image15.png)
+![alt text](../../Assets/WDAC/image15.png)
 ---
