@@ -5,7 +5,7 @@ Get-MGDeviceManagementDetectedApp -All | ForEach-Object {
     $tmp = $_
     
     # Check if the detected app's display name contains "Google Drive"
-    if ($tmp.DisplayName -like "*Sophos*") {
+    if ($tmp.DisplayName -like "*Google*") {
         $result += (Get-MGDeviceManagementDetectedAppManagedDevice -DetectedAppId $_.id | Select-Object -Property @{Name="Device";Expression={$_.DeviceName}}, 
             @{Name="App";Expression={$tmp.DisplayName}}, 
             @{Name="Version";Expression={$tmp.Version}}, 
@@ -14,3 +14,5 @@ Get-MGDeviceManagementDetectedApp -All | ForEach-Object {
 }
 
 $result | Sort-Object -Property Device, App, Version | Out-GridView
+
+Disconnect-MgGraph

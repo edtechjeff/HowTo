@@ -1,13 +1,24 @@
-# Get a list of device in Entra ID and AutoPilot and export to CSV
+# Pulls EntrID,DeviceID,SerialNumber,AutoPilotID,DisplayName,ApproximateLastSignInDateTime,OperatingSystem,Make,Model
 
 # Import the required module
 Import-Module Microsoft.Graph
 
 # Define all required variables at the beginning
-$scopes = "Device.Read.All", "Group.ReadWrite.All"  # Adjust scopes as needed
+$scopes = @(
+    "Device.Read.All", 
+    "Group.ReadWrite.All", 
+    "DeviceManagementManagedDevices.Read.All"  # Needed for Intune managed devices
+)
 
 # Authenticate to Microsoft Graph
 Connect-MgGraph -Scopes $scopes
+
+# Create output folder if it doesn't exist
+$OutputFolder = "C:\Temp"
+if (-not (Test-Path $OutputFolder)) {
+    New-Item -Path $OutputFolder -ItemType Directory | Out-Null
+}
+$OutputFile = "$OutputFolder\FullDeviceList.csv"
 
 # Retrieve Entra ID devices
 $Devices = Get-MgDevice -All -Property DisplayName, DeviceId, Id, ApproximateLastSignInDateTime, OperatingSystem | 
@@ -18,25 +29,29 @@ $Devices = Get-MgDevice -All -Property DisplayName, DeviceId, Id, ApproximateLas
 $AutopilotDevices = Get-MgDeviceManagementWindowsAutopilotDeviceIdentity | 
     Select-Object SerialNumber, Id, AzureActiveDirectoryDeviceId
 
-# Join the data using AzureActiveDirectoryDeviceId to match with DeviceId
+# Retrieve Intune Managed Devices (to get make/model)
+$IntuneDevices = Get-MgDeviceManagementManagedDevice -All | 
+    Select-Object AzureADDeviceId, Manufacturer, Model
+
+# Join data
 $CombinedList = foreach ($device in $Devices) {
     $autopilot = $AutopilotDevices | Where-Object { $_.AzureActiveDirectoryDeviceId -eq $device.DeviceId }
-    
+    $intune = $IntuneDevices | Where-Object { $_.AzureADDeviceId -eq $device.DeviceId }
+
     [PSCustomObject]@{
-        EntraID                        = $device.Id  # Entra ID object ID
+        EntraID                        = $device.Id
         DeviceId                       = $device.DeviceId
         SerialNumber                   = $autopilot.SerialNumber
-        AutoPilotID                    = $autopilot.Id  # AutoPilot ID
+        AutoPilotID                    = $autopilot.Id
         DisplayName                    = $device.DisplayName
         ApproximateLastSignInDateTime  = $device.ApproximateLastSignInDateTime
         OperatingSystem                = $device.OperatingSystem
+        Make                           = $intune.Manufacturer
+        Model                          = $intune.Model
     }
 }
 
-# Define output file path
-$OutputFile = "C:\Temp\FullDeviceList.csv"
-
-# Export the result to CSV
+# Export to CSV
 $CombinedList | Export-Csv -Path $OutputFile -NoTypeInformation
 
 Write-Host "CSV export complete: $OutputFile"
