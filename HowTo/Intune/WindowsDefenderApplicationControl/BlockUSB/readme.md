@@ -40,6 +40,7 @@
 - Add the assignements to the desired device group
 - Click on Create
 
+- Your policy should look something like this. In my example below I have included 2 USB's that are allowed to be used
 ![alt text](images/fullpolicy.png)
 
 
