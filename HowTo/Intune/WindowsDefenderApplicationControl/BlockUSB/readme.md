@@ -1,60 +1,77 @@
-# Allow USB Thumb Drives while restricting others
+# ✅ Allow Specific USB Thumb Drives While Blocking All Others
 
-- Plug in your Thumb Drive
-- Opne up device manager
-- Expand Disk Drives
-- Right click on the thumb drive and click properties
-- Click on the Details tab
-- At the dropdown menu find the Hardware Ids
-    - Copy the first line and save in notepad or something
+## 1. Gather USB Device Information
 
-![alt text](images/hardwareid.png)
+1. Plug in your USB thumb drive.
+2. Open **Device Manager**.
+3. Expand **Disk Drives**.
+4. Right-click on the thumb drive and select **Properties**.
+5. Go to the **Details** tab.
+6. In the dropdown, select **Hardware Ids**.
+    - Copy the **first line** and save it somewhere (e.g., Notepad).
 
-- Next change the drop down and find the Class Guid
-    ***Note: You only need to do this Class Guid ID one time further down the config. All USB's thumb drives use the same Class Guid***
-    - copy the whole line and save in notepad or something
+![Hardware ID Example](images/hardwareid.png)
 
-![alt text](images/classguid.png)
+7. In the same dropdown, select **Class Guid**.
+    > **Note:** All USB thumb drives typically share the same Class Guid. You only need to capture this once.
 
-- Open up the Intune Portal
-- Go to Devices > Windows > Configuration and click on create new policy
-    - Platform  - Windows 10 and Later
-    - Profile Type  - Settings Catalog
-    - Name: Allow USB Drives
-    - Description: Policy to enable the use of specific USB drives
-- Click Create
-- Click on Add Settings
-- Find the following settings
-    - Allow installation of devices that match any of these device IDs
-    - Apply layered order of evaluation for Allow and Prevent device installation policies across all device match criteria
-    - Prevent installation of devices using drivers that match these device setup classes
-        - ***Note: I will state for the record the last one honestly sounds like it will block them, but it does not when used in conjunction with the Apply Layered and Allow Installations.***
-- At this point your policy should look like the following
-    ***Important:Enable all the settings and also make sure you set "Also apply to matching devices that already installed" Set that to True***
+    - Copy the full line and save it as well.
 
-![alt text](images/startpolicy.png)
+![Class Guid Example](images/classguid.png)
 
-- From your gathered information your policy now filled in with the Hard IDs and also the Class Guid should look something like the following
-- Click next
-- Click next, unless you want to use scope tags
-- Add the assignements to the desired device group
-- Click on Create
+---
 
-- Your policy should look something like this. In my example below I have included 2 USB's that are allowed to be used
-![alt text](images/fullpolicy.png)
+## 2. Create Intune Policy to Allow Specific USB Devices
 
+1. Open the **Microsoft Intune** portal.
+2. Go to **Devices > Windows > Configuration Profiles** and click **Create Policy**.
+3. Choose the following:
+    - **Platform:** Windows 10 and later
+    - **Profile Type:** Settings Catalog
+    - **Name:** `Allow USB Drives`
+    - **Description:** `Policy to enable use of specific USB drives while blocking all others`
+4. Click **Create**.
+5. Click **Add Settings**.
+6. Search for and add the following settings:
+    - ✅ **Allow installation of devices that match any of these device IDs**
+    - ✅ **Apply layered order of evaluation for Allow and Prevent device installation policies across all device match criteria**
+    - ✅ **Prevent installation of devices using drivers that match these device setup classes**
 
+> **Important:**  
+> The "Prevent installation..." setting may sound like it blocks the devices, but when used together with the layered evaluation and specific allow list, **it does not block allowed devices**.
 
+---
 
+## 3. Configure the Policy
 
+1. Enter the previously gathered **Hardware ID** under the *Allow installation...* section:
+    ```text
+    USBSTOR\DiskSanDisk_Cruzer_Blade____2.01
+    ```
 
+2. Enter the **Class Guid** under the *Prevent installation...* section:
+    ```text
+    {36FC9E60-C465-11CF-8056-444553540000}
+    ```
 
+> **Important:**  
+> Enable **all three** settings.  
+> Also ensure you set **"Also apply to matching devices that are already installed"** to `True`.
 
+![Start Policy Example](images/startpolicy.png)
 
+---
 
+## 4. Finalize and Assign the Policy
 
+1. Click **Next** to skip Scope Tags (unless needed).
+2. Assign the policy to the appropriate device group.
+3. Click **Create**.
 
-USBSTOR\DiskSanDisk_Cruzer__________7.01
-{4d36e967-e325-11ce-bfc1-08002be10318}
+---
 
+## 5. Resulting Policy Example
 
+Your completed policy with two allowed USB devices may look like this:
+
+![Full Policy Example](images/fullpolicy.png)
