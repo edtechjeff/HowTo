@@ -75,3 +75,14 @@
 Your completed policy with two allowed USB devices may look like this:
 
 ![Full Policy Example](images/fullpolicy.png)
+
+## Bonus Content
+
+I found this additional setting that can also be part of your solution. 
+
+**Allow administrators to override Device Installation Restriction policies**
+
+![Allow Admin](images/allowadmin.png)
+
+With this setting, if a user is a local administrator of the device then they can install the required software.
+
