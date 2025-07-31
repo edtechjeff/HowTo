@@ -1,28 +1,36 @@
-# Intune Custom Compliance Policies
+# 🛡️ Intune Custom Compliance Policies
 
-Below you will find the basic steps for creating  a custom compliance policy. Its pretty basic how to do it, but you may ask, Why would I need one? Good question. In the following example we have created a standard policy but for some reason the Microsoft Defender Antimalware and also the Real-time protection is showing up as Not compliant. 
+This guide walks you through creating a **custom compliance policy** in Microsoft Intune.  
 
-![alt text](Assets/1.png)
+---
 
-Why is that? In this environment we are using a third party anti virus and so its not registering correctly. How do we address this? Custom Compliance Policy. 
+## ❓ Why Use a Custom Compliance Policy?
 
-In this repo you will find some examples. You will need 2 items. 
+Sometimes default compliance policies report settings like **Microsoft Defender Antimalware** or **Real-Time Protection** as **Not Compliant**—even when a third-party antivirus is used.
 
-1. JSON File, used to define the variables that will be checked for and displayed in Custom Compliance
-2. PowerShell script that will be used to query that device
+Example:
 
-Once you have those files it is pretty easy. I do want to talk about those files
+![Defender Non-Compliant](Assets/1.png)
 
-1. PowerShell
-    - In the following example I am using the PowerShell command Get-MpComputerStatus to pull if 
-        - Realtime-protection is enabled
-        - Anti Malware is enabled
-        - Anti Spyware is enabled
-        - Anti Virus is enabled
+**Why?**  
+Third-party AV solutions may not register properly with Windows Security Center. That’s where a **Custom Compliance Policy** comes in.
 
-There are many different methods to pull this information, you can pull it from a file, or folder or registry key. What ever method you can use with PowerShell to pull that information and then put that information into a readable JSON format.
+---
 
-```
+## 🧩 What You’ll Need
+
+To create a custom compliance policy, you need:
+
+1. **PowerShell script** — Queries compliance info from the device.
+2. **JSON file** — Defines what values should be considered compliant.
+
+---
+
+## 🧪 PowerShell Script Example
+
+This example uses `Get-MpComputerStatus` to check Defender settings:
+
+```powershell
 # Get the Defender status values
 $mpStatus = Get-MpComputerStatus
 $RTPEnabled = $mpStatus.RealTimeProtectionEnabled
@@ -40,147 +48,134 @@ $output = @{
 
 # Convert to compressed JSON
 return $output | ConvertTo-Json -Compress
-
 ```
-From a script breakdown 
-1. First block is creating the variables to be used and what command to be used
-2. Second block is creating the output based on the commands ran and also these same variables will be used in the JSON and will be what is displayed when you are looking at the compliance results in Intune
-3. To me, almost the most important, this is out-putting the commands and the variables to a readable JSON format.
 
-Now you have your PowerShell script created its time for the JSON
+### Breakdown
+1. **Collects data** via PowerShell.
+2. **Outputs values** into JSON format.
+3. These values match the **SettingName** fields in your JSON file.
 
-I will be totally honest. I am not a JSON person and I used ChatGPT to assist this with me. That got me almost there but I still had many hours to look at the output of the JSON and figure out what was really needed. This is a partial of the full JSON file called AntiVirusCheck.json located in the repo. I want to break down the sections. Once I figured out the sections, it really made it easier for me to work with. 
+---
 
-```
+## 📄 JSON File Sample
+
+Here’s a simplified version of `AntiVirusCheck.json`:
+
+```json
 {
-    "Rules": [
-      {
-        "ruleType": "script",
-        "SettingName": "RTPEnabled",
-        "Operator": "IsEquals",
-        "Operand": "true",
-        "DataType": "Boolean",
-        "MoreInfoUrl": "https://google.com",
-        "RemediationStrings": [
-          {
-            "Language": "en_US",
-            "Title": "This machine has no active RealtimeProtection.",
-            "Description": "To continue to use this device you have to activate RealtimeProtection"
-          }
-        ]
-      }
-    ]
+  "Rules": [
+    {
+      "ruleType": "script",
+      "SettingName": "RTPEnabled",
+      "Operator": "IsEquals",
+      "Operand": "true",
+      "DataType": "Boolean",
+      "MoreInfoUrl": "https://google.com",
+      "RemediationStrings": [
+        {
+          "Language": "en_US",
+          "Title": "This machine has no active RealtimeProtection.",
+          "Description": "To continue to use this device you have to activate RealtimeProtection"
+        }
+      ]
+    }
+  ]
 }
+```
 
-  ```
+### JSON Explanation
+- `ruleType`: Use `"script"` when value comes from PowerShell.
+- `SettingName`: Matches key from PowerShell output.
+- `Operator`: Logical check (e.g., `IsEquals`).
+- `Operand`: Expected value (e.g., `"true"`).
+- `DataType`: Should match the actual value type.
+- `RemediationStrings`: Message shown to user, localized by language.
 
-- ruleType = Important is the rule type since we are using a script to pull the information I put in script
-- SettingName = This is equal to the name that you put in the PowerShell script and will also be displayed in the compliance report
-- Operator = This is to set what we are looking for. There are other values that can be used
-- Operand = We are looking for a true value here so that is what that is used for
-- DataType = Since we are doing JSON this is the value type that is needed
-- MoreInfoURL = Can be used to direct users to the correct website or what ever they need to do. I left pretty generic for now
-- RemediationStrings = This area is kind of interesting, You can even put multiple languages in here depending on your use case
-    - Language = en_US
-    - Title = gives a title to the message
-    - Description = gives the message to the user if you have it setup to
+---
 
-So pretty easy once you understand what you need. There are other variables that can be used within the JSON, but I kept it to this. 
+## 🧭 Steps to Create the Policy in Intune
 
-Once you have your PowerShell and JSON file its time to apply the policy. Lets start creating one
+### Step 1: Sign in to Microsoft Endpoint Manager
 
-Follow these steps to create a custom compliance policy in Microsoft Intune:
+1. Go to [Microsoft Endpoint Manager](https://endpoint.microsoft.com/).
+2. Sign in with your admin credentials.
 
-## Step 1: Sign in to Microsoft Endpoint Manager Admin Center
-1. Open a web browser and go to [Microsoft Endpoint Manager Admin Center](https://endpoint.microsoft.com/).
-2. Sign in with your administrator credentials.
+---
 
-## Step 2: Navigate to Compliance Policies
-1. In the left-hand navigation pane, select **Devices**.
-2. Under **Manage Devices**, select **Compliance**.
+### Step 2: Add PowerShell Script
 
-## Step 3: Click on the Scripts tab
-1. This section is where you import your PowerShell script
+1. Go to **Devices** > **Compliance Policies**.
+2. Click on the **Scripts** tab.
+3. Click **Add** > **Windows 10 and later**.
 
-![alt text](Assets/2.png)
+![Step 2a](Assets/2.png)
+![Step 2b](Assets/3.png)
 
-2. Click Add and select Windows 10 and later
+4. Name the script and paste in your PowerShell code.
 
-![alt text](Assets/3.png)
+![Step 2c](Assets/4.png)
+![Step 2d](Assets/5.png)
 
-3. Give the script and name fill in what ever else you want and click next
+5. Click **Create**.
 
-![alt text](Assets/4.png)
+![Step 2e](Assets/6.png)
 
-4. Paste in the script and leave the rest of the boxes as it and click next
+---
 
-![alt text](Assets/5.png)
+### Step 3: Create the Compliance Policy
 
-5. Click Create
+1. Back under **Policies**, click **Create Policy**.
 
-![alt text](Assets/6.png)
+![Step 3a](Assets/7.png)
+![Step 3b](Assets/8.png)
+![Step 3c](Assets/9.png)
 
-## Step 4: Click back on the Policies Tab
+2. Expand **Custom Compliance**, set it to **Required**.
+3. Select the PowerShell script you added earlier.
 
-1. Click on Create Policy
+![Step 3d](Assets/10.png)
+![Step 3e](Assets/11.png)
 
-![alt text](Assets/7.png)
+4. Browse and attach your JSON file.
 
-2. Select the platform and click create
+![Step 3f](Assets/12.png)
+![Step 3g](Assets/13.png)
 
-![alt text](Assets/8.png)
+5. Click through **Next** twice, assign the policy to a group, and click **Create**.
 
-3. Fill in the information
+![Step 3h](Assets/14.png)
+![Step 3i](Assets/15.png)
+![Step 3j](Assets/16.png)
 
-![alt text](Assets/9.png)
+---
 
-4. Expand the Custom Compliance section and slide it over to required
+## 📊 Step 4: Monitor Compliance
 
-![alt text](Assets/10.png)
+1. Go to **Devices** > **Monitor** > **Compliance policies**.
+2. Review the compliance state for each device.
 
-5. Select the PowerShell script and click select
+---
 
-![alt text](Assets/11.png)
+## 🔍 Extra: Troubleshooting and Logs
 
-6. Click on the folder to browse to your JSON file
+After assignment:
 
-![alt text](Assets/12.png)
+- Navigate to the device in Intune and view compliance state.
+- Check local logs on the device at:
 
-7. At this point if you have the correct JSON file and the script your screen should look like this. **Please note that all the fields that you created are displayed with their expected values**
+```text
+C:\ProgramData\Microsoft\IntuneManagementExtension\Logs\HealthScripts.log
+```
 
-![alt text](Assets/13.png)
+Use a viewer like **CMTrace** to analyze.
 
-8. Click Next
+![HealthScripts Log](Assets/17.png)
+![Log Output Example](Assets/18.png)
 
-![alt text](Assets/14.png)
+---
 
-9. Click Next again
+## 🎯 Final Thoughts
 
-![alt text](Assets/15.png)
+Creating a custom compliance policy can be tedious at first—but once understood, it’s **incredibly powerful**. You can enforce nearly any condition you can script in PowerShell.
 
-10. Add the assignments to the correct group and click next
-
-![alt text](Assets/16.png)
-
-11. Click Create
-
-
-## Step 5: Monitor Compliance
-1. After the policy is deployed, monitor compliance status under **Devices > Monitor > Compliance policies**.
-
-You have successfully created a custom compliance policy in Intune!
-
-## Extra
-
-After you have applied it to the group and the compliance has ran, you can then browse to the device in Intune and look at the compliance results. From this screen you can tell that it all reports back good except for Real-Time Protection. Guess we need to look into that. 
-
-![alt text](Assets/17.png)
-
-Also if you want to monitor things at the client level you can view the logs at 
-- C:\ProgramData\Microsoft\IntuneManagementExtension\Logs\HealthScripts.log
-
-I would use some type of log viewer like CMTrace or what ever you have and look for those values. As you can see from the screen shot that it did run and the values returned
-
-![alt text](Assets/18.png)
-
-I hope this helped you. I know I spent allot of time to figure this out and to be honest its well worth it. There are many use cases that you can use for this, again like I always say its only limited to your imagination.  Have fun out there. 
+> It’s only limited by your imagination. Have fun out there.
