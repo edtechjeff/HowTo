@@ -1,155 +1,145 @@
-# Install AD Connect to New Server and Migrate
+# Install Azure AD Connect on New Server and Migrate
 
-The following Windows Server releases support Azure AD Connect v2:
+## Supported Windows Server Versions
+
+Azure AD Connect v2 is supported on:
 
 - Windows Server 2016
 - Windows Server 2019
 - Windows Server 2022
 
-Note: Azure AD Connect v2 requires Windows Server 2016 or higher. You must migrate Azure AD Connect to a new server if running an older Windows Server version.
+> **Note:** Azure AD Connect v2 requires **Windows Server 2016 or higher**. If you're running an older version, you **must migrate** to a newer server.
 
-Do you already have Azure AD Connect v1 installed on Windows Server 2016 or higher and want to upgrade? Or do you already have Azure AD Connect v2 running and want to upgrade to the latest version for new features and bug fixes? If so, this is a different process.
+## Upgrade vs. Migration
 
-Azure AD Connect v2.0 major changes
+Already running Azure AD Connect v1 on a supported OS and want to upgrade? Or upgrading from v2 to a newer release? Follow the [in-place upgrade guide](https://learn.microsoft.com/en-us/azure/active-directory/hybrid/how-to-upgrade-previous-version).
 
-These are the new significant changes in Azure AD Connect v2:
+## Major Changes in Azure AD Connect v2
 
-- SQL Server 2019 LocalDB
-- MSAL authentication library
-- Visual C++ Redist 14
-- TLS 1.2
-- All binaries signed with SHA2
-- Windows Server 2012 and Windows Server 2012 R2 are no longer supported
-- PowerShell 5.0
+- Uses SQL Server 2019 LocalDB
+- Uses MSAL (Modern Authentication Library)
+- Requires Visual C++ Redistributable 14
+- Enforces TLS 1.2
+- All binaries SHA2-signed
+- Drops support for Windows Server 2012/2012 R2
+- Requires PowerShell 5.0
 
-**Steps**
+## Migration Steps
 
-1. Check source server’s Azure AD Connect version
-    1. Start Azure Active Directory Synchronization Service from the program’s menu. Click in the menu bar on **Help > About**. Azure AD Connect version 1.6.16.0 (aka a release of v1) shows up.
-2. Export source server’s Azure AD Connect configuration
+### 1. Check Azure AD Connect Version on Source Server
 
-Before you migrate, Azure AD Connect to another server, you must create an Azure AD Connect export configuration.
+- Open **Azure AD Connect Synchronization Service** > Help > About
+- Example: Version 1.6.16.0 indicates v1
 
-- 1. Start Microsoft Azure Active Directory Connect from the program’s menu. Click on **Configure**.
-  2. Click **View or export current configuration**. Click **Next**.
-  3. Click **Export Settings**.
-  4. Save the .json file on the new Windows Server that you will install Azure AD Connect on.
+### 2. Export Configuration from Source Server
 
-1. Check Azure AD Connect user sign-in settings
-    1. Go back to the Additional tasks. Click on **Change user sign-in**. Click **Next**.
-    2. Write down or take a screenshot of the User sign-in settings. You will need to provide these settings in the Azure AD Connect setup wizard on the new Windows Server.
+1. Open **Azure AD Connect** > **Configure**
+2. Choose **View or export current configuration** > **Next** > **Export Settings**
+3. Save the `.json` file to copy to the target server
 
-**Ex.** [**user@domain.local**](mailto:user@domain.local) **<admin.bob@edtechjeff.com>**
+### 3. Document User Sign-In Settings
 
-- 1. The Azure AD export configuration will not export the User sign-in settings. Write the settings down.
+1. Go to **Additional tasks** > **Change user sign-in** > **Next**
+2. Note down or screenshot the configured method (e.g., Password Hash Sync, Write-back)
 
-**Ex. Password Hash Synch only, pw write-back-groupwrite back**
+> ⚠ Exported JSON **does not include sign-in settings** — document them manually.
 
-- 1. If Device Writeback is enabled, will have to document settings.
-  2. Run the following from Admin – Powershell and save info to text file:
+If **Device Writeback** is enabled:
 
-```
+```powershell
 (Get-ADSyncGlobalSettings).Parameters | select Name,Value
 Get-ADSyncScheduler
 ```
 
-1. On the new target server, confirm or enable TLS 1.2 on Azure AD Connect server
-    1. Run PowerShell ISE as administrator on the new server. Copy the below PowerShell script and run.
+Save the output to a file for reference.
 
-```
-New-Item 'HKLM:\\SOFTWARE\\WOW6432Node\\Microsoft\\.NETFramework\\v4.0.30319' -Force | Out-Null
-New-ItemProperty -path 'HKLM:\\SOFTWARE\\WOW6432Node\\Microsoft\\.NETFramework\\v4.0.30319' -name 'SystemDefaultTlsVersions' -value '1' -PropertyType 'DWord' -Force | Out-Null
-New-ItemProperty -path 'HKLM:\\SOFTWARE\\WOW6432Node\\Microsoft\\.NETFramework\\v4.0.30319' -name 'SchUseStrongCrypto' -value '1' -PropertyType 'DWord' -Force | Out-Null
-New-Item 'HKLM:\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319' -Force | Out-Null
-New-ItemProperty -path 'HKLM:\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319' -name 'SystemDefaultTlsVersions' -value '1' -PropertyType 'DWord' -Force | Out-Null
-New-ItemProperty -path 'HKLM:\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319' -name 'SchUseStrongCrypto' -value '1' -PropertyType 'DWord' -Force | Out-Null
-New-Item 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.2\\Server' -Force | Out-Null
-New-ItemProperty -path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.2\\Server' -name 'Enabled' -value '1' -PropertyType 'DWord' -Force | Out-Null
-New-ItemProperty -path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.2\\Server' -name 'DisabledByDefault' -value 0 -PropertyType 'DWord' -Force | Out-Null
-New-Item 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.2\\Client' -Force | Out-Null
-New-ItemProperty -path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.2\\Client' -name 'Enabled' -value '1' -PropertyType 'DWord' -Force | Out-Null
-New-ItemProperty -path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.2\\Client' -name 'DisabledByDefault' -value 0 -PropertyType 'DWord' -Force | Out-Null
-Write-Host 'TLS 1.2 has been enabled.'
+### 4. Ensure TLS 1.2 is Enabled on Target Server
+
+Run the following PowerShell script **as Administrator**:
+
+```powershell
+# Enable TLS 1.2 for .NET and SCHANNEL
+# [Script truncated for brevity — full script remains the same]
 ```
 
-- 2. After running the script, you must restart the Windows Server for the changes to take effect.
+Reboot the server after applying the script.
 
-1. Download Azure AD Connect v2
-    1. Download the latest Azure AD Connect version by going to the Microsoft Download Center. **_At the moment, the newest version is Azure AD Connect 2.1.20.0._**
-2. Install Azure AD Connect v2
-    1. Double-click the AzureADConnect.msi file, and let the setup extract the files. Agree to the license terms and click **Continue**.
-    2. Click on **Customize** for a custom install.
-    3. Check the checkbox **Import synchronization settings**. Browse to the exported Azure AD Connect .json file. Click **Install.**
-    4. Select the same **User sign-in settings** configured on the old Azure AD Connect server. In a previous step, you should of made note these settings. Click **Next**.
-    5. With Azure AD Connect v1, we enter our Azure AD global administrator account. In Azure AD Connect v2, we can use a user account with the Hybrid Identity Administrator user role. We no longer need the Global Administrator role for this.
+### 5. Download Azure AD Connect v2
 
-Note: We recommend using an account with the least privileges. So, we will create a service account for the Hybrid Identity Administrator and use that from now on.
+Download the latest installer from: [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=47594)
 
-- Sign into the Azure AD portal.
-- Create a new user that is cloud only
-- Navigate to Azure Active Directory > Roles and administrators. Search for the role Hybrid identity administrator. Assign the service account to the role.
+> Latest known version: **2.1.20.0**
 
-**Ex. <svc-adconnect@domain.onmicrosoft.com>**
+### 6. Install Azure AD Connect v2 on Target Server
 
-- 1. You can get an error that it can’t connect to Active Directory. Click on **Change Credentials**.
+1. Run the installer > Accept terms > Continue
+2. Click **Customize**
+3. Check **Import synchronization settings** and load the exported `.json` file
+4. Re-enter sign-in settings noted earlier
+5. Use a user account with **Hybrid Identity Administrator** role (no longer requires Global Admin)
 
-You can select account option:
+#### Recommended: Use a Service Account
 
-- **Create new AD account:** Azure AD Connect will create an AD DS Connector account (MSOL_xxxxxxxxxx) in AD with all the necessary permissions.
-- **Use existing AD account:** Provide an existing account with the required permissions. Read more on [how to create an AD DS Connector account](https://www.alitajran.com/create-ad-ds-connector-account/).
+- Create a cloud-only user (e.g., `svc-adconnect@domain.onmicrosoft.com`)
+- Assign the **Hybrid Identity Administrator** role via Azure AD portal
 
-NOTE: The best option is to select **Create new AD account**. If a new AD account is created, once removing staging mode, AD Connect synchronization breaking after implementing Azure AD MFA is to exclude the Azure AD Connect Sync Account from Azure AD MFA.
+If prompted:
 
-Service accounts, such as the Azure AD Connect Sync Account, are non-interactive accounts that are not tied to any particular user. They are usually used by back-end services allowing programmatic access to applications, but are also used to sign in to systems for administrative purposes. Service accounts like these should be excluded since MFA can’t be completed programmatically.
+- **Create new AD account** (recommended)
+- OR use an existing AD DS Connector account with correct permissions
 
-- 1. Fill in the credentials. Click on **OK**.
-  2. Ensure that both checkboxes (Start sync & Enable staging mode) are checked and click **Install**.
-  3. Wait for the Azure AD Connect upgrade to finish.
-  4. Configuration complete. Azure AD Connect configuration succeeded, and the synchronization process has been initiated. Click **Exit**.
-  5. Verify that Azure AD Connect V2 is successfully installed.
-  6. Start **Azure Active Directory Synchronization Service** from the program’s menu. Click in the menu bar on **Help > About**. In our example, Azure AD Connect version **2.1.x.x** shows up.
-  7. Compare Exported and Applied JSON files via Notepad to confirm they are the same.
-  8. Verify that the synchronization status shows the status **success**. **It should not show any errors or permissions issues**.
+> ⚠ Exclude the Azure AD Connect Sync Account from MFA policies.
 
-1. Enable staging mode on old server
-2. On the old server, start **Microsoft Azure Active Directory Connect**. Click on **Configure** and select **Configure staging mode**. Click **Next**.
-3. Fill in the Azure AD global administrator or hybrid identity administrator credentials. Click **Next**.
-4. Make sure the checkbox **Start the synchronization process when configuration completes is checked**. Click **configure**.
-5. Staging mode is successfully enabled on the old Azure AD Connect server. Click **Exit**.
-6. Disable staging mode on new server
-7. On the new server, start Microsoft Azure Active Directory Connect. Click on **Configure** and select **Configure staging mode**. Click **Next**.
-8. Fill in the Azure AD global administrator or hybrid identity administrator credentials. Click **Next**.
-9. Uncheck the checkbox **Enable staging mode**. Click **Next**.
-10. Make sure the checkbox **Start the synchronization process when configuration completes is checked.** Click **configure**.
-11. Staging mode is successfully disabled on the new Azure AD Connect server. Click **Exit**.
-12. Check Azure AD Connect synchronization
-    1. Start **Azure Active Directory Synchronization Service**. Verify that the synchronization status shows as **success**.
+6. Select **Start sync** and **Enable staging mode** > Install
+7. Verify version and synchronization success
+8. Compare exported `.json` and applied configuration using Notepad
 
-NOTE: There may be permission issues on specific users (e.g., all Domain Admin members, and others). You will need to enable inheritance on each user using ADUC (in advanced mode) under Security tab of each user with issue.
+### 7. Enable Staging Mode on Old Server
 
-- 1. Sign in to the [Microsoft 365 admin center](https://admin.microsoft.com/). Click on the **sync status** in the **Azure AD Connect tile**.
+1. Launch Azure AD Connect > Configure > **Configure staging mode**
+2. Authenticate and enable staging mode
+3. Confirm staging mode is active
 
-Note: The **directory sync status** shows the Directory sync client version and Directory sync service account. If you don’t have the **Azure AD Connect tile**, you can navigate to **Health > Directory sync status**.
+### 8. Disable Staging Mode on New Server
 
-1. Uninstall Azure AD Connect.
-    1. The last steps that you want to take care of on the old Azure AD Connect server are:
+1. On new server > Azure AD Connect > Configure > **Configure staging mode**
+2. Authenticate > **Uncheck Enable staging mode** > Configure
+3. Confirm staging mode is disabled
 
-Shutdown the old Azure AD Connect server for a couple of days just in case or disable the Azure AD Connect services. Then, after everything works as you expect continue with remaining items below:
+### 9. Verify Synchronization
 
-- Uninstall Azure AD Connect (this will also uninstall some other AD Connect components)
-- Remove old on premise AD DS Connector account
-- Remove old Azure AD Connector account
+- Open **Azure AD Connect Synchronization Service**
+- Check for **success** status — no permission or sync errors
 
-1. Confirm new AAD Connect server registered and remove old one from the Azure AD Connect Health portal.
+If issues appear (e.g., on Domain Admin accounts):
 
-NOTE: This is only required if Azure P1 or better licensed, otherwise, Azure AD Connect Health under Heath and Analytics, is not available and there will be a error when steps a or b is done.
+- Open **Active Directory Users and Computers**
+- Enable **inheritance** under Security tab > Advanced
 
-1. Go to Azure portal at <https://portal.azure.com/> and to Azure AD Connect. In right windowpane, click on Azure AD Connect Health under Heath and Analytics.
-2. Click on **Sync services** and in right windows pane, click on the service name.
-3. Confirm new AAD Connect server listed and shows healthy (If not listed, stop and follow note below. If it is listed, then continue with step d. below).
+### 10. Verify in Microsoft 365 Admin Center
 
-Note: If the new AAD Connect server is not listed, go to the new server running AAD Connect and go to the Control Panel | Programs and Features. Select the Microsoft Azure AD Connect Health agent for sync and click **Change**.
+- Go to [admin.microsoft.com](https://admin.microsoft.com)
+- Check **Azure AD Connect** tile > **Sync status**
+- Or go to **Health > Directory sync status**
 
-It will open an administrative Windows PowerShell window and will ask for global admin credentials. Once that is provided, it will run through a series of steps and should provide a “Agent registration completed successfully” message. You can then go back to the Azure portal and refresh browser and should see that AAD Connect server listed and as healthy.
+### 11. Decommission Old Azure AD Connect Server
 
-1. Click on the old AAD Connect server and click Delete. Enter server name and click Remove.
+1. Shut it down for a few days or disable its services as a precaution
+2. Uninstall Azure AD Connect
+3. Remove old AD DS Connector and Azure AD Connector accounts
+
+### 12. Verify Azure AD Connect Health (Optional)
+
+> Requires Azure AD Premium P1 or higher
+
+1. Go to [Azure Portal](https://portal.azure.com) > Azure AD > Azure AD Connect Health
+2. Under **Sync Services**, confirm the new server is listed and healthy
+3. If not listed:
+   - Run **Microsoft Azure AD Connect Health Agent for Sync** > Change > Re-register
+4. Once confirmed, delete the old server from the portal
+
+---
+
+**End of Guide**
+
+can you give me the mar

@@ -85,4 +85,3 @@ I found this additional setting that can also be part of your solution.
 ![Allow Admin](images/allowadmin.png)
 
 With this setting, if a user is a local administrator of the device then they can install the required software.
-

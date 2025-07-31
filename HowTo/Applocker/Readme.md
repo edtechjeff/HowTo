@@ -1,65 +1,95 @@
-# How to Create an AppLocker Policy in Intune Using Custom OMA-URI
+# 🚫 How to Deploy AppLocker Policy via Intune with Custom OMA-URI
 
-Follow these steps to create and deploy an AppLocker policy using a custom OMA-URI in Microsoft Intune:
+This guide outlines how to create and deploy an AppLocker policy using a **custom OMA-URI** in **Microsoft Intune**.
 
-## Prerequisites
-- Access to the Microsoft Endpoint Manager admin center.
-- Appropriate permissions to create and assign policies in Intune.
-- A valid XML file defining the AppLocker policy.
+---
 
-## Steps
+## ✅ Prerequisites
 
-### 1. Open the Microsoft Endpoint Manager Admin Center
-1. Navigate to [Microsoft Endpoint Manager Admin Center](https://endpoint.microsoft.com/).
-2. Sign in with your administrator credentials.
+Before you begin, ensure:
+
+- You have access to the [Microsoft Endpoint Manager admin center](https://endpoint.microsoft.com/).
+- Your account has permissions to create and assign Intune policies.
+- You’ve prepared a valid, **well-formatted AppLocker XML policy**.
+
+---
+
+## 🛠️ Step-by-Step Instructions
+
+### 1. Sign in to Endpoint Manager
+
+1. Go to [Microsoft Endpoint Manager Admin Center](https://endpoint.microsoft.com/).
+2. Sign in with your administrator account.
+
+---
 
 ### 2. Create a New Configuration Profile
-1. In the left-hand menu, select **Devices**.
-2. Under **Policy**, click **Configuration profiles**.
-3. Click **+ Create profile**.
 
-### 3. Configure the Profile
-1. In the **Platform** dropdown, select **Windows 10 and later**.
-2. In the **Profile type** dropdown, select **Custom**.
-3. Click **Create**.
+1. Navigate to **Devices** > **Configuration profiles**.
+2. Click **+ Create profile**.
+3. Choose:
+   - **Platform**: `Windows 10 and later`
+   - **Profile type**: `Custom`
+4. Click **Create**.
 
-### 4. Add Custom OMA-URI Settings
-1. In the **Configuration settings** section, click **Add**.
-2. Fill in the following fields:
-    - **Name**: Enter a descriptive name (e.g., "AppLocker Policy").
-    - **Description**: Optionally, provide a description of the policy.
-    - **OMA-URI**: Enter the OMA-URI path: `./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/EXEGroup/EXE/Policy`.
-    - **Data type**: Select **String**.
-    - **Value**: Paste the XML content of your AppLocker policy.
+---
+
+### 3. Define OMA-URI Setting
+
+1. In the **Configuration settings** section, click **+ Add**.
+2. Fill out the fields as follows:
+
+   | Field        | Value                                                                 |
+   |--------------|-----------------------------------------------------------------------|
+   | **Name**     | AppLocker Policy (or any descriptive name)                           |
+   | **Description** | Optional description of the policy                                 |
+   | **OMA-URI**  | `./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/EXEGroup/EXE/Policy` |
+   | **Data type**| `String`                                                              |
+   | **Value**    | Paste the full XML contents of your AppLocker policy                 |
+
 3. Click **Save**.
 
-### 5. Assign the Policy
-1. Click **Next** to proceed to the **Assignments** section.
-2. Select the groups or devices to which you want to apply the policy.
+---
+
+### 4. Assign the Policy
+
+1. Click **Next** to proceed to **Assignments**.
+2. Assign the policy to targeted **groups** or **devices**.
 3. Click **Next**.
 
-### 6. Review and Create
-1. Review the settings you configured.
-2. Click **Create** to save and deploy the policy.
+---
 
-## Notes
-- Ensure the XML file is properly formatted and validated before uploading.
-- Test the policy on a small group of devices before deploying it broadly.
-- Use the **Audit only** mode in the XML to monitor the impact of the policy without enforcing it.
+### 5. Review + Create
 
-## Additional Resources
-- [Microsoft Documentation on AppLocker](https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker-overview)
-- [OMA-URI Settings in Intune](https://learn.microsoft.com/en-us/mem/intune/configuration/custom-settings-windows)
-- [AppLocker Policy XML Reference](https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker/create-applocker-policies)
+1. Review your configuration.
+2. Click **Create** to deploy the policy.
 
-## Additional OMA-URI's
-- ./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/EXEGroup/EXE/Policy
+---
 
-- ./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/MSIGroup/MSI/Policy
+## 💡 Tips & Recommendations
 
-- ./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/ScriptGroup/Script/Policy
+- Use **Audit Only** mode in the XML during initial testing to avoid accidental app blocks.
+- Always **test on a pilot group** before broad deployment.
+- Validate your XML using Microsoft’s tools or schema references.
 
-- ./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/DLLGroup/DLL/Policy
+---
 
-- ./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/StoreAppsGroup/StoreApps/Policy
+## 🔗 Useful Resources
 
+- [📘 AppLocker Overview](https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker-overview)  
+- [📘 Intune Custom OMA-URI Settings](https://learn.microsoft.com/en-us/mem/intune/configuration/custom-settings-windows)  
+- [📘 AppLocker XML Syntax Reference](https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker/create-applocker-policies)  
+
+---
+
+## 📄 Additional OMA-URI Paths
+
+Depending on your AppLocker rules, you may need to use other OMA-URIs:
+
+```text
+./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/EXEGroup/EXE/Policy
+./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/MSIGroup/MSI/Policy
+./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/ScriptGroup/Script/Policy
+./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/DLLGroup/DLL/Policy
+./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/StoreAppsGroup/StoreApps/Policy
+```

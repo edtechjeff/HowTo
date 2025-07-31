@@ -1,7 +1,7 @@
 # Pulls EntrID,DeviceID,SerialNumber,AutoPilotID,DisplayName,ApproximateLastSignInDateTime,OperatingSystem,Make,Model,TrustType
 
 # Import Microsoft Graph Module
-Import-Module Microsoft.Graph
+# Import-Module Microsoft.Graph
 
 # Define required Graph scopes
 $scopes = @(
