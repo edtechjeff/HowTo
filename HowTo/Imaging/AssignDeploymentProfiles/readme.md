@@ -1,72 +1,111 @@
+# Assign Autopilot Profiles During Imaging Process
 
-# Assign AutoPilot Profiles during imaging process
+This guide walks you through assigning Autopilot profiles to a Windows image during your imaging process using PowerShell and DISM.
 
-1. Import required powershell modules
-```
+---
+
+## 1. Install Required PowerShell Modules
+
+```powershell
 Install-Module AzureAD -Force
 Install-Module WindowsAutopilotIntune -Force
-Install-Module Microsoft.Graph.Intune -Force 
+Install-Module Microsoft.Graph.Intune -Force
 ```
-2. Log onto Graph
+
+---
+
+## 2. Connect to Microsoft Graph
+
+```powershell
+Connect-MgGraph
 ```
-Connect-MGGraph
-```
-3. Run the following script
-```
+
+---
+
+## 3. Export Autopilot Profiles to JSON
+
+```powershell
 $AutopilotProfiles = Get-AutopilotProfile
 
-Foreach ($AutopilotProfile in $AutopilotProfiles) {
+$TempPath = "C:\DATA\AutopilotProfiles\"
+if (!(Test-Path $TempPath)) {
+    New-Item -Path $TempPath -ItemType Directory -Force
+}
 
-    $TempPath = "C:\DATA\AutopilotProfiles\"
-
-    if (!(Test-Path $TempPath)) {
-        New-Item -Path $TempPath -ItemType Directory -Force
-    }
-
-    $name = $AutopilotProfile.displayName
-    $ExportPath = $TempPath + $name + "_AutopilotConfigurationFile.json"
+foreach ($AutopilotProfile in $AutopilotProfiles) {
+    $name = $AutopilotProfile.displayName -replace '[^a-zA-Z0-9]', '_'
+    $ExportPath = "$TempPath${name}_AutopilotConfigurationFile.json"
     $AutopilotProfile | ConvertTo-AutopilotConfigurationJSON | Out-File $ExportPath -Encoding ASCII
-
-}  
-```
-4. Your Files will be downloaded the directory
-
-![alt text](Assets/1.png)
-
-5. Rename the profile you want to apply as the following:
-    - ## AutopilotConfigurationFile.json
-
-## The next section is all about DISM and how to do some DISM commands. In my own environement I have most of this done already so the only item I had to do was to mount the image
-## So if you do not know or have something setup, I will include the rest of the process based on the source material. 
-
-6. You will need to download an ISO of Windows 11
-
-7. Next you will need to get the index number for what version you want to deploy. In my example I want to get PRO.
-
-```
-Dism /get-wiminfo /wimfile:"E:\sources\install.wim"
+}
 ```
 
-![alt text](Assets/2.png)
+> ✅ Your exported files will be located in: `C:\DATA\AutopilotProfiles\`
 
 
-8. Next Export the installer you want using the following command
+
+---
+
+## 4. Prepare the JSON File for Embedding
+
+Rename the profile you want to embed to:
+
 ```
-Dism /export-image /SourceImageFile:"E:\sources\install.wim" /SourceIndex:6 /DestinationImageFile:C:\DATA\WIM\install.wim /Compress:max /CheckIntegrity
+AutopilotConfigurationFile.json
 ```
 
-9. Mount the WIM
-```
-Dism /mount-wim /wimfile:"C:\DATA\WIM\install.wim" /index:1 /mountdir:C:\DATA\Mount 
+---
+
+## 5. Download and Mount Windows Image
+
+1. **Download a Windows 11 ISO.**
+2. **Determine the Index for Your Edition (e.g., Pro):**
+
+```powershell
+Dism /Get-WimInfo /WimFile:"E:\sources\install.wim"
 ```
 
-10. Copy the .JSON file to the the following directory G:\DATA\Mount\Windows\Provisioning\Autopilot\
-![alt text](Assets/3.png)
 
-11. Commit the mounted image. ***Its important to close out all the folders where its mounted before you run this command or it will fail***
+
+3. **Export the Specific Edition:**
+
+```powershell
+Dism /Export-Image /SourceImageFile:"E:\sources\install.wim" /SourceIndex:6 /DestinationImageFile:C:\DATA\WIM\install.wim /Compress:max /CheckIntegrity
 ```
-Dism /Commit-Image /MountDir:C:\DATA\Mount 
+
+4. **Mount the Exported Image:**
+
+```powershell
+Dism /Mount-Wim /WimFile:"C:\DATA\WIM\install.wim" /Index:1 /MountDir:C:\DATA\Mount
 ```
-## Now you have an updated WIM file that will deploy Pro and also deploy with the desired AutoPilot Deployment Profile. 
-## Now you can either deploy this WIM file either PXE or USB which ever workes best for you. 
-## Hope you have learned something and until next time.  
+
+---
+
+## 6. Inject the Autopilot Profile
+
+Copy the renamed JSON file to:
+
+```
+C:\DATA\Mount\Windows\Provisioning\Autopilot\AutopilotConfigurationFile.json
+```
+
+
+
+---
+
+## 7. Commit the Mounted Image
+
+Make sure all windows/folders referencing the mounted image are closed:
+
+```powershell
+Dism /Commit-Image /MountDir:C:\DATA\Mount
+```
+
+---
+
+## ✅ Final Notes
+
+- You now have an updated `install.wim` file with a specific Autopilot deployment profile.
+- You can deploy this WIM via PXE or USB depending on your environment.
+
+Happy Imaging! 🚀
+
