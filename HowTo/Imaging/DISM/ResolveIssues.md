@@ -1,17 +1,32 @@
-# If Error Message you get the following
-- Error: 1243
-  - The specified service does not exist.
+# 🛠️ Troubleshooting Sysprep and WIMMount Issues
 
-# Check to see if this registry is there
+This guide walks through resolving Sysprep failures and WIMMount driver issues, including common error codes, registry repair, and app removals that may interfere with the process.
 
-'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WIMMount'
-
-# The Registry Key
-Windows Registry Editor Version 5.00
 ---
 
+## ❗ Common Error
+
+- **Error Code 1243**  
+  > *"The specified service does not exist."*
+
+This typically indicates a missing `WIMMount` driver or registry corruption.
+
+---
+
+## 🔍 Check for WIMMount Registry Key
+
+Open `regedit` and confirm the following path exists:
+
 ```
-{
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WIMMount
+```
+
+If missing, you can manually recreate it using this `.reg` snippet:
+
+### 🧾 WIMMount Registry Configuration
+
+```reg
+Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WIMMount]
 "DebugFlags"=dword:00000000
@@ -20,8 +35,8 @@ Windows Registry Editor Version 5.00
 "ErrorControl"=dword:00000001
 "Group"="FSFilter Infrastructure"
 "ImagePath"=hex(2):73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,64,00,\
-  72,00,69,00,76,00,65,00,72,00,73,00,5c,00,77,00,69,00,6d,00,6d,00,6f,00,75,\
-  00,6e,00,74,00,2e,00,73,00,79,00,73,00,00,00
+72,00,69,00,76,00,65,00,72,00,73,00,5c,00,77,00,69,00,6d,00,6d,00,6f,00,75,\
+00,6e,00,74,00,2e,00,73,00,79,00,73,00,00,00
 "Start"=dword:00000003
 "SupportedFeatures"=dword:00000003
 "Tag"=dword:00000001
@@ -32,77 +47,117 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WIMMount\Instances\WIMMount]
 "Altitude"="180700"
-"Flags"=dword:
-
-}
+"Flags"=dword:00000000
 ```
 
-# Check to see if the following File is there
-- c:\windows\system32\drivers\wimmount.sys” exists on the computer
+---
 
-# Sysprep Issues
+## 📁 Check for Driver File
 
-## Disable Bitlocker
+Ensure the following file exists:
+
 ```
+C:\Windows\System32\drivers\wimmount.sys
+```
+
+---
+
+## 🧹 Sysprep Preparation Steps
+
+### 🔐 Disable BitLocker
+
+```powershell
 manage-bde -off C:
 ```
-## Check Status of Bitlocker
-```
+
+### 🔍 Check BitLocker Status
+
+```powershell
 manage-bde -status
 ```
-# Remove AppxPackage
-## 'Will remove remove OneDriveSync Package. You can get the package name from the Sysprep LOG' 
-```
-get-AppxPackage Microsoft.OneDriveSync | Remove-AppxPackage
+
+---
+
+## 🧼 Remove Appx Packages (Common Sysprep Blockers)
+
+> You can identify blocking packages by checking the `sysprep` log file in:
+> ```
+> C:\Windows\System32\Sysprep\Panther\setuperr.log
+> ```
+
+### Remove OneDrive Sync
+
+```powershell
+Get-AppxPackage Microsoft.OneDriveSync | Remove-AppxPackage
 ```
 
-## 'Will remove remove WebExperienc Package. You can get the package name from the Sysprep LOG' 
-```
-get-AppxPackage MicrosoftWindows.Client.Webexperience | Remove-AppxPackage
+### Remove WebExperience Pack
+
+```powershell
+Get-AppxPackage MicrosoftWindows.Client.Webexperience | Remove-AppxPackage
 ```
 
-## Disable Reserved Storage State
-```
+---
+
+## 🛑 Disable Reserved Storage
+
+```powershell
 DISM.exe /Online /Set-ReservedStorageState /State:Disabled
 ```
 
-## Get Reserved Storage State
-```
+### Check Reserved Storage State
+
+```powershell
 Get-WindowsReservedStorageState
 ```
 
-## Remove Update Cache on Local Machine
-```
+📚 More Info:  
+[Reserved Storage Details - ElevenForum](https://www.elevenforum.com/t/enable-or-disable-reserved-storage-in-windows-11.21389/)
+
+---
+
+## 🔄 Clear Windows Update Cache
+
+```cmd
 net stop wuauserv
 net stop bits
 del /s /q C:\Windows\SoftwareDistribution\*
 net start wuauserv
 net start bits
 ```
-## Info about Storage State
-https://www.elevenforum.com/t/enable-or-disable-reserved-storage-in-windows-11.21389/
 
-## Remove Copilot for Sysprep issues for current user
-```
+---
+
+## 🧹 Remove Copilot (If Causing Sysprep Issues)
+
+### Current User
+
+```powershell
 Get-AppxPackage -Name Microsoft.Copilot | Remove-AppxPackage
 ```
 
-## Remove Copilot for all Users
-```
+### All Users
+
+```powershell
 Get-AppxPackage -AllUsers *Microsoft.Copilot* | Remove-AppxPackage -AllUsers
 ```
 
-## Remove povisioned copy
-```
-Get-AppxProvisionedPackage -Online |
-    Where-Object DisplayName -like "*Microsoft.Copilot*" |
-    Remove-AppxProvisionedPackage -Online
+### Remove Provisioned Copilot Package
 
-```
-## Remove WebExperience. Might also cause issues
-```
-Get-AppxPackage -AllUsers *WebExperience* | Remove-AppxPackage -AllUsers
+```powershell
 Get-AppxProvisionedPackage -Online |
-    Where-Object DisplayName -like "*WebExperience*" |
-    Remove-AppxProvisionedPackage -Online
+  Where-Object DisplayName -like "*Microsoft.Copilot*" |
+  Remove-AppxProvisionedPackage -Online
+```
+
+---
+
+## 🧹 Remove WebExperience (Provisioned and Installed)
+
+```powershell
+Get-AppxPackage -AllUsers *WebExperience* | Remove-AppxPackage -AllUsers
+
+Get-AppxProvisionedPackage -Online |
+  Where-Object DisplayName -like "*WebExperience*" |
+  Remove-AppxProvisionedPackage -Online
 ```
