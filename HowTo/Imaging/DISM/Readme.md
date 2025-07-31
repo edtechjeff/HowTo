@@ -121,7 +121,3 @@ The next driver is what is call the Intel Rapid Storage Driver. This driver is i
 - Legacy Boot
     - \boot\x86\pxeboot.com
     - Alternate: \Boot\PXEboot.n12 (skips the PXE prompt) 
-
-
-
-
