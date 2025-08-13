@@ -1,6 +1,10 @@
 # Install and import the Microsoft Graph module (if not already installed)
 Install-Module -Name Microsoft.Graph -Force -AllowClobber
-Import-Module Microsoft.Graph
+# Import-Module Microsoft.Graph
+
+Import-Module Microsoft.Graph.Users
+Import-Module Microsoft.Graph.Authentication
+
 
 # Connect to Microsoft Graph
 $UserCredential = Get-Credential
