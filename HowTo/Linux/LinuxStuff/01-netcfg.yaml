@@ -1,5 +1,5 @@
 # Create config file
-  sudo nano /etc/netplan/01-netcfg.yaml
+  # sudo nano /etc/netplan/01-netcfg.yaml
 
 
 #Used if you have 2 adapters 
@@ -33,4 +33,4 @@ network:
           password: YOURWIFIPASSWORD
 
 # Apply Plan
-  sudo netplan apply
+  # sudo netplan apply
