@@ -3,12 +3,16 @@
 
 
 SetupComplete.cmd is a custom script used during the Windows setup process to automate tasks after installation. It is executed immediately after the user sees the desktop but before any user logs in. This script is particularly useful for post-deployment configurations, such as installing applications or modifying system settings.
-**bold**Key Features and Usage
-Execution Timing: The script runs after Windows installation is complete but before the logon screen appears. It is located in the %WINDIR%\Setup\Scripts\ directory. If found, Windows Setup automatically executes it.
-Permissions: It runs with local system permissions, allowing it to perform administrative tasks without user intervention.
-Common Use Cases: Automating application installations. Removing or modifying default settings (e.g., disabling OneDrive setup). Running custom scripts for system configurations.
-Behavior: The script runs only once during the setup process. It does not validate exit codes or error levels, so any errors in the script will not halt the setup process.
-Restrictions: Rebooting the system within SetupComplete.cmd (e.g., using shutdown -r) is not recommended, as it can leave the system in an unstable state. If the computer joins a domain during installation, Group Policy is applied only after the script finishes execution to avoid conflicts.
+**Key Features and Usage**
+**Execution Timing:** The script runs after Windows installation is complete but before the logon screen appears. It is located in the %WINDIR%\Setup\Scripts\ directory. If found, Windows Setup automatically executes it.
+
+**Permissions:** It runs with local system permissions, allowing it to perform administrative tasks without user intervention.
+
+**Common Use Cases:** Automating application installations. Removing or modifying default settings (e.g., disabling OneDrive setup). Running custom scripts for system configurations.
+
+**Behavior:** The script runs only once during the setup process. It does not validate exit codes or error levels, so any errors in the script will not halt the setup process.
+
+**Restrictions:** Rebooting the system within SetupComplete.cmd (e.g., using shutdown -r) is not recommended, as it can leave the system in an unstable state. If the computer joins a domain during installation, Group Policy is applied only after the script finishes execution to avoid conflicts.
 
 
 
