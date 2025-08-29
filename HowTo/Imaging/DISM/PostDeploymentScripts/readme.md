@@ -1,4 +1,4 @@
-# The following is a method to deploy applications or set settings or bascially anything that you can script
+# The following is a method to deploy applications or set settings or basically anything that you can script
 ## Little background of SetupComplete.cmd
 
 
@@ -28,7 +28,7 @@ SetupComplete.cmd is a custom script used during the Windows setup process to au
 Scripts
 ```
 5. Create a file called SetupComplete.cmd
-6. In the file put in what ever commmands you want.
+6. In the file put in what ever commands you want.
 ***In this example we are going to install Chrome, Notepad ++ and 7zip
 
 ```
