@@ -94,7 +94,7 @@ virt-install \
 ## Spice Enabled VM with 2 CDRoms
 ```
 virt-install \
-  --name win2025 \
+  --name win2022 \
   --ram 8192 \
   --vcpus 4 \
   --cpu host-passthrough \

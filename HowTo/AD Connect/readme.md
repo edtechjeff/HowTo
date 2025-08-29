@@ -58,8 +58,38 @@ Save the output to a file for reference.
 Run the following PowerShell script **as Administrator**:
 
 ```powershell
-# Enable TLS 1.2 for .NET and SCHANNEL
-# [Script truncated for brevity — full script remains the same]
+# Enable TLS 1.2 for both Client and Server
+$basePath = "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols"
+
+# Create TLS 1.2 client and server keys if they don't exist
+New-Item -Path "$basePath\TLS 1.2" -ErrorAction SilentlyContinue | Out-Null
+New-Item -Path "$basePath\TLS 1.2\Client" -ErrorAction SilentlyContinue | Out-Null
+New-Item -Path "$basePath\TLS 1.2\Server" -ErrorAction SilentlyContinue | Out-Null
+
+# Enable client settings
+New-ItemProperty -Path "$basePath\TLS 1.2\Client" -Name "Enabled" -Value 1 -PropertyType "DWORD" -Force
+New-ItemProperty -Path "$basePath\TLS 1.2\Client" -Name "DisabledByDefault" -Value 0 -PropertyType "DWORD" -Force
+
+# Enable server settings
+New-ItemProperty -Path "$basePath\TLS 1.2\Server" -Name "Enabled" -Value 1 -PropertyType "DWORD" -Force
+New-ItemProperty -Path "$basePath\TLS 1.2\Server" -Name "DisabledByDefault" -Value 0 -PropertyType "DWORD" -Force
+
+# Ensure .NET Framework uses TLS 1.2 by default
+$netKeys = @(
+  "HKLM:\SOFTWARE\Microsoft\.NETFramework\v2.0.50727",
+  "HKLM:\SOFTWARE\Microsoft\.NETFramework\v4.0.30319",
+  "HKLM:\SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v2.0.50727",
+  "HKLM:\SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319"
+)
+
+foreach ($key in $netKeys) {
+    if (-not (Test-Path $key)) { New-Item -Path $key -Force | Out-Null }
+    New-ItemProperty -Path $key -Name "SystemDefaultTlsVersions" -Value 1 -PropertyType "DWORD" -Force
+    New-ItemProperty -Path $key -Name "SchUseStrongCrypto" -Value 1 -PropertyType "DWORD" -Force
+}
+
+Write-Host "TLS 1.2 has been enabled for Client, Server, and .NET Framework. A reboot is recommended." -ForegroundColor Green
+
 ```
 
 Reboot the server after applying the script.
