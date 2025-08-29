@@ -4,6 +4,7 @@
 
 SetupComplete.cmd is a custom script used during the Windows setup process to automate tasks after installation. It is executed immediately after the user sees the desktop but before any user logs in. This script is particularly useful for post-deployment configurations, such as installing applications or modifying system settings.
 **Key Features and Usage**
+
 **Execution Timing:** The script runs after Windows installation is complete but before the logon screen appears. It is located in the %WINDIR%\Setup\Scripts\ directory. If found, Windows Setup automatically executes it.
 
 **Permissions:** It runs with local system permissions, allowing it to perform administrative tasks without user intervention.
@@ -25,7 +26,7 @@ SetupComplete.cmd is a custom script used during the Windows setup process to au
 ```
 Scripts
 ```
-5. Created file called SetupComplete.cmd
+5. Create a file called SetupComplete.cmd
 6. In the file put in what ever commmands you want.
 ***In this example we are going to install Chrome, Notepad ++ and 7zip
 
