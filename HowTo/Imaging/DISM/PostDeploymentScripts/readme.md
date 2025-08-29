@@ -4,6 +4,8 @@
 
 SetupComplete.cmd is a custom script used during the Windows setup process to automate tasks after installation. It is executed immediately after the user sees the desktop but before any user logs in. This script is particularly useful for post-deployment configurations, such as installing applications or modifying system settings.
 
+**Cut to the Chase:** If you can script it you can run it with this!
+
 **Key Features and Usage**
 
 **Execution Timing:** The script runs after Windows installation is complete but before the logon screen appears. It is located in the %WINDIR%\Setup\Scripts\ directory. If found, Windows Setup automatically executes it.
@@ -15,8 +17,6 @@ SetupComplete.cmd is a custom script used during the Windows setup process to au
 **Behavior:** The script runs only once during the setup process. It does not validate exit codes or error levels, so any errors in the script will not halt the setup process.
 
 **Restrictions:** Rebooting the system within SetupComplete.cmd (e.g., using shutdown -r) is not recommended, as it can leave the system in an unstable state. If the computer joins a domain during installation, Group Policy is applied only after the script finishes execution to avoid conflicts.
-
-
 
 
 1. Mount the image
@@ -55,3 +55,4 @@ echo %DATE% %TIME% - SetupComplete finished >> C:\Windows\Temp\SetupComplete.log
 exit /b 0
 ```
 7. In that same folder you will need to put the MSI's and Exe. 
+8. Commit the image and test your deployment
