@@ -95,7 +95,7 @@ virt-install \
 ```
 virt-install \
   --name win2022 \
-  --ram 8192 \
+  --ram 12288 \
   --vcpus 4 \
   --cpu host-passthrough \
   --os-variant win2k22 \
