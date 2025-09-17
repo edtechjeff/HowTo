@@ -17,7 +17,7 @@ $DeviceList = Import-Csv -Path $CsvFile
 
 # Loop through each device in the CSV
 foreach ($device in $DeviceList) {
-    $EntraID = $device.EntraID  # Entra ID from the CSV
+    $EntraID = $device.ID  # Entra ID from the CSV
 
     # Check if the Entra ID exists before attempting deletion
     if ($EntraID) {
