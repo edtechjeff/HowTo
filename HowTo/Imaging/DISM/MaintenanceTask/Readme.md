@@ -5,3 +5,6 @@
 - MaintenanceTaskV2.cmd - Added the process to add windows cummulative updates to the WIM
 - MaintenanceTaskV3.cmd - Changed out the export process to be dynamic based on the install.wim being used
     ***Note: Path for the WIM will have to be updated in order for this process to work***
+- MaintenanceTaskV4.cmd - Updated from V3 to allow the command file to run as administrator
+- MaintenanceTaskV5.cmd - This one will allow you to create folders for different versions. 
+    ***Please review the script for folder structure***
