@@ -49,9 +49,9 @@ Get-ADUser -Filter {ServicePrincipalName -like "*"} -Properties ServicePrincipal
     Select Name, SamAccountName, ServicePrincipalName |
     Export-Csv "$reportPath\ServiceAccounts_SPNs.csv" -NoTypeInformation
 
-# 8. OUs
-Get-ADOrganizationalUnit -Filter * |
-    Select Name, DistinguishedName |
+# 8. OUs and Protection Status
+Get-ADOrganizationalUnit -Filter * -Properties ProtectedFromAccidentalDeletion |
+    Select-Object Name, DistinguishedName, ProtectedFromAccidentalDeletion |
     Export-Csv "$reportPath\OrganizationalUnits.csv" -NoTypeInformation
 
 # 9. AD Recycle Bin Status

@@ -111,6 +111,28 @@ virt-install \
   --channel spicevmc
 ```
 
+## Create a VM with a secondary drive
+```
+virt-install \
+  --name win2022 \
+  --ram 12288 \
+  --vcpus 4 \
+  --cpu host-passthrough \
+  --os-variant win2k22 \
+  --machine q35 \
+  --boot hd,cdrom,menu=off \
+  --disk path=/var/lib/libvirt/images/win2025.qcow2,size=60,bus=virtio \
+  --disk path=/var/lib/libvirt/images/win2022-data.qcow2,size=500,bus=virtio \
+  --cdrom /iso/server2022.iso \
+  --disk path=/iso/virt.iso,device=cdrom,readonly=on \
+  --network bridge=br0,model=virtio \
+  --graphics spice,listen=0.0.0.0,port=5925 \
+  --video qxl \
+  --sound ich9 \
+  --channel spicevmc
+```
+
+
 
 # Note about PXE Config
 ## Boot to HD after imaging

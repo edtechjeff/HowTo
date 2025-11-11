@@ -7,4 +7,5 @@
     ***Note: Path for the WIM will have to be updated in order for this process to work***
 - MaintenanceTaskV4.cmd - Updated from V3 to allow the command file to run as administrator
 - MaintenanceTaskV5.cmd - This one will allow you to create folders for different versions. 
+- MaintenanceTaskV6.cmd - Updates on the Export. Found issues when a local admin was created on the server, the account would not work for the export.  
     ***Please review the script for folder structure***

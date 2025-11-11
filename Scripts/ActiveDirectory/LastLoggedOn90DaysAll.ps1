@@ -1,5 +1,5 @@
 # Define the number of days for inactivity
-$daysInactive = 90
+$daysInactive = 30
 
 # Calculate the date 90 days ago
 $inactiveDate = (Get-Date).AddDays(-$daysInactive)

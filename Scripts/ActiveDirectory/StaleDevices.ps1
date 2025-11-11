@@ -1,5 +1,5 @@
 # Define the number of days to check for inactivity
-$daysInactive = 90
+$daysInactive = 180
 
 # Calculate the date to compare for inactivity
 $inactiveDate = (Get-Date).AddDays(-$daysInactive)
