@@ -15,3 +15,5 @@ if ($inactiveComputers) {
 } else {
     Write-Host "No inactive devices found." -ForegroundColor Yellow
 }
+
+$inactiveComputers | Export-Csv -Path "C:\Temp\InactiveDevices.csv" -NoTypeInformation

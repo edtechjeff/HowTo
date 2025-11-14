@@ -22,6 +22,11 @@
 ```
 ---
 
+### Devices that have a specific Group Tag
+```
+(device.devicePhysicalIds -any _ -eq "[OrderID]:StaffDevice") 
+```
+
 ## Policies
 
 ### Default Entra Domain

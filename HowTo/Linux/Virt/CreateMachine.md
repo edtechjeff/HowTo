@@ -94,7 +94,7 @@ virt-install \
 ## Spice Enabled VM with 2 CDRoms
 ```
 virt-install \
-  --name win2022 \
+  --name win2025 \
   --ram 12288 \
   --vcpus 4 \
   --cpu host-passthrough \
@@ -102,7 +102,7 @@ virt-install \
   --machine q35 \
   --boot hd,cdrom,menu=off \
   --disk path=/var/lib/libvirt/images/win2025.qcow2,size=60,bus=virtio \
-  --cdrom /iso/server2022.iso \
+  --cdrom /iso/Server2025.iso \
   --disk path=/iso/virt.iso,device=cdrom,readonly=on \
   --network bridge=br0,model=virtio \
   --graphics spice,listen=0.0.0.0,port=5925 \
