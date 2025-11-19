@@ -27,6 +27,11 @@
 (device.devicePhysicalIds -any _ -eq "[OrderID]:StaffDevice") 
 ```
 
+### Devices that have a PurchaseOrder
+```
+(device.devicePhysicalIds -any _ -eq "[PurchaseOrderId]:0123456789")
+```
+
 ## Policies
 
 ### Default Entra Domain
