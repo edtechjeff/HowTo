@@ -134,12 +134,16 @@ net start bits
 
 ```powershell
 Get-AppxPackage -Name Microsoft.Copilot | Remove-AppxPackage
+Get-AppxPackage -Name Microsoft.bingsearch | Remove-AppxPackage
+Get-AppxPackage -Name Microsoft.OneDriveSync | Remove-AppxPackage
 ```
 
 ### All Users
 
 ```powershell
 Get-AppxPackage -AllUsers *Microsoft.Copilot* | Remove-AppxPackage -AllUsers
+Get-AppxPackage -AllUsers *Microsoft.bingsearch* | Remove-AppxPackage -AllUsers
+Get-AppxPackage -AllUsers *Microsoft.OneDriveSync* | Remove-AppxPackage -AllUsers
 ```
 
 ### Remove Provisioned Copilot Package
