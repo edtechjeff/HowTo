@@ -1,4 +1,10 @@
-# Information on how I setup my lab
+---
+title: How to create Self Signed CERTS
+author: Jeff Downs
+date: January 5, 2026
+---
+
+# Information on how to setup Certs
 ## Reference Website : https://adamtheautomator.com/hyper-v-replication/
 
 ## Create Certs for Replication

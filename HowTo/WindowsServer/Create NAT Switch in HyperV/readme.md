@@ -1,3 +1,9 @@
+---
+title: Create NAT switch in HyperV
+author: Jeff Downs
+date: January 5, 2026
+---
+
 # Create NAT HyperV
 ## Original Source: https://activedirectorypro.com/how-to-create-a-nat-switch-on-hyper-v/
 

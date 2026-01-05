@@ -1,3 +1,9 @@
+---
+title: Server Side Setupl Information
+author: Jeff Downs
+date: January 5, 2026
+---
+
 # My Lab Setup
 
 ### Enable All ICMP Firewall Rules

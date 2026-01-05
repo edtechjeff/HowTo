@@ -1,3 +1,9 @@
+---
+title: Lab Setup
+author: Jeff Downs
+date: January 5, 2026
+---
+
 ## The following document is intended to show you how to setup iSCSI in a lab and also setup a HyperV cluster.  
 ***IP Information***
 
