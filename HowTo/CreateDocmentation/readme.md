@@ -8,15 +8,15 @@
     - There is an asset file located in the same folder or could be higher level sub folder that has the images. 
     - No EMOJIS are being used (Had a bug and I could not resolve it)
     - on each file a title block is included to make the cover page
-    ```
+```
     ---
     title: Example Title Block
     author: Jeff Downs
     date: January 5, 2026
     ---
 ```
+## Install Pandoc
 
-## Install PANDDOC
 ```powershell
 winget install JohnMacFarlane.Pandoc
 ```
