@@ -1,3 +1,9 @@
+---
+title: Lab Setup
+author: Jeff Downs
+date: January 5, 2026
+---
+
 # Steps to get NVME running native on Server 2025
 
 ## BIOS prerequisites (no commands, but required)
