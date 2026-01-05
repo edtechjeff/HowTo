@@ -1,3 +1,9 @@
+---
+title: Creation of Umbrella Deployment for MAC
+author: Jeff Downs
+date: January 5, 2026
+---
+
 # Using Intune to install of Cisco Secure Client with Umbrella for MacOS
 
 THIS IS A **UNOFFICAL** GUIDE USE AT YOUR OWN RISK
@@ -21,7 +27,7 @@ If you've obtained a predeploy file, it won't function as expected. From my obse
 
 Also, remember to retrieve your Orginfo.json file if using Cisco Umbrella during this process. This is will be REQUIRED for OrgfileMove.sh script that move your Orginfo.json file
 
-![image](assets/IntuneUmbrellaMAC/313790844-37a2a85a-4100-41c2-9f60-799386013ca5.png)
+![image](assets/313790844-37a2a85a-4100-41c2-9f60-799386013ca5.png)
 
 
 After downloading it, I utilized 7zip to extract the installer.
