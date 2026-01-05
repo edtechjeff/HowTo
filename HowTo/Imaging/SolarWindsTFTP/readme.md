@@ -1,6 +1,8 @@
 # Setting Up Solarwinds TFTP
 
-## Setup Struture
+# This is a manaul process to create the boot files and all other files required to make this work. There is a section that is required because  you are not using WDS. WDS helps build some of the required files automatically for you. 
+
+## Setup Structure
 C:\TFTP-Root\
     ├── EFI\
     │     ├── Boot\
@@ -78,6 +80,8 @@ dism /unmount-wim /mountdir:C:\WinPE\mount /commit
 ```
 copy C:\WinPE\media\sources\boot.wim C:\TFTP-Root\sources\boot.wim /Y
 ```
+
+# This section is required to build the files in order to do the EFI boot. If you are using WDS, WDS builds this for and is not required. 
 
 ## Extract all EFI boot files from the custom boot.wim
 ```

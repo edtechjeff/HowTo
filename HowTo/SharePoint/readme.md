@@ -92,3 +92,23 @@ You MUST remove that group.
     - Owners → immediately remove (critical)
 
 Only the intended M365 group or specific users should remain.
+
+
+
+# How to Enable SharePoint Restricted Search and Sites List
+
+## Install Module
+```powershell
+Install-Module -Name Microsoft.Online.SharePoint.PowerShell -Force
+```
+
+## Connect to Tenant 
+```powershell
+Connect-SPOService -Url https://<yourtenant>-admin.sharepoint.com
+```
+
+## See Current Status
+```powershell
+Get-SPOTenantRestrictedSearchMode
+```
+

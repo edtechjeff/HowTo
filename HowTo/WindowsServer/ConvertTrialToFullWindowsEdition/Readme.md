@@ -1,10 +1,16 @@
-# 🔄 Convert a Windows OS Trial to Full Version
+---
+title: Convert Trial Version to Fully Licensed
+author: Jeff Downs
+date: January 5, 2026
+---
+
+# Convert a Windows OS Trial to Full Version
 
 This guide explains how to convert a trial version of Windows Server to a fully licensed version using DISM.
 
 ---
 
-## 📝 Step-by-Step Instructions
+## Step-by-Step Instructions
 
 ### 1. Check Current Edition
 
@@ -51,7 +57,7 @@ After successful completion, **reboot the server** to finalize the upgrade.
 
 ---
 
-## ⚠️ Notes
+## Notes
 
 - Ensure your product key is valid for the target edition.
 - This process is **irreversible**—make sure you're targeting the correct edition.

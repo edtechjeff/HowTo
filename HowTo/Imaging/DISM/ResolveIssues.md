@@ -76,6 +76,17 @@ manage-bde -off C:
 manage-bde -status
 ```
 
+### Get BitLocker Key
+```
+manage-bde -protectors -get C:
+``` 
+
+### Enable BitLocker
+```
+manage-bde -on C:
+```
+
+
 ---
 
 ## 🧼 Remove Appx Packages (Common Sysprep Blockers)

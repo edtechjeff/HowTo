@@ -1,0 +1,21 @@
+% Wrap long code lines (fixes PowerShell running off the page)
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
+
+% Make the title page look like a cover page
+\usepackage{titling}
+\pretitle{\begin{center}\LARGE\bfseries}
+\posttitle{\par\end{center}\vskip 1em}
+\preauthor{\begin{center}\large}
+\postauthor{\par\end{center}}
+\predate{\begin{center}\large}
+\postdate{\par\end{center}\vskip 2em}
+
+% Put \maketitle on its own page
+\let\oldmaketitle\maketitle
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+    \oldmaketitle
+    \vfill
+  \end{titlepage}
+}

@@ -1,0 +1,25 @@
+from: gfm
+pdf-engine: xelatex
+standalone: true
+wrap: preserve
+listings: false
+
+toc: true
+toc-depth: 3
+number-sections: true
+
+include-in-header:
+  - pandoc-header.tex
+
+variables:
+  documentclass: article
+  fontsize: 11pt
+  monofont: Consolas
+  toc-title: "Table of Contents"
+  secnumdepth: 20
+  linkcolor: blue
+  urlcolor: blue
+  mainfont: 'Segoe UI'
+  monofont: 'Consolas'
+
+
