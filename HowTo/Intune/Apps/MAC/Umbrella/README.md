@@ -21,25 +21,25 @@ If you've obtained a predeploy file, it won't function as expected. From my obse
 
 Also, remember to retrieve your Orginfo.json file if using Cisco Umbrella during this process. This is will be REQUIRED for OrgfileMove.sh script that move your Orginfo.json file
 
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313790844-37a2a85a-4100-41c2-9f60-799386013ca5.png)
+![image](assets/IntuneUmbrellaMAC/313790844-37a2a85a-4100-41c2-9f60-799386013ca5.png)
 
 
 After downloading it, I utilized 7zip to extract the installer.
 
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313794475-cc4f74a0-3710-49c4-ae3c-7ff3adeeb233.png)
+![image](assets/313794475-cc4f74a0-3710-49c4-ae3c-7ff3adeeb233.png)
 
 You should see something like this
 cisco-secure-client-macos-5.1.2.42-webdeploy-k9\binaries
 
 Now you we will see each DMG of each app
 
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313776114-c72ab80c-c19c-4549-b1fd-449d154e2b35.png)
+![image](assets/313776114-c72ab80c-c19c-4549-b1fd-449d154e2b35.png)
 
 Now do the same steps on the DMG for each package you need.
 
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313782791-d54256be-74e9-4ca6-a7c8-6867bc1ab5b0.png)
+![image](assets/313782791-d54256be-74e9-4ca6-a7c8-6867bc1ab5b0.png)
 
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313783043-1b597379-abd1-49e6-8881-dcdaa87f5b48.png)
+![image](assets/313783043-1b597379-abd1-49e6-8881-dcdaa87f5b48.png)
 
 
 To set up Umbrella, it's essential to install the Core VPN, even if your primary focus is on using Umbrella alone. This is because the Umbrella client relies on the Core VPN. Additionally, I suggest installing Dart from Cisco in case you require assistance.
@@ -61,7 +61,7 @@ Next, Name the Policy I suggest "MacOS Cisco Secure Connect Mobileconfig" Then h
 On the Configuration Setting Page Name your Custom Policy "Custom configuration profile name" Then choose "Device Channel" for your Deployment Channel.
 
 Then Select the folder icon and import the CiscoSecureClient.mobileconfig and hit next, 
-![Intune Mobileconfig settings](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313780845-26148586-aed9-4a39-ba3f-f3385e41c48a.png)
+![Intune Mobileconfig settings](assets/313780845-26148586-aed9-4a39-ba3f-f3385e41c48a.png)
 
 
 
@@ -70,14 +70,14 @@ Cisco Secure Client Changes Related to macOS 11 (And Later)
 Create --> New Policy --> Profile type: Settings catalog -->
 Name: ManagedLoginItems --> Add Settings --> search for Managed Login Items -> select Login > Service Management - Managed Login Items --> expand the rules at the bottom and select Comment, Rule Type, and Rule Value. 
 
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313781272-6c0c9d03-e108-4451-bbc9-f58307eab2c9.png)
+![image](assets/313781272-6c0c9d03-e108-4451-bbc9-f58307eab2c9.png)
 
 Close the right side panel and click + Edit Instance and enter the following values, removing the last row for "Team Identifiers":
 Comment: Cisco Secure Client
 Rule Type: Team Identifier
 Rule Value: DE8Y96K9QP
 
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313781155-5f45b827-9240-47f1-ae87-67be7b2d78c6.png)
+![image](assets/313781155-5f45b827-9240-47f1-ae87-67be7b2d78c6.png)
 
 
 In Scopes and Assignments, select your desired user/device assignment and click Create. 
@@ -103,8 +103,8 @@ Either output should contain unique and relevant information to your Umbrella or
 
 Now add the Cisco Secure Client Core VPN to the Intune via PKG
 
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313784666-016a52bf-a3ab-451c-8e72-95bb81ba6383.png)
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313786367-e4d3fd5e-7e48-42e7-b955-9628afec36b1.png)
+![image](assets/313784666-016a52bf-a3ab-451c-8e72-95bb81ba6383.png)
+![image](assets/313786367-e4d3fd5e-7e48-42e7-b955-9628afec36b1.png)
 
 **THIS STEP IS ONLY NEEDED IF YOU WANT TO HIDE THE VPN CLIENT**
 
@@ -113,35 +113,35 @@ Copy HideVPN.sh into Pre-Install Script. Script is link below.  If you're not us
 [HideVPN.sh](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Intune/MACUmbrella/HideVPN.sh)
 
 
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313857204-37165e59-4157-4908-aec0-fe184e756fbb.png)
+![image](assets/313857204-37165e59-4157-4908-aec0-fe184e756fbb.png)
 
 
 Leave these settings below as default
 
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313788698-8b53b2a2-481e-4b4b-81ef-cf8b50d3c7fb.png)
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313786608-4703c1b3-1d18-4f1c-8421-4533d9591976.png)
+![image](assets/313788698-8b53b2a2-481e-4b4b-81ef-cf8b50d3c7fb.png)
+![image](assets/313786608-4703c1b3-1d18-4f1c-8421-4533d9591976.png)
 
 In Scopes and Assignments, select your desired user/device assignment and click Create. 
 
 # Deploying Umbrella App
 
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313784666-016a52bf-a3ab-451c-8e72-95bb81ba6383.png)
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313787212-42404266-23a3-41fa-8bb7-fbe2d568f6f9.png)
+![image](assets/313784666-016a52bf-a3ab-451c-8e72-95bb81ba6383.png)
+![image](assets/313787212-42404266-23a3-41fa-8bb7-fbe2d568f6f9.png)
 
 Copy OrgfileMove.sh editing the URL of were your Orginfo.json is located and copy it into the Pre-Install Script Area
 
 - *This moves your license file to the license file location also you must edit the script for it work.*
 
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313787669-b54474ff-ed55-4f48-948b-192cabcfd7ec.png)
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313788698-8b53b2a2-481e-4b4b-81ef-cf8b50d3c7fb.png)
+![image](assets/313787669-b54474ff-ed55-4f48-948b-192cabcfd7ec.png)
+![image](assets/313788698-8b53b2a2-481e-4b4b-81ef-cf8b50d3c7fb.png)
 
 Leave these settings below as default
 
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313788772-78439863-4dc1-4d6c-b446-e1510066bf0f.png)
+![image](assets/313788772-78439863-4dc1-4d6c-b446-e1510066bf0f.png)
 
 In Scopes and Assignments, select your desired user/device assignment and click Create. 
 
 Once it all push to the Mac it will need a restart for Umbrella to fully work it might show umbrella working but it will not filter till restart.
 
-![image](https://github.com/edtechjeff/edtechjeff/blob/main/HowTo/Assets/IntuneUmbrellaMAC/313793763-f8feb199-8a2a-4426-8026-f68df16cc958.png)
+![image](assets/313793763-f8feb199-8a2a-4426-8026-f68df16cc958.png)
 
