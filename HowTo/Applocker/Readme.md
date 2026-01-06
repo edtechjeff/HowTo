@@ -1,10 +1,10 @@
-# 🚫 How to Deploy AppLocker Policy via Intune with Custom OMA-URI
+# How to Deploy AppLocker Policy via Intune with Custom OMA-URI
 
 This guide outlines how to create and deploy an AppLocker policy using a **custom OMA-URI** in **Microsoft Intune**.
 
 ---
 
-## ✅ Prerequisites
+## Prerequisites
 
 Before you begin, ensure:
 
@@ -14,7 +14,7 @@ Before you begin, ensure:
 
 ---
 
-## 🛠️ Step-by-Step Instructions
+## Step-by-Step Instructions
 
 ### 1. Sign in to Endpoint Manager
 
@@ -26,10 +26,10 @@ Before you begin, ensure:
 ### 2. Create a New Configuration Profile
 
 1. Navigate to **Devices** > **Configuration profiles**.
-2. Click **+ Create profile**.
+2. Click **Create profile**.
 3. Choose:
-   - **Platform**: `Windows 10 and later`
-   - **Profile type**: `Custom`
+   - **Platform**: Windows 10 and later
+   - **Profile type**: Custom
 4. Click **Create**.
 
 ---
@@ -43,8 +43,8 @@ Before you begin, ensure:
    |--------------|-----------------------------------------------------------------------|
    | **Name**     | AppLocker Policy (or any descriptive name)                           |
    | **Description** | Optional description of the policy                                 |
-   | **OMA-URI**  | `./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/EXEGroup/EXE/Policy` |
-   | **Data type**| `String`                                                              |
+   | **OMA-URI**  | ./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/EXEGroup/EXE/Policy |
+   | **Data type**| String                                                              |
    | **Value**    | Paste the full XML contents of your AppLocker policy                 |
 
 3. Click **Save**.
@@ -66,7 +66,7 @@ Before you begin, ensure:
 
 ---
 
-## 💡 Tips & Recommendations
+## Tips & Recommendations
 
 - Use **Audit Only** mode in the XML during initial testing to avoid accidental app blocks.
 - Always **test on a pilot group** before broad deployment.
@@ -74,19 +74,19 @@ Before you begin, ensure:
 
 ---
 
-## 🔗 Useful Resources
+## Useful Resources
 
-- [📘 AppLocker Overview](https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker-overview)  
-- [📘 Intune Custom OMA-URI Settings](https://learn.microsoft.com/en-us/mem/intune/configuration/custom-settings-windows)  
-- [📘 AppLocker XML Syntax Reference](https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker/create-applocker-policies)  
+- [AppLocker Overview](https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker-overview)  
+- [Intune Custom OMA-URI Settings](https://learn.microsoft.com/en-us/mem/intune/configuration/custom-settings-windows)  
+- [AppLocker XML Syntax Reference](https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker/create-applocker-policies)  
 
 ---
 
-## 📄 Additional OMA-URI Paths
+## Additional OMA-URI Paths
 
 Depending on your AppLocker rules, you may need to use other OMA-URIs:
 
-```text
+```
 ./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/EXEGroup/EXE/Policy
 ./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/MSIGroup/MSI/Policy
 ./Vendor/MSFT/AppLocker/ApplicationLaunchRestrictions/ScriptGroup/Script/Policy

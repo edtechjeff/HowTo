@@ -21,5 +21,11 @@ variables:
   urlcolor: blue
   mainfont: 'Segoe UI'
   monofont: 'Consolas'
+  papersize: letter
+  geometry:
+    - left=0.75in
+    - right=0.75in
+    - top=0.85in
+    - bottom=0.85in
 
 
