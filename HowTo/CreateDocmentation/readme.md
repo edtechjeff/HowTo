@@ -1,4 +1,4 @@
-# How to convert Markdown files to PDF
+# How to convert Markdown files to PDF Using Command Line Tools
 # The purpose of this documentation is to give you a process to take your makedown files and convert them to PDF
 # This process will also create a cover page and table of contents
 
