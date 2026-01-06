@@ -1,3 +1,9 @@
+# Requires -Version 5.1
+# This script converts all Markdown files under a selected input folder to PDF files
+# using pandoc, placing the results in a selected output folder while preserving
+# the folder structure.
+# It uses a selected tooling folder for defaults.yaml and pandoc-header.tex.
+# It also sets up resource paths so that images and other assets are found correctly.
 Add-Type -AssemblyName System.Windows.Forms
 
 function Select-Folder {
