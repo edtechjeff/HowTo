@@ -1,5 +1,6 @@
 # Define a list of groups typically associated with administrative roles
-$adminGroups = @("Domain Admins", "Enterprise Admins", "Administrators", "Schema Admins", "Account Operators", "Server Operators", "Backup Operators", "Print Operators")
+# $adminGroups = @("Domain Admins", "Enterprise Admins", "Administrators", "Schema Admins", "Account Operators", "Server Operators", "Backup Operators", "Print Operators")
+$adminGroups = @("Domain Admins", "Schema Admins", "Enterprise Admins")
 
 # Create an empty array to store results
 $adminUsers = @()

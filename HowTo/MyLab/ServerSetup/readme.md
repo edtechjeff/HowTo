@@ -230,8 +230,8 @@ Get-VMSwitch | Format-Table Name, SwitchType, NetAdapterInterfaceDescription
 ## Set Default Path for Cluster Storage
 ```powershell
 Set-VMHost `
-  -VirtualMachinePath "C:\ClusterStorage\Volume2\VMs" `
-  -VirtualHardDiskPath "C:\ClusterStorage\Volume2\VHDX"
+  -VirtualMachinePath "C:\ClusterStorage\Volume1\VMs" `
+  -VirtualHardDiskPath "C:\ClusterStorage\Volume1\VHDX"
 ```
 
 ## Verify

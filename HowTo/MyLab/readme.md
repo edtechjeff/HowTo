@@ -9,16 +9,19 @@ date: January 5, 2026
 
 | Host Name |  IP Address | Description |
 | ---------|--------------|-------------|
-| HyperV01 | 192.168.0.10 | Management
-| HyperV01 | 192.168.0.11 | vmNetwork
-| HyperV01 | 172.16.0.10  | iSCSI
-| HyperV02 | 192.168.0.20 | Management
-| HyperV02 | 192.168.0.21 | vmNetwork
-| Hyperv02 | 172.16.0.20  | iSCSI
-| DC1      | 192.168.0.30 | Management
-| SAN      | 192.168.0.40 | Management
-| SAN      | 172.16.0.40  | iSCSI
-| Cluster  | 192.168.0.50 | Cluster IP
+| HyperV01 | 192.168.0.10 | Management  |
+| HyperV01 | 192.168.0.11 | vmNetwork   |
+| DHCP1    | 192.168.0.12 | DHCP Server |
+| HyperV01 | 172.16.0.10  | iSCSI       |
+| HyperV02 | 192.168.0.20 | Management  |
+| HyperV02 | 192.168.0.21 | vmNetwork   |
+| DHCP2    | 192.168.0.22 | DHCP Server |
+| Hyperv02 | 172.16.0.20  | iSCSI       |
+| DC1      | 192.168.0.30 | Management  |
+| SAN      | 192.168.0.40 | Management  |
+| SAN      | 172.16.0.40  | iSCSI       |
+| Cluster  | 192.168.0.50 | Cluster IP  |
+|----------|--------------|-------------|
 
 
 ### Pre-Reqs
