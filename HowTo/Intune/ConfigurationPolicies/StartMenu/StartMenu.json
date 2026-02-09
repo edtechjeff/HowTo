@@ -1,0 +1,22 @@
+{
+    "applyOnce":true,
+    "pinnedList": [
+	{"desktopAppLink":"%ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\Word.lnk"},
+	{"desktopAppLink":"%ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\Excel.lnk"},
+	{"desktopAppLink":"%ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\PowerPoint.lnk"},
+    {"packagedAppId":"windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel"},
+    {"packagedAppId":"Microsoft.WindowsCalculator_8wekyb3d8bbwe!App"},
+    {"packagedAppId":"Microsoft.ScreenSketch_8wekyb3d8bbwe!App"},
+    {"desktopAppLink":"%ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\OneNote.lnk"},
+    {"desktopAppLink":"%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\File Explorer.lnk"},
+    {"packagedAppId":"OpenAI.ChatGPT-Desktop_2p2nqsd0c76g0!ChatGPT"},
+    {"packagedAppId":"MicrosoftWindows.Client.CoreAI_cw5n1h2txyewy!ClickToDoApp"},
+    {"packagedAppId":"Microsoft.CompanyPortal_8wekyb3d8bbwe!App"},
+    {"desktopAppLink":"%ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\Google Chrome.lnk"},
+    {"packagedAppId":"MSTeams_8wekyb3d8bbwe!MSTeams"},
+    {"packagedAppId":"Microsoft.Todos_8wekyb3d8bbwe!App"},
+    {"desktopAppLink":"%ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\Nuance Power PDF Advanced\\Power PDF Advanced.lnk"},
+    {"desktopAppLink":"%ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\Outlook (classic).lnk"},
+    {"desktopAppLink":"%ALLUSERSPROFILE%\\Microsoft\\Windows\\Start Menu\\Programs\\Zoom\\Zoom Workplace.lnk"}
+    ]
+}
