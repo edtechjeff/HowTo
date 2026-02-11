@@ -82,7 +82,7 @@ click add settings and search for Start Layout
 
 On the left side of the screen copy and past your XML into the box
 
-![alt text](./assets/copyxml.png)
+![alt text](./assets/copiedxml.png)
 
 Click Next > Next
 
