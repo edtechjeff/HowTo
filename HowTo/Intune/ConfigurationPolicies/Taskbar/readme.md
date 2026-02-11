@@ -9,4 +9,4 @@
 get-startapps | sort-object name | select-object name, appid
 ```
 
-![alt text](/assets/powershellcommand.png)
+![alt text](./assets/powershellcommand.png)
