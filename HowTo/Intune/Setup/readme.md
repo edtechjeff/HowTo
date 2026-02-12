@@ -68,6 +68,7 @@ Configuration Type: Properties Catalog
 
 ---
 Platform: Windows 10 or Later
+
 Profile Type: Settings Catalog
 
 ![OneDrive](Images/OneDrive.png)
