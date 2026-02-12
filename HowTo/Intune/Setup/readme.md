@@ -36,7 +36,9 @@
 
 ### Default Entra Domain
 
-Configuration Type: Settings Catalog
+Platform: Windows 10 or Later
+
+Profile Type: Settings Catalog
 
 ![Default Entra Domain](Images/DefaultEntraDomain.png)
 
@@ -44,13 +46,19 @@ Configuration Type: Settings Catalog
 
 ### Time Zone
 
+Platform: Windows 10 or Later
+
+Profile Type: Settings Catalog
+
 ![Time Zone](Images/TimeZone.png)
 
 ---
 
 ### Delivery Optimization
 
-Configuration Type: Settings Catalog
+Platform: Windows 10 or Later
+
+Profile Type: Settings Catalog
 
 ![Delivery Optimization](Images/DeliveryOptimization.png)
 
@@ -58,7 +66,9 @@ Configuration Type: Settings Catalog
 
 ### System Resources
 
-Configuration Type: Properties Catalog
+Platform: Windows 10 or Later
+
+Profile Type: Settings Catalog
 
 ![System Resources](Images/SystemResources.png)
 
