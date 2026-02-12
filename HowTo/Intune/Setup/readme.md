@@ -144,6 +144,5 @@ Profile Type: Settings Catalog
 
 ## Apps
 
-- [Win32PrepTool][https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool]
-
+[Win32PrepTool][https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool]
     ***Note:Tools is from Microsoft, not 3rd party tool***
