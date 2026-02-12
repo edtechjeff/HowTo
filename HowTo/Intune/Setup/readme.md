@@ -63,10 +63,7 @@
 
                 ***Verify that public DNS records have been setup***
 
-                [Setup DNS for AutoEnrollment]
-                
-                [https://learn.microsoft.com/en-us/intune/intune-service/enrollment/windows-enrollment-create-cname#step-1-create-cname]
-
+                [Setup DNS for AutoEnrollment](https://learn.microsoft.com/en-us/intune/intune-service/enrollment/windows-enrollment-create-cname#step-1-create-cname)
                         ![CNAME](Images/CNAME.png)
 
             - Check properties of Enroolment restrictions
@@ -144,5 +141,5 @@ Profile Type: Settings Catalog
 
 ## Apps
 
-[Win32PrepTool][https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool]
+[Win32PrepTool](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool)
     ***Note:Tools is from Microsoft, not 3rd party tool***
