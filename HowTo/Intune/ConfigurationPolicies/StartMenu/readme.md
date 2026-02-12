@@ -1,3 +1,9 @@
+    ---
+    title: Custom Pinned Start Menu  
+    author: Jeff Downs
+    date: 02/11/2026
+    ---
+
 # Process to setup custom Start Menu
 
 ## The start menu is very easy to configure. The best method is to take machine and first pin any applications or shortcuts that you want to be pushed out to your clients

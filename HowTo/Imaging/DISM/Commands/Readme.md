@@ -30,7 +30,6 @@ Dism /export-image /sourceimagefile:C:\Installs\Windows11\23H2\install.wim /sour
 Dism /export-image /sourceimagefile:C:\Installs\Windows11\23H2\install.wim /sourceindex:5 /destinationimagefile:C:\Images\Images\Pro.wim
 ```
 
----
 ## Mount Install.WIM
 ```powershell
 Dism /Mount-Image /ImageFile:"C:\images\images\install.wim" /index:3 /MountDir:"C:\mount"
@@ -80,11 +79,11 @@ dism /image:\images\mount /Remove-Provisionedappxpackage /PackageName:Microsoft.
 dism /image:\images\mount /Remove-Provisionedappxpackage /PackageName:Microsoft.XboxSpeechToTextOverlay_1.17.29001.0_neutral_~_8wekyb3d8bbwe
 ```
 
----
+
 ## Setup Script Notes
 - Mirror the system drive with: `sources\$OEM$\$$\Setup\Scripts`
 - Reference scripts in `unattend.xml` with: `%SystemDrive%\Windows\Setup\Scripts`
----
+
 
 ## Get Device Model Name
 ```powershell

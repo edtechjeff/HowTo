@@ -1,3 +1,9 @@
+    ---
+    title: Custom Pinned Taskbar  
+    author: Jeff Downs
+    date: 02/11/2026
+    ---
+
 # How to Pin taskbar items via Intune
 
 ## This process is pretty straight forward. The most difficult part is to figure out what apps you want deployed and what info. 

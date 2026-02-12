@@ -38,13 +38,13 @@
 
 Configuration Type: Settings Catalog
 
-![alt text](Images/DefaultEntraDomain.png)
+![Default Entra Domain](Images/DefaultEntraDomain.png)
 
 ---
 
 ### Time Zone
 
-![alt text](Images/TimeZone.png)
+![Time Zone](Images/TimeZone.png)
 
 ---
 
@@ -52,7 +52,7 @@ Configuration Type: Settings Catalog
 
 Configuration Type: Settings Catalog
 
-![alt text](Images/DeliveryOptimization.png)
+![Delivery Optimization](Images/DeliveryOptimization.png)
 
 ---
 
@@ -60,8 +60,14 @@ Configuration Type: Settings Catalog
 
 Configuration Type: Properties Catalog
 
-![alt text](Images/SystemResources.png)
+![System Resources](Images/SystemResources.png)
 
 ---
 
+### One Drive Auto Setup
 
+---
+Platform: Windows 10 or Later
+Profile Type: Settings Catalog
+
+![OneDrive](Images/OneDrive.png)

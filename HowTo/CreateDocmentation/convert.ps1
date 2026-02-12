@@ -1,7 +1,6 @@
 # ---------------- CONFIG ----------------
 $InputRoot   = "Path\To\Your\Markdown\Files" # where .md files live
 $OutputRoot  = "Path\To\Your\Output\PDFs"  # where PDFs will be saved
-
 $ToolingRoot = "Path\To\Your\Tooling"  # where defaults.yaml and pandoc-header.tex live
 
 $DefaultsYaml = Join-Path $ToolingRoot "defaults.yaml"
