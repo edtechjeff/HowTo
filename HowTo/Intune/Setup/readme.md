@@ -56,12 +56,13 @@
             - Automatic Enrollment
 
                 ***Verify that all the URLs are populated if not click on Restore Default MDM URLS***
+                
                 ***Adjust scope to all users or specific users that you would like to enable for MDM enrollment***
 
             - CNAME Validation
 
                 ***Verify that public DNS records have been setup***
-                
+
                 [Setup DNS for AutoEnrollment][https://learn.microsoft.com/en-us/intune/intune-service/enrollment/windows-enrollment-create-cname#step-1-create-cname]
                         ![CNAME](Images/CNAME.png)
             - Check properties of Enroolment restrictions
