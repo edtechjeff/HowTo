@@ -56,15 +56,19 @@
             - Automatic Enrollment
 
                 ***Verify that all the URLs are populated if not click on Restore Default MDM URLS***
-                
+
                 ***Adjust scope to all users or specific users that you would like to enable for MDM enrollment***
 
             - CNAME Validation
 
                 ***Verify that public DNS records have been setup***
 
-                [Setup DNS for AutoEnrollment][https://learn.microsoft.com/en-us/intune/intune-service/enrollment/windows-enrollment-create-cname#step-1-create-cname]
+                [Setup DNS for AutoEnrollment]
+                
+                [https://learn.microsoft.com/en-us/intune/intune-service/enrollment/windows-enrollment-create-cname#step-1-create-cname]
+
                         ![CNAME](Images/CNAME.png)
+
             - Check properties of Enroolment restrictions
             - Check properties of Enrollment device limit restrictions
                 ***Default is 5***
@@ -139,5 +143,7 @@ Profile Type: Settings Catalog
     - Platform: Windows 10 and Later
 
 ## Apps
+
 - [Win32PrepTool][https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool]
+
     ***Note:Tools is from Microsoft, not 3rd party tool***
