@@ -13,7 +13,7 @@
     - Connectors and Tokens
         - Windows Data
 
-![ScriptsAndRemediation](Images/ScriptsAndRemediation.png)
+![ScriptsAndRemediation](Images/ScriptsAndRemediation.png){ width=90% }
 
 ## Groups Naming Convention
 ![Groups](Images/Groups.png)
