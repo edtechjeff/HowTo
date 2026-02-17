@@ -1,3 +1,11 @@
+---
+title: "Basic Intune Setup"
+author: "Jeff Downs"
+date: \today
+toc: true
+toc-depth: 3
+---
+
 # Intune Setup
 > **Note:** Topics to cover during implementation
 
@@ -7,7 +15,8 @@
 > **Note:** Settings to be changed during setup
 
 - Enable Remediation Scripts
-    > **Note:** User must have a minimum of M365E3,F3,A3 in order to enable Remediation Scripts
+
+> **Note:** User must have a minimum of M365E3,F3,A3 in order to enable Remediation Scripts
 
 - Tenant Administration
     - Connectors and Tokens
@@ -15,11 +24,13 @@
 
 ![ScriptsAndRemediation](Images/ScriptsAndRemediation.png){ width=90% }
 
+---
+
 ## Groups Naming Convention
 ![Groups](Images/Groups.png)
 
 ## Dynamic Groups
-    > **Note:** Instead of using Dynamic Groups you could also use Assignment Filters
+> **Note:** Instead of using Dynamic Groups you could also use Assignment Filters
 
 ###  AutoPilot Device
 ```
@@ -35,7 +46,6 @@
 ```
 (device.managementType -eq "MDM") and (device.deviceOwnership -eq "Company") and (device.deviceTrustType -eq "AzureAD")
 ```
----
 
 ### Devices that have a specific Group Tag
 ```
@@ -47,32 +57,59 @@
 (device.devicePhysicalIds -any _ -eq "[PurchaseOrderId]:0123456789")
 ```
 
+---
+
+## Assignment Filters
+- Create filters based on required groups
+    - Type: Managed Devices
+    - Platform: Windows 10 and Later
+
+---
 
 ## Windows Enrollment Settings
 
 - Devices
     - Windows
         - Enrollment
+
 ### Automatic Enrollment
+
 > **Note:** Verify that all the URLs are populated if not click on Restore Default MDM URLs
+
 > **Note:** Adjust scope to all users or specific users that you would like to enable for MDM enrollment
+
+---
+
 ### CNAME Validation
+
 > **Note:** Verify that public DNS records have been setup
 
 [Setup DNS for AutoEnrollment](https://learn.microsoft.com/en-us/intune/intune-service/enrollment/windows-enrollment-create-cname#step-1-create-cname)
 
 ![CNAME](Images/CNAME.png)
 
+---
+
 ### Check properties of Enrollment restrictions
+
+---
+
 ### Check properties of Enrollment device limit restrictions
-    > **Note:** Default is 5
+> **Note:** Default is 5
+
+---
+
 ### Windows Hello
-    > **Note:** Discuss whether this should be enabled or disabled. This is a tenant-level configuration.
+> **Note:** Discuss whether this should be enabled or disabled. This is a tenant-level configuration.
+
+---
+
 ### Device Enrollment Managers
     - Used for enrollment account for mass deployments
     - Must have a valid Intune license
     - Can only enroll up to 1000 devices at one time
 
+---
 
 ## Configuration Policies
 
@@ -119,20 +156,21 @@ Profile Type: Settings Catalog
 ### One Drive Auto Setup
 
 ---
+
 Platform: Windows 10 or Later
 
 Profile Type: Settings Catalog
 
 ![OneDrive](Images/OneDrive.png)
 
+---
+
 ## Compliance Policies
 - Create default policies and apply to all devices
+
 > **Note:** Does not have to have any settings just needs to be assigned to all devices for them to be compliant
 
-## Assignment Filters
-- Create filters based on required groups
-    - Type: Managed Devices
-    - Platform: Windows 10 and Later
+---
 
 ## Apps
 
