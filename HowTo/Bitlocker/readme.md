@@ -23,14 +23,14 @@ Enable BitLocker encryption on Windows Server systems and ensure recovery keys a
 
 # Steps
 
-- Verify TPM Chip is enabled
+1. Verify TPM Chip is enabled
 ```powershell
 Get-Tpm
 ```
 
 ---
 
-- Install Bitlocker Windows Feature
+2. Install Bitlocker Windows Feature
 ```powershell
 Install-WindowsFeature BitLocker -IncludeAllSubFeature -IncludeManagementTools -Restart:$false
 ```
@@ -38,21 +38,21 @@ Install-WindowsFeature BitLocker -IncludeAllSubFeature -IncludeManagementTools -
 
 ---
 
-- Import BitLocker Module (Post-Reboot)
+3. Import BitLocker Module (Post-Reboot)
 ```powershell
 Import-Module BitLocker
 ```
 
 ---
 
-- Verify module loaded
+4. Verify module loaded
 ```powershell
 Get-Command Enable-BitLocker
 ```
 
 ---
 
-- Run to get key from server
+5. Run to get key from server
 **Note:** Save the output till you verify that the key did load into Active Directory
 ```powershell
 Add-BitLockerKeyProtector -MountPoint "C:" -RecoveryPasswordProtector
@@ -60,7 +60,7 @@ Add-BitLockerKeyProtector -MountPoint "C:" -RecoveryPasswordProtector
 
 ---
 
-- Enable BitLocker on OS Drive (C:)
+6. Enable BitLocker on OS Drive (C:)
 **Note:** Server will require a reboot.
 ```bash
 manage-bde -on C:
@@ -68,21 +68,21 @@ manage-bde -on C:
 
 ---
 
-- Force Backup of Recovery Key to Active Directory
+7. Force Backup of Recovery Key to Active Directory
 ```bash
 manage-bde -protectors -adbackup C:
 ```
 
 ---
 
-- Monitor Encryption Progress
+8. Monitor Encryption Progress
 ```powershell
 Get-BitLockerVolume -MountPoint "C:"
 ```
 
 ---
 
-- Enable-BitLocker -MountPoint "D:" -RecoveryPasswordProtector
+9. Enable-BitLocker -MountPoint "D:" -RecoveryPasswordProtector
 **Note:** Modify drive letters as appropriate for your environment.
 ```powershell
 Enable-BitLocker -MountPoint "D:" -RecoveryPasswordProtector
@@ -90,7 +90,7 @@ Enable-BitLocker -MountPoint "D:" -RecoveryPasswordProtector
 
 ---
 
-- Enable Auto Unlock for Data Volume
+10. Enable Auto Unlock for Data Volume
 **Note:** Automatically unlock encrypted data volume during system boot.
 ```powershell
 Enable-BitLocker -MountPoint "D:" -RecoveryPasswordProtector
@@ -98,28 +98,28 @@ Enable-BitLocker -MountPoint "D:" -RecoveryPasswordProtector
 
 ---
 
-- Verify Auto Unlock is Enabled
+11. Verify Auto Unlock is Enabled
 ```powershell
 Get-BitLockerVolume -MountPoint "D:" | Select MountPoint, AutoUnlockEnabled
 ```
 
 ---
 
-- Alternative detailed view
+12. Alternative detailed view
 ```powershell
 Get-BitLockerVolume | Select MountPoint, VolumeStatus, EncryptionPercentage
 ```
 
 ---
 
-- Verify BitLocker Status on All Volumes
+13. Verify BitLocker Status on All Volumes
 ```powershell
 Get-BitLockerVolume
 ```
 
 ---
 
-- Retrieve Recovery Key from Server
+14. Retrieve Recovery Key from Server
 ```powershell
 (Get-BitLockerVolume -MountPoint "C:").KeyProtector |
 Where-Object {$_.KeyProtectorType -eq "RecoveryPassword"} |
@@ -128,7 +128,7 @@ Select-Object -ExpandProperty RecoveryPassword
 
 ---
 
-- Verify key is in Active Directory
+15. Verify key is in Active Directory
 **note:** You must know the Distinguished Name (DN) of the computer object.
 ```powershell
 Get-ADObject -Filter {objectclass -eq 'msFVE-RecoveryInformation'} `
