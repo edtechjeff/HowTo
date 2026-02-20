@@ -3,3 +3,4 @@ to: docx
 standalone: true
 # optional: if you have a Word reference template
 reference-doc: reference.docx
+highlight-style: espresso
