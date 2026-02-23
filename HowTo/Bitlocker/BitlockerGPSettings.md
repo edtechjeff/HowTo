@@ -58,7 +58,7 @@ toc-depth: 3
 
 ## Choose how BitLocker-protected operating system drives can be recovered
 **Status:** Enabled  
-
+- Check "Allow Bitlocker without a compatible TPM"
 - Allow data recovery agent: Enabled  
 - Allow 48-digit recovery password: Enabled  
 - Allow 256-bit recovery key: Enabled  

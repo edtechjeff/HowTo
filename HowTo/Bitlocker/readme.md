@@ -15,20 +15,13 @@ Enable BitLocker encryption on Windows Server systems and ensure recovery keys a
 # Pre-Requisites
 
 - Group Policy Object (GPO) created and linked to the appropriate OU.
-- TPM enabled in BIOS.
 - Server joined to Active Directory.
 - BitLocker policies configured to store recovery information in AD.
+**Note:** Since this is a clustered HyperV setup the VMs themselves will not have a TPM Chip enabled. Will only do password for bilocker
 
 ---
 
 # Steps
-
-## 1. Verify TPM Chip is enabled
-```powershell
-Get-Tpm
-```
-
----
 
 ## 2. Install Bitlocker Windows Feature
 ```powershell
@@ -69,8 +62,8 @@ manage-bde -on C:
 ---
 
 ## 7. Force Backup of Recovery Key to Active Directory
-```bash
-manage-bde -protectors -adbackup C:
+```powershell
+Backup-BitLockerKeyProtector -MountPoint "C:" -KeyProtectorId (Get-BitLockerVolume -MountPoint "C:").KeyProtector[0].KeyProtectorId
 ```
 
 ---
@@ -82,18 +75,10 @@ Get-BitLockerVolume -MountPoint "C:"
 
 ---
 
-## 9. Enable-BitLocker -MountPoint "D:" -RecoveryPasswordProtector
-**Note:** Modify drive letters as appropriate for your environment.
-```powershell
-Enable-BitLocker -MountPoint "D:" -RecoveryPasswordProtector
-```
-
----
-
 ## 10. Enable Auto Unlock for Data Volume
 **Note:** Automatically unlock encrypted data volume during system boot.
 ```powershell
-Enable-BitLocker -MountPoint "D:" -RecoveryPasswordProtector
+Enable-BitLockerAutoUnlock -MountPoint "D:"
 ```
 
 ---
