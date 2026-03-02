@@ -1,0 +1,36 @@
+{
+  "Rules": [
+    {
+      "SettingName": "CovalenceServiceFound",
+      "Operator": "IsEquals",
+      "DataType": "Boolean",
+      "Operand": true,
+      "MoreInfoUrl": "https://esi.tech",
+      "RemediationStrings": [
+        {
+          "Language": "en_US",
+          "Title": "Field Effect MDR (Covalence) is not installed",
+          "Description": "Covalence Endpoint Service was not found. Install the Field Effect MDR agent."
+        }
+      ]
+    },
+    {
+      "SettingName": "CovalenceServiceRunning",
+      "Operator": "IsEquals",
+      "DataType": "Boolean",
+      "Operand": true,
+      "MoreInfoUrl": "https://esi.tech",
+      "RemediationStrings": [
+        {
+          "Language": "en_US",
+          "Title": "Field Effect MDR (Covalence) is not running",
+          "Description": "Covalence Endpoint Service must be running for this device to be compliant."
+        }
+      ]
+    }
+  ]
+}
+
+
+
+
