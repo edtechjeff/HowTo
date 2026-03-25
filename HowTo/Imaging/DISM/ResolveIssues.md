@@ -2,6 +2,52 @@
 
 This guide walks through resolving Sysprep failures and WIMMount driver issues, including common error codes, registry repair, and app removals that may interfere with the process.
 
+
+## 🧹 Sysprep Preparation Steps
+
+### 🔐 Disable BitLocker
+
+```powershell
+manage-bde -off C:
+```
+
+### 🔍 Check BitLocker Status
+
+```powershell
+manage-bde -status
+```
+
+### Get BitLocker Key
+```
+manage-bde -protectors -get C:
+``` 
+
+### Enable BitLocker
+```
+manage-bde -on C:
+```
+---
+
+## Pause Windows Updates and Reboot Device
+
+## 🧼 Remove Appx Packages (Common Sysprep Blockers)
+
+> You can identify blocking packages by checking the `sysprep` log file in:
+> ```
+> C:\Windows\System32\Sysprep\Panther\setuperr.log
+> ```
+
+### Remove OneDrive Sync
+
+```powershell
+Get-AppxPackage Microsoft.OneDriveSync | Remove-AppxPackage
+```
+
+### Remove WebExperience Pack
+
+```powershell
+Get-AppxPackage MicrosoftWindows.Client.Webexperience | Remove-AppxPackage
+```
 ---
 
 ## ❗ Common Error
@@ -10,6 +56,45 @@ This guide walks through resolving Sysprep failures and WIMMount driver issues, 
   > *"The specified service does not exist."*
 
 This typically indicates a missing `WIMMount` driver or registry corruption.
+
+---
+
+## 🧹 Remove Copilot (If Causing Sysprep Issues)
+
+### Current User
+
+```powershell
+Get-AppxPackage -Name Microsoft.Copilot | Remove-AppxPackage
+Get-AppxPackage -Name Microsoft.bingsearch | Remove-AppxPackage
+Get-AppxPackage -Name Microsoft.OneDriveSync | Remove-AppxPackage
+```
+
+### All Users
+
+```powershell
+Get-AppxPackage -AllUsers *Microsoft.Copilot* | Remove-AppxPackage -AllUsers
+Get-AppxPackage -AllUsers *Microsoft.bingsearch* | Remove-AppxPackage -AllUsers
+Get-AppxPackage -AllUsers *Microsoft.OneDriveSync* | Remove-AppxPackage -AllUsers
+```
+
+### Remove Provisioned Copilot Package
+
+```powershell
+Get-AppxProvisionedPackage -Online |
+  Where-Object DisplayName -like "*Microsoft.Copilot*" |
+  Remove-AppxProvisionedPackage -Online
+```
+
+---
+## 🧹 Remove WebExperience (Provisioned and Installed)
+
+```powershell
+Get-AppxPackage -AllUsers *WebExperience* | Remove-AppxPackage -AllUsers
+
+Get-AppxProvisionedPackage -Online |
+  Where-Object DisplayName -like "*WebExperience*" |
+  Remove-AppxProvisionedPackage -Online
+```
 
 ---
 
@@ -59,55 +144,6 @@ Ensure the following file exists:
 ```
 C:\Windows\System32\drivers\wimmount.sys
 ```
-
----
-
-## 🧹 Sysprep Preparation Steps
-
-### 🔐 Disable BitLocker
-
-```powershell
-manage-bde -off C:
-```
-
-### 🔍 Check BitLocker Status
-
-```powershell
-manage-bde -status
-```
-
-### Get BitLocker Key
-```
-manage-bde -protectors -get C:
-``` 
-
-### Enable BitLocker
-```
-manage-bde -on C:
-```
-
-
----
-
-## 🧼 Remove Appx Packages (Common Sysprep Blockers)
-
-> You can identify blocking packages by checking the `sysprep` log file in:
-> ```
-> C:\Windows\System32\Sysprep\Panther\setuperr.log
-> ```
-
-### Remove OneDrive Sync
-
-```powershell
-Get-AppxPackage Microsoft.OneDriveSync | Remove-AppxPackage
-```
-
-### Remove WebExperience Pack
-
-```powershell
-Get-AppxPackage MicrosoftWindows.Client.Webexperience | Remove-AppxPackage
-```
-
 ---
 
 ## 🛑 Disable Reserved Storage
@@ -136,42 +172,4 @@ del /s /q C:\Windows\SoftwareDistribution\*
 net start wuauserv
 net start bits
 ```
-
 ---
-
-## 🧹 Remove Copilot (If Causing Sysprep Issues)
-
-### Current User
-
-```powershell
-Get-AppxPackage -Name Microsoft.Copilot | Remove-AppxPackage
-Get-AppxPackage -Name Microsoft.bingsearch | Remove-AppxPackage
-Get-AppxPackage -Name Microsoft.OneDriveSync | Remove-AppxPackage
-```
-
-### All Users
-
-```powershell
-Get-AppxPackage -AllUsers *Microsoft.Copilot* | Remove-AppxPackage -AllUsers
-Get-AppxPackage -AllUsers *Microsoft.bingsearch* | Remove-AppxPackage -AllUsers
-Get-AppxPackage -AllUsers *Microsoft.OneDriveSync* | Remove-AppxPackage -AllUsers
-```
-
-### Remove Provisioned Copilot Package
-
-```powershell
-Get-AppxProvisionedPackage -Online |
-  Where-Object DisplayName -like "*Microsoft.Copilot*" |
-  Remove-AppxProvisionedPackage -Online
-```
-
----
-## 🧹 Remove WebExperience (Provisioned and Installed)
-
-```powershell
-Get-AppxPackage -AllUsers *WebExperience* | Remove-AppxPackage -AllUsers
-
-Get-AppxProvisionedPackage -Online |
-  Where-Object DisplayName -like "*WebExperience*" |
-  Remove-AppxProvisionedPackage -Online
-```
