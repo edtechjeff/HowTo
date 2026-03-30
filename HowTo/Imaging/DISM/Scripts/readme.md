@@ -1,4 +1,16 @@
-# Scripts used as part of the process
+---
+title: "Scripts used while exporting image"
+author: "Jeff Downs"
+date: \today
+toc: true
+toc-depth: 3
+---
 
-- DeployDrivers.ps1 - Used in the Apply-Image.bat files to deploy the drivers to the image just deployed
-- RemovePackages.ps1 - Used to remove pre-installed applications on the image
+
+# Title: Scripts used as part of the process while exporting image
+
+## Purpose: Scripts used as part of the export imaging process
+
+## Scripts:
+1. DisableCloudContent.ps1
+2. RemovePackages.ps1 - Used to remove pre-installed applications on the image
