@@ -1,5 +1,5 @@
 ---
-title: "V"
+title: "Updating Image"
 author: "Jeff Downs"
 date: \today
 toc: true
