@@ -130,7 +130,7 @@ dism /image:\images\mount /Remove-Provisionedappxpackage /PackageName:Microsoft.
 
 ## Load Registry of Mounted Image
 ```bash
-reg query HKLM\OFFLINE\Policies\Microsoft\Windows\CloudContent
+reg load HKLM\OFFLINE\Policies\Microsoft\Windows\CloudContent
 ```
 
 ## Query Registry Key
@@ -143,3 +143,14 @@ reg query HKLM\OFFLINE\Policies\Microsoft\Windows\CloudContent
 reg unload HKLM\OFFLINE
 
 ```
+
+## Check if DISM has something loaded
+```bash
+dism /Get-MountedWimInfo
+```
+
+## Force Cleanup
+```bash
+dism /Cleanup-Wim
+```
+
