@@ -127,3 +127,19 @@ dism /image:\images\mount /Remove-Provisionedappxpackage /PackageName:Microsoft.
 ```powershell
 (Get-CimInstance -ClassName Win32_ComputerSystem).Model
 ```
+
+## Load Registry of Mounted Image
+```bash
+reg query HKLM\OFFLINE\Policies\Microsoft\Windows\CloudContent
+```
+
+## Query Registry Key
+```bash
+reg query HKLM\OFFLINE\Policies\Microsoft\Windows\CloudContent
+```
+
+## Unload Registry
+```bash
+reg unload HKLM\OFFLINE
+
+```
