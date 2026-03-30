@@ -32,3 +32,5 @@ toc-depth: 3
     - Updates on the Export. Found issues when a local admin was created on the server, the account would not work for the export.  
     
     ***Please review the script for folder structure***
+8. MaintenanceTaskV7.cmd 
+    - Added section to disable Online Content
