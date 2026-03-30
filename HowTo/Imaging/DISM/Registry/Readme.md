@@ -1,10 +1,20 @@
-# 🚫 Bypassing TPM, CPU, and RAM Checks for Windows 11 Installation
+---
+title: "Registry Hacks"
+author: "Jeff Downs"
+date: \today
+toc: true
+toc-depth: 3
+---
+
+# Title: Registry Hacks
+
+## Purpose: Bypassing TPM, CPU, and RAM Checks for Windows 11 Installation
 
 You can bypass the hardware checks (TPM, CPU, RAM, and optionally Secure Boot) when installing Windows 11—especially useful in virtual machines or on unsupported hardware—by modifying the registry during installation.
 
 ---
 
-## 🧰 Steps to Modify Registry Settings
+## Steps to Modify Registry Settings
 
 1. **Boot into the Windows 11 installation media.**
 2. When you reach the initial setup screen, press `Shift + F10` to open **Command Prompt**.
@@ -21,7 +31,7 @@ You can bypass the hardware checks (TPM, CPU, RAM, and optionally Secure Boot) w
 
 ---
 
-## 📝 Registry Keys to Add
+## Registry Keys to Add
 
 | Name                     | Type            | Value | Description                               |
 |--------------------------|-----------------|--------|-------------------------------------------|
@@ -34,7 +44,7 @@ You can bypass the hardware checks (TPM, CPU, RAM, and optionally Secure Boot) w
 
 ---
 
-## ⚠️ Important Notes
+## Important Notes
 
 - These steps are intended for **testing or evaluation** purposes only.
 - Installing Windows 11 on unsupported hardware may lead to:
@@ -45,6 +55,6 @@ You can bypass the hardware checks (TPM, CPU, RAM, and optionally Secure Boot) w
 
 ---
 
-## ✅ Outcome
+## Outcome
 
 After completing these steps, the Windows 11 installer should skip the hardware validation checks, allowing you to install it even on systems or VMs that don't meet the official requirements.
