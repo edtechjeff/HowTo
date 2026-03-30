@@ -1,3 +1,11 @@
+---
+title: "Assign Autopilot Profiles During Imaging Process"
+author: "Jeff Downs"
+date: \today
+toc: true
+toc-depth: 3
+---
+
 # Assign Autopilot Profiles During Imaging Process
 
 This guide walks you through assigning Autopilot profiles to a Windows image during your imaging process using PowerShell and DISM.
@@ -39,7 +47,7 @@ foreach ($AutopilotProfile in $AutopilotProfiles) {
 }
 ```
 
-> ✅ Your exported files will be located in: `C:\DATA\AutopilotProfiles\`
+> Your exported files will be located in: `C:\DATA\AutopilotProfiles\`
 
 
 
@@ -102,10 +110,10 @@ Dism /Commit-Image /MountDir:C:\DATA\Mount
 
 ---
 
-## ✅ Final Notes
+## Final Notes
 
 - You now have an updated `install.wim` file with a specific Autopilot deployment profile.
 - You can deploy this WIM via PXE or USB depending on your environment.
 
-Happy Imaging! 🚀
+Happy Imaging!
 
