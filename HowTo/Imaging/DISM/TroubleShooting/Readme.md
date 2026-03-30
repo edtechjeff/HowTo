@@ -1,17 +1,24 @@
-# 🛠️ Troubleshooting Sysprep and WIMMount Issues
+---
+title: "Troubleshooting Sysprep and WIMMount Issues"
+author: "Jeff Downs"
+date: \today
+toc: true
+toc-depth: 3
+---
 
-This guide walks through resolving Sysprep failures and WIMMount driver issues, including common error codes, registry repair, and app removals that may interfere with the process.
+# Title: Troubleshooting Sysprep and WIMMount Issues
 
+## Purpose: This guide walks through resolving Sysprep failures and WIMMount driver issues, including common error codes, registry repair, and app removals that may interfere with the process.
 
-## 🧹 Sysprep Preparation Steps
+## Sysprep Preparation Steps
 
-### 🔐 Disable BitLocker
+### Disable BitLocker
 
 ```powershell
 manage-bde -off C:
 ```
 
-### 🔍 Check BitLocker Status
+### Check BitLocker Status
 
 ```powershell
 manage-bde -status
@@ -30,7 +37,7 @@ manage-bde -on C:
 
 ## Pause Windows Updates and Reboot Device
 
-## 🧼 Remove Appx Packages (Common Sysprep Blockers)
+## Remove Appx Packages (Common Sysprep Blockers)
 
 > You can identify blocking packages by checking the `sysprep` log file in:
 > ```
@@ -50,7 +57,7 @@ Get-AppxPackage MicrosoftWindows.Client.Webexperience | Remove-AppxPackage
 ```
 ---
 
-## ❗ Common Error
+## Common Error
 
 - **Error Code 1243**  
   > *"The specified service does not exist."*
@@ -59,7 +66,7 @@ This typically indicates a missing `WIMMount` driver or registry corruption.
 
 ---
 
-## 🧹 Remove Copilot (If Causing Sysprep Issues)
+## Remove Copilot (If Causing Sysprep Issues)
 
 ### Current User
 
@@ -86,7 +93,7 @@ Get-AppxProvisionedPackage -Online |
 ```
 
 ---
-## 🧹 Remove WebExperience (Provisioned and Installed)
+## Remove WebExperience (Provisioned and Installed)
 
 ```powershell
 Get-AppxPackage -AllUsers *WebExperience* | Remove-AppxPackage -AllUsers
@@ -98,7 +105,7 @@ Get-AppxProvisionedPackage -Online |
 
 ---
 
-## 🔍 Check for WIMMount Registry Key
+## Check for WIMMount Registry Key
 
 Open `regedit` and confirm the following path exists:
 
@@ -108,7 +115,7 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WIMMount
 
 If missing, you can manually recreate it using this `.reg` snippet:
 
-### 🧾 WIMMount Registry Configuration
+### WIMMount Registry Configuration
 
 ```reg
 Windows Registry Editor Version 5.00
@@ -137,7 +144,7 @@ Windows Registry Editor Version 5.00
 
 ---
 
-## 📁 Check for Driver File
+## Check for Driver File
 
 Ensure the following file exists:
 
@@ -146,7 +153,7 @@ C:\Windows\System32\drivers\wimmount.sys
 ```
 ---
 
-## 🛑 Disable Reserved Storage
+## Disable Reserved Storage
 
 ```powershell
 DISM.exe /Online /Set-ReservedStorageState /State:Disabled
@@ -158,12 +165,12 @@ DISM.exe /Online /Set-ReservedStorageState /State:Disabled
 Get-WindowsReservedStorageState
 ```
 
-📚 More Info:  
+More Info:  
 [Reserved Storage Details - ElevenForum](https://www.elevenforum.com/t/enable-or-disable-reserved-storage-in-windows-11.21389/)
 
 ---
 
-## 🔄 Clear Windows Update Cache
+## Clear Windows Update Cache
 
 ```cmd
 net stop wuauserv
