@@ -47,6 +47,7 @@ echo Continue with boot files, drivers, unattend, etc...
 ---
 
 4. As you can tell from the code this will be launching Stage-compterName.ps1 and does point to the CSV also. 
+
 ***Note:*** The -OsDrive W: is the temporary Drive letter for C while imaging. A wild card was tried but did not work. Being specific to the drive letter which is setup during the imaging process avoided failure.
 
 ## The Process
@@ -80,6 +81,7 @@ echo Continue with boot files, drivers, unattend, etc...
 ---
 
 7. You can then reboot the device. It will do normal 1st run functions. One of them will be to run the SetupComplete.cmd. 
+
 ***Note:*** SetupComplete.cmd can be used to run multiple items. In this function we are using it to run the Apply-ComputerName.ps1. 
 
 ---
