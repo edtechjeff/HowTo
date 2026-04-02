@@ -247,28 +247,6 @@ C:\ProgramData\Microsoft\IntunePrinterDeploy\
 
 ---
 
-## Alternative (Recommended for Production)
-
-Instead of PrintBRM, use direct PowerShell:
-
-```powershell
-pnputil.exe /add-driver ".\Driver\driver.inf" /install
-Add-PrinterDriver -Name "Driver Name"
-Add-PrinterPort -Name "IP_192.168.1.50" -PrinterHostAddress "192.168.1.50"
-Add-Printer -Name "Office Printer - Front Office" `
-    -DriverName "Driver Name" `
-    -PortName "IP_192.168.1.50"
-```
-
-### Why this is better
-
-* More reliable
-* Easier troubleshooting
-* Cleaner deployments
-* No dependency on export files
-
----
-
 ## Author
 
 Jeff Downs
