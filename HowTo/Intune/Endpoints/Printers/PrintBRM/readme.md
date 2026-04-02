@@ -269,15 +269,6 @@ Add-Printer -Name "Office Printer - Front Office" `
 
 ---
 
-## Recommendation
-
-| Scenario             | Method                   |
-| -------------------- | ------------------------ |
-| Quick replication    | PrintBRM                 |
-| Long-term deployment | PowerShell (Add-Printer) |
-
----
-
 ## Author
 
 Jeff Downs
