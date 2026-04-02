@@ -1,34 +1,170 @@
-# Method to prestage the drivers for pritners via intune
-## Method does work better with V4 drivers
+# Pre-staging Printer Drivers via Microsoft Intune
 
-- First download the drivers
-- Note the following
-    - INF Driver Name
-- Folder Structure for Deployment
-    - install.ps1
-    - uninstall.ps1
-    - \driver
+## Overview
 
-## Install.ps1
+This method allows you to **pre-stage printer drivers into the Windows driver store** using Microsoft Intune. This ensures the driver is available on the device **before the printer is installed or connected**.
+
+This approach works best with:
+
+* **V4 (Type 4) drivers**
+* **Signed, package-aware drivers**
+
+---
+
+## Key Concept
+
+This process **does NOT install a printer**.
+
+It only:
+
+* Adds the driver to the **Windows driver store**
+* Makes the driver available for later use (printer deployment, scripts, GPO, etc.)
+
+---
+
+## Prerequisites
+
+* Driver package must include:
+
+  * `.INF` file
+  * Associated driver files
+* Driver should be:
+
+  * Digitally signed
+  * Package-aware (recommended)
+* Deployment must run in:
+
+  * **SYSTEM context (Intune Win32 app)**
+
+---
+
+## Folder Structure
+
+```text
+PrinterDriver-Prestage
+├── install.ps1
+├── uninstall.ps1
+├── detect.ps1
+└── driver
+    ├── KOAWNJ__.inf
+    ├── *.dll
+    ├── *.cat
+    └── other driver files
+```
+
+---
+
+## Install Script (install.ps1)
+
 ```powershell
-$DriverFolder = "$PSScriptRoot\driver"
-$InfFile = Join-Path $DriverFolder "KOAWNJ__.inf"
+[CmdletBinding()]
+param()
 
-Write-Host "Installing KONICA MINOLTA Universal PCL driver..."
-Write-Host "Driver INF: $InfFile"
+$ErrorActionPreference = "Stop"
 
-# Stage + install driver into driver store
-pnputil /add-driver "$InfFile" /install
+$DriverFolder = Join-Path $PSScriptRoot "driver"
+$InfName = "KOAWNJ__.inf"
+$InfFile = Join-Path $DriverFolder $InfName
 
-if ($LASTEXITCODE -eq 0) {
-    Write-Host "Driver installed successfully."
-    exit 0
-} else {
-    Write-Host "Driver installation failed with exit code $LASTEXITCODE"
+$LogPath = "C:\ProgramData\PrinterDriverPrestage\install.log"
+New-Item -ItemType Directory -Path (Split-Path $LogPath) -Force | Out-Null
+Start-Transcript -Path $LogPath -Append
+
+try {
+    # Ensure correct pnputil path (handles 32/64-bit context)
+    $PnpUtil = "$env:WINDIR\SysNative\pnputil.exe"
+    if (-not (Test-Path $PnpUtil)) {
+        $PnpUtil = "$env:WINDIR\System32\pnputil.exe"
+    }
+
+    if (-not (Test-Path $DriverFolder)) {
+        Write-Host "Driver folder not found: $DriverFolder"
+        exit 1
+    }
+
+    # Expand compressed files if present (e.g. .DL_ → .DLL)
+    Get-ChildItem -Path $DriverFolder -File | Where-Object { $_.Extension -match '_$' } | ForEach-Object {
+        $source = $_.FullName
+        $dest = $_.FullName.Substring(0, $_.FullName.Length - 1)
+
+        if (-not (Test-Path $dest)) {
+            Write-Host "Expanding $source to $dest"
+            & expand.exe $source $dest | Out-Null
+        }
+    }
+
+    if (-not (Test-Path $InfFile)) {
+        Write-Host "INF file not found: $InfFile"
+        exit 1
+    }
+
+    Write-Host "Installing printer driver package..."
+    Write-Host "INF: $InfFile"
+
+    $proc = Start-Process -FilePath $PnpUtil `
+        -ArgumentList "/add-driver `"$InfFile`" /install" `
+        -Wait -PassThru -NoNewWindow
+
+    Write-Host "pnputil exit code: $($proc.ExitCode)"
+
+    if ($proc.ExitCode -eq 0) {
+        Write-Host "Driver package installed successfully."
+        exit 0
+    } else {
+        Write-Host "Driver installation failed."
+        exit 1
+    }
+}
+catch {
+    Write-Host "Installation failed: $($_.Exception.Message)"
+    exit 1
+}
+finally {
+    Stop-Transcript | Out-Null
+}
+```
+
+---
+
+## Detection Script (detect.ps1)
+
+Used by Intune to determine if the driver is already staged.
+
+```powershell
+[CmdletBinding()]
+param()
+
+$InfName = "KOAWNJ__.inf"
+
+$PnpUtil = "$env:WINDIR\SysNative\pnputil.exe"
+if (-not (Test-Path $PnpUtil)) {
+    $PnpUtil = "$env:WINDIR\System32\pnputil.exe"
+}
+
+try {
+    $result = & $PnpUtil /enum-drivers | Select-String -Pattern [regex]::Escape($InfName)
+
+    if ($result) {
+        Write-Host "Driver detected in driver store: $InfName"
+        exit 0
+    }
+    else {
+        Write-Host "Driver not found in driver store: $InfName"
+        exit 1
+    }
+}
+catch {
+    Write-Host "Detection failed: $($_.Exception.Message)"
     exit 1
 }
 ```
-## Uninstall.ps1
+
+---
+
+## Uninstall Script (uninstall.ps1)
+
+Removes the driver package and any printers using it.
+
 ```powershell
 [CmdletBinding()]
 param()
@@ -36,120 +172,172 @@ param()
 $ErrorActionPreference = "Stop"
 
 $InfFileName = "KOAWNJ__.inf"
-$ProviderMatch = "KONICA MINOLTA"
+$DriverNameMatch = "KONICA MINOLTA"
 
-Write-Host "Searching driver store for Konica Minolta Universal PCL..."
+$LogPath = "C:\ProgramData\PrinterDriverPrestage\uninstall.log"
+New-Item -ItemType Directory -Path (Split-Path $LogPath) -Force | Out-Null
+Start-Transcript -Path $LogPath -Append
 
-# Get the full driver enumeration
-$drivers = pnputil /enum-drivers
-
-# Parse blocks for Published Name, Original Name, Provider
-$blocks = @()
-$current = @()
-
-foreach ($line in $drivers) {
-    if ($line -match "^Published Name\s*:") {
-        if ($current.Count -gt 0) { $blocks += ,@($current) }
-        $current = @($line)
-    }
-    elseif ($current.Count -gt 0) {
-        $current += $line
-    }
-}
-if ($current.Count -gt 0) { $blocks += ,@($current) }
-
-$targets = @()
-
-foreach ($block in $blocks) {
-    $published = ""
-    $original  = ""
-    $provider  = ""
-
-    foreach ($line in $block) {
-        if ($line -match "Published Name\s*:\s*(.+)$") { $published = $Matches[1].Trim() }
-        if ($line -match "Original Name\s*:\s*(.+)$")  { $original  = $Matches[1].Trim() }
-        if ($line -match "Provider Name\s*:\s*(.+)$")  { $provider  = $Matches[1].Trim() }
+try {
+    $PnpUtil = "$env:WINDIR\SysNative\pnputil.exe"
+    if (-not (Test-Path $PnpUtil)) {
+        $PnpUtil = "$env:WINDIR\System32\pnputil.exe"
     }
 
-    if ($published -and ($original -eq $InfFileName -or $provider -like "*$ProviderMatch*")) {
-        $targets += [PSCustomObject]@{
-            PublishedName = $published
-            OriginalName  = $original
-            ProviderName  = $provider
+    Write-Host "Searching for driver INF: $InfFileName"
+    $drivers = & $PnpUtil /enum-drivers
+
+    $blocks = @()
+    $current = @()
+
+    foreach ($line in $drivers) {
+        if ($line -match "^Published Name\s*:") {
+            if ($current.Count -gt 0) { $blocks += ,@($current) }
+            $current = @($line)
+        }
+        elseif ($current.Count -gt 0) {
+            $current += $line
         }
     }
-}
 
-if ($targets.Count -eq 0) {
-    Write-Host "No Konica Minolta driver packages found. Nothing to remove."
+    if ($current.Count -gt 0) { $blocks += ,@($current) }
+
+    $targets = foreach ($block in $blocks) {
+        $published = ""
+        $original  = ""
+        $className = ""
+
+        foreach ($line in $block) {
+            if ($line -match "Published Name\s*:\s*(.+)$") { $published = $Matches[1].Trim() }
+            if ($line -match "Original Name\s*:\s*(.+)$")  { $original  = $Matches[1].Trim() }
+            if ($line -match "Class Name\s*:\s*(.+)$")     { $className = $Matches[1].Trim() }
+        }
+
+        if ($published -and $original -ieq $InfFileName -and $className -match "Printer") {
+            [PSCustomObject]@{
+                PublishedName = $published
+                OriginalName  = $original
+            }
+        }
+    }
+
+    if (-not $targets) {
+        Write-Host "No matching driver found."
+        exit 0
+    }
+
+    Write-Host "Removing printers using this driver..."
+    Get-Printer -ErrorAction SilentlyContinue | Where-Object {
+        $_.DriverName -like "*$DriverNameMatch*"
+    } | ForEach-Object {
+        Write-Host "Removing printer: $($_.Name)"
+        Remove-Printer -Name $_.Name -ErrorAction SilentlyContinue
+    }
+
+    foreach ($t in $targets) {
+        Write-Host "Removing driver package: $($t.PublishedName)"
+        Start-Process -FilePath $PnpUtil `
+            -ArgumentList "/delete-driver $($t.PublishedName) /uninstall /force" `
+            -Wait -NoNewWindow
+    }
+
+    Write-Host "Driver removal complete."
     exit 0
 }
-
-Write-Host "Found driver packages:"
-$targets | Format-Table
-
-# Remove printers using the driver
-Write-Host "Removing any printers using Konica Minolta driver..."
-Get-Printer -ErrorAction SilentlyContinue | Where-Object {
-    $_.DriverName -like "*KONICA*" -or $_.DriverName -like "*MINOLTA*"
-} | ForEach-Object {
-    Write-Host "Removing printer $($_.Name)..."
-    Remove-Printer -Name $_.Name -ErrorAction SilentlyContinue
+catch {
+    Write-Host "Uninstall failed: $($_.Exception.Message)"
+    exit 1
 }
-
-# Remove each driver package
-foreach ($t in $targets) {
-    Write-Host "Removing driver store package: $($t.PublishedName) (Original: $($t.OriginalName), Provider: $($t.ProviderName))"
-
-    $args = "/delete-driver", $t.PublishedName, "/uninstall", "/force"
-    Write-Host "Executing: pnputil $($args -join ' ')"
-
-    $proc = Start-Process -FilePath "pnputil.exe" -ArgumentList $args -PassThru -Wait
-    Write-Host "pnputil exit code: $($proc.ExitCode)"
+finally {
+    Stop-Transcript | Out-Null
 }
-
-Write-Host "Driver removal complete."
-exit 0
-
 ```
 
-## Script to expand compressed files if they are
+---
+
+## Intune Deployment Configuration
+
+### App Type
+
+* **Windows app (Win32)**
+
+### Install Command
+
 ```powershell
-Get-ChildItem -File | Where-Object { $_.Extension -match '_$' } | ForEach-Object {
-    $source = $_.FullName
-    $dest = ($_.FullName).TrimEnd('_')  # remove underscore to create correct name
-
-    Write-Host "Expanding $source to $dest"
-    expand.exe $source $dest
-}
+powershell.exe -ExecutionPolicy Bypass -File .\install.ps1
 ```
 
-## Check to see if the driver was loaded into the driver store
-***Note: You will need to change the name tot he name of the driver***
-```
-pnputil /enum-drivers | findstr /i "konic"
+### Uninstall Command
+
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File .\uninstall.ps1
 ```
 
-## Will come back with something like this
+### Detection Rule
+
+* Type: **Custom script**
+* Script: `detect.ps1`
+* Success code: `0`
+
+### Execution Context
+
+* **System**
+
+---
+
+## Validation
+
+To manually verify the driver is staged:
+
+```cmd
+pnputil /enum-drivers | findstr /i "KOAWNJ__.inf"
 ```
+
+Expected output:
+
+```text
+Original Name:      KOAWNJ__.inf
 Provider Name:      KONICA MINOLTA
 ```
 
-## Check to see if the driver is detected
-***Note:Driver will not be fully loaded till its connected to the printer. Could also be used as detection method for install.***
-```powershell
-$infName = "KOAWNJ__.inf"
+---
 
-$driver = pnputil /enum-drivers | Select-String -Pattern $infName
+## Notes & Best Practices
 
-if ($driver) {
-    Write-Host "Driver INF is present in the driver store."
-    exit 0
-} else {
-    Write-Host "Driver INF not found."
-    exit 1
-}
-```
+* V4 drivers are preferred over V3 drivers
+* Always test on:
 
+  * Windows 10
+  * Windows 11
+* Avoid unsigned drivers
+* Pre-staging does NOT:
 
+  * Create a printer
+  * Create a port
+  * Assign a queue
 
+---
+
+## When to Use This Method
+
+This is ideal when:
+
+* You want **faster printer deployment later**
+* You are using:
+
+  * Intune scripts
+  * Universal Print
+  * Print server migration
+* You want to **separate driver install from printer creation**
+
+---
+
+## Summary
+
+This method provides a **clean, scalable way** to manage printer drivers in Intune by:
+
+* Pre-loading drivers
+* Reducing user disruption
+* Simplifying later printer deployments
+
+---
