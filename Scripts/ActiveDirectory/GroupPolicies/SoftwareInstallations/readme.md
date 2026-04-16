@@ -48,6 +48,7 @@ $results | Format-Table -AutoSize
 
 # Export to CSV
 $results | Export-Csv ".\GPO_AssignedApplications.csv" -NoTypeInformation
+```
 
 # Added to pull the link informaton
 
