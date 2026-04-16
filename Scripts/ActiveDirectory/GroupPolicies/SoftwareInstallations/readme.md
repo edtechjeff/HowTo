@@ -48,3 +48,62 @@ $results | Format-Table -AutoSize
 
 # Export to CSV
 $results | Export-Csv ".\GPO_AssignedApplications.csv" -NoTypeInformation
+
+# Added to pull the link informaton
+
+## Step 1: Pull Live Link Info
+```powershell
+Import-Module GroupPolicy
+
+$gpoLinks = foreach ($ou in Get-ADOrganizationalUnit -Filter *) {
+    $inheritance = Get-GPInheritance -Target $ou.DistinguishedName
+    foreach ($link in $inheritance.GpoLinks) {
+        [PSCustomObject]@{
+            GPOName     = $link.DisplayName
+            TargetOU   = $ou.DistinguishedName
+            LinkEnabled = $link.Enabled
+            Enforced    = $link.Enforced
+        }
+    }
+}
+
+# Add Domain root links
+$domain = (Get-ADDomain).DistinguishedName
+$inheritance = Get-GPInheritance -Target $domain
+foreach ($link in $inheritance.GpoLinks) {
+    $gpoLinks += [PSCustomObject]@{
+        GPOName     = $link.DisplayName
+        TargetOU   = $domain
+        LinkEnabled = $link.Enabled
+        Enforced    = $link.Enforced
+    }
+}
+```
+
+## Step 2: Join MSI data with Link Data
+```powershell
+$finalResults = foreach ($item in $results) {
+
+    $links = $gpoLinks | Where-Object { $_.GPOName -eq $item.GPOName }
+
+    if ($links) {
+        foreach ($link in $links) {
+            $item | Select-Object *,
+                @{Name="LinkTarget";Expression={$link.TargetOU}},
+                @{Name="LinkEnabled";Expression={$link.LinkEnabled}},
+                @{Name="Enforced";Expression={$link.Enforced}}
+        }
+    }
+    else {
+        $item | Select-Object *,
+            @{Name="LinkTarget";Expression={"Not linked"}},
+            @{Name="LinkEnabled";Expression={$false}},
+            @{Name="Enforced";Expression={$false}}
+    }
+}
+```
+
+## Step 3: Export
+```powershell
+$finalResults | Export-Csv ".\GPO_AssignedApplications_WithLinks.csv" -NoTypeInformation
+```
