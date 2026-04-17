@@ -15,38 +15,37 @@ foreach ($gpo in (Get-GPO -All)) {
 # Script to search all policies that were exported and look for policies with Software Installations
 
 ```powershell
-$results = foreach ($file in Get-ChildItem -Filter *.xml) {
+$rawResults = foreach ($file in Get-ChildItem -Filter *.xml) {
     [xml]$xml = Get-Content $file
 
-    # Look for MSI applications in the Computer section
-    $compApps = $xml.GPO.Computer.ExtensionData.Extension.MsiApplication
-    foreach ($app in $compApps) {
-        [PSCustomObject]@{
-            FileName    = $file.Name
-            GPOName     = $xml.GPO.Name
-            Scope       = "Computer"
-            AppName     = $app.Name
-            PackagePath = $app.Path
-        }
-    }
+    foreach ($scope in @('Computer','User')) {
+        $extData = $xml.GPO.$scope.ExtensionData.Extension
+        if (-not $extData) { continue }
 
-    # Look for MSI applications in the User section
-    $userApps = $xml.GPO.User.ExtensionData.Extension.MsiApplication
-    foreach ($app in $userApps) {
-        [PSCustomObject]@{
-            FileName    = $file.Name
-            GPOName     = $xml.GPO.Name
-            Scope       = "User"
-            AppName     = $app.Name
-            PackagePath = $app.Path
+        foreach ($ext in $extData) {
+            if (-not $ext.MsiApplication) { continue }
+
+            foreach ($app in $ext.MsiApplication) {
+                [PSCustomObject]@{
+                    FileName    = $file.Name
+                    GPOName     = $xml.GPO.Name
+                    Scope       = $scope
+                    AppName     = $app.Name
+                    PackagePath = $app.Path
+                }
+            }
         }
     }
 }
 
-# Show results
+# Deduplicate by logical identity
+$results = $rawResults |
+    Sort-Object GPOName, Scope, AppName, PackagePath -Unique
+
+# Display
 $results | Format-Table -AutoSize
 
-# Export to CSV
+# Export
 $results | Export-Csv ".\GPO_AssignedApplications.csv" -NoTypeInformation
 ```
 
