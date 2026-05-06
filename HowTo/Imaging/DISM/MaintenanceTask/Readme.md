@@ -34,3 +34,5 @@ toc-depth: 3
     ***Please review the script for folder structure***
 8. MaintenanceTaskV7.cmd 
     - Added section to disable Online Content
+8. MaintenanceTaskV8.cmd 
+    - Updated this version to run as admin and moved away from the hard coded menu for available images on the WIM Index. 
