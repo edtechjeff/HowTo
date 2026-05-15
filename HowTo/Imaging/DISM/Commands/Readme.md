@@ -154,3 +154,8 @@ dism /Get-MountedWimInfo
 dism /Cleanup-Wim
 ```
 
+## Enable .Net 2.0
+```bash
+DISM /Image:C:\Mount /Enable-Feature /FeatureName:NetFx3 /All /Source:D:\sources\sxs /LimitAccess
+```
+**Note** Must have the full ISO to get the sources directory
