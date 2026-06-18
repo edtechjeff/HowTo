@@ -131,8 +131,7 @@ Get-IscsiServerTarget -TargetName "HVClusterTarget" | Select -ExpandProperty Vir
 
 ## (Optional) Enable CHAP authentication
 - If you want security beyond IP/DNS:
-```powershell
-Set-IscsiServerTarget -TargetName "HVClusterTarget" `
+```powershell VClusterTarget" `
   -EnableChap $true -ChapUsername "hvchap" -ChapSecret "StrongPassword!"
 ```
 
