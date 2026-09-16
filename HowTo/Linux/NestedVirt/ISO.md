@@ -56,6 +56,12 @@ Dism /export-image /sourceimagefile:C:\ISO\sources\install.wim /sourceindex:2 /d
 
 ## Command to Buid ISO
 
+## Located in 
+
+```text
+C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\x86\Oscdimg\
+```
+
 ```bash
 oscdimg.exe ^
 -m ^
@@ -64,17 +70,18 @@ oscdimg.exe ^
 -udfver102 ^
 -bootdata:2#p0,e,b"C:\ISO\boot\etfsboot.com"#pEF,e,b"C:\ISO\efi\microsoft\boot\efisys.bin" ^
 C:\ISO ^
-C:\CreatedISO\Server2025-Teaching.iso
+C:\CreatedISO\Server2022-Teaching.iso
 ```
 
 ## Command to copy to ISO to the linux host
 
 ```bash
-scp Server2025-Teaching.iso jdowns@192.168.0.9:/var/lib/libvirt/images/iso
+scp c:\CreatedISO\Server2022-Teaching.iso jdowns@192.168.0.9:/var/lib/libvirt/images/iso
 ```
 
 ## Install Drivers for boot.wim
 
+```powershell
 Mount-WindowsImage `
     -ImagePath "C:\ISO\sources\boot.wim" `
     -Index 1 `
@@ -88,6 +95,7 @@ Add-WindowsDriver `
 Dismount-WindowsImage `
     -Path "C:\Mount" `
     -Save
+```
 
 ## Install Drivers for Install.wim
 
