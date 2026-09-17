@@ -2,7 +2,7 @@
 
 This guide covers creating and managing snapshots for KVM virtual machines using `virsh` and `qcow2` disks.
 
-> **Important:** A snapshot is not a backup. Snapshots are useful for quickly rolling a VM back before testing or configuration changes.
+> **Important:** A snapshot is not a backup. Snapshots are useful for quickly rolling a VM back before testing or configuration changes..
 
 ## 1. Check the VM and Its Disks
 
