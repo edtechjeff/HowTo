@@ -1,4 +1,4 @@
-# KVM / Libvirt VM Snapshots
+# KVM / Libvirt VM Snapshots and Committing 
 
 This guide covers creating and managing **external snapshots** for KVM virtual machines using `virsh` and `qcow2` disks.
 
