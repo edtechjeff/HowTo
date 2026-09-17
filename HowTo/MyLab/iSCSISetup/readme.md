@@ -83,36 +83,35 @@ Or by IQN from each host’s iSCSI Initiator.
 ### Powershell Method DNS 
 ```powershell
 New-IscsiServerTarget -TargetName "HVClusterTarget" `
-  -InitiatorIds "DNSName:HyperV1.ad.edtechjeff.com"
+  -InitiatorIds "DNSName:HV01.ad.edtechjeff.com"
 ```
 ### Powershell Method IQN
 ```powershell
 New-IscsiServerTarget `
   -TargetName "HVClusterTarget" `
-  -InitiatorIds "IQN:iqn.1991-05.com.microsoft:hyperv01"
+  -InitiatorIds "IQN:iqn.1991-05.com.microsoft:hv01"
 ```
 ### Multiple IQN
 ```powershell
 New-IscsiServerTarget `
   -TargetName "HVClusterTarget" `
   -InitiatorIds `
-    "IQN:iqn.1991-05.com.microsoft:hyperv01.ad.edtechjeff.com",
-    "IQN:iqn.1991-05.com.microsoft:hyperv02.ad.edtechjeff.com"
+    "IQN:iqn.1991-05.com.microsoft:hv01.ad.edtechjeff.com",
+    "IQN:iqn.1991-05.com.microsoft:hv02.ad.edtechjeff.com"
 ```
 ### Add to existing
 ```powershell
 Set-IscsiServerTarget `
   -TargetName "HVClusterTarget" `
   -InitiatorIds `
-    "IQN:iqn.1991-05.com.microsoft:hyperv01.ad.edtechjeff.com",
-    "IQN:iqn.1991-05.com.microsoft:hyperv02.ad.edtechjeff.com"
+    "IQN:iqn.1991-05.com.microsoft:hv01.ad.edtechjeff.com",
+    "IQN:iqn.1991-05.com.microsoft:hv02.ad.edtechjeff.com"
 ```
 
 ## Verify
 ```powershell
 Get-IscsiServerTarget -TargetName "HVClusterTarget" | Select TargetName
 ```
-
 
 ## Map virtual disks to target
 - Attach both LUNs to the target.
@@ -130,8 +129,10 @@ Get-IscsiServerTarget -TargetName "HVClusterTarget" | Select -ExpandProperty Vir
 ```
 
 ## (Optional) Enable CHAP authentication
-- If you want security beyond IP/DNS:
-```powershell VClusterTarget" `
+- If you want security beyond IP/DNS
+
+```powershell 
+VClusterTarget" `
   -EnableChap $true -ChapUsername "hvchap" -ChapSecret "StrongPassword!"
 ```
 

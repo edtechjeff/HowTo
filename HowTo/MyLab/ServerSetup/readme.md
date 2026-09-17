@@ -53,38 +53,39 @@ Get-Service MSiSCSI
 
 ## On Host 1
 ### Create Binding for iSCSI Network
+***Note:*** Target is the iSCSI SAN and Initiator is the HyperV iSCSI IP
 ```powershell
 New-IscsiTargetPortal `
-  -TargetPortalAddress 172.16.0.40 `
-  -InitiatorPortalAddress 172.16.0.10
+  -TargetPortalAddress 10.10.20.33`
+  -InitiatorPortalAddress 10.10.20.31
 ```
 
 ## Connect with Binding
 Connect-IscsiTarget `
   -NodeAddress "iqn.1991-05.com.microsoft:san-hvclustertarget-target" `
-  -InitiatorPortalAddress 172.16.0.10 `
-  -TargetPortalAddress 172.16.0.40 `
+  -InitiatorPortalAddress 10.10.20.33 `
+  -TargetPortalAddress 10.10.20.31 `
   -IsPersistent $true
 
 ## On Host 2
 ### Create Binding for iSCSI Network
 ```powershell
 New-IscsiTargetPortal `
-  -TargetPortalAddress 172.16.0.40 `
-  -InitiatorPortalAddress 172.16.0.20
+  -TargetPortalAddress 10.10.20.33 `
+  -InitiatorPortalAddress 10.10.20.32
 ```
 
 ## Connect with Binding
 Connect-IscsiTarget `
   -NodeAddress "iqn.1991-05.com.microsoft:san-hvclustertarget-target" `
-  -InitiatorPortalAddress 172.16.0.20 `
-  -TargetPortalAddress 172.16.0.40 `
+  -InitiatorPortalAddress 10.10.20.33 `
+  -TargetPortalAddress 10.10.20.32 `
   -IsPersistent $true
 
 ############################################################
 ## On Host 1
 ```powershell
-$TargetPortalIP = "172.16.0.40"
+$TargetPortalIP = "10.10.20.33"
 
 New-IscsiTargetPortal -TargetPortalAddress $TargetPortalIP
 
@@ -95,7 +96,7 @@ Get-IscsiTarget | Connect-IscsiTarget -IsPersistent $true
 ```
 ## on Host 2
 ```powershell
-$TargetPortalIP = "172.16.0.40"
+$TargetPortalIP = "10.10.20.33"
 
 New-IscsiTargetPortal -TargetPortalAddress $TargetPortalIP
 Get-IscsiTarget | Connect-IscsiTarget -IsPersistent $true
@@ -163,12 +164,12 @@ You want:
 
 ## Run Cluster Validation (Resolve any Errors) (Run on one of the HyperV Host)
 ```powershell
-Test-Cluster -Node HyperV01,HyperV02 -Include "Inventory","Network","System Configuration","Storage"
+Test-Cluster -Node HV01,HV02 -Include "Inventory","Network","System Configuration","Storage"
 ```
 
 ## Create Cluster
 ```powershell
-New-Cluster -Name "HVCLUSTER" -Node HyperV01,HyperV02 -StaticAddress "192.168.0.50" -NoStorage
+New-Cluster -Name "HVCLUSTER" -Node HV01,HV02 -StaticAddress "10.10.30.33" -NoStorage
 ```
 
 ## Verify
