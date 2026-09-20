@@ -56,59 +56,47 @@ Get-Service MSiSCSI
 ***Note:*** Target is the iSCSI SAN and Initiator is the HyperV iSCSI IP
 ```powershell
 New-IscsiTargetPortal `
-  -TargetPortalAddress 10.10.20.36 `
-  -InitiatorPortalAddress 10.10.20.33
-```
+    -TargetPortalAddress "10.10.20.36" `
+    -InitiatorPortalAddress "10.10.20.33"
 
-## Connect with Binding
-```powershell
+$Target = Get-IscsiTarget |
+    Where-Object NodeAddress -eq "iqn.1991-05.com.microsoft:storage1-hvclustertarget-target"
+
 Connect-IscsiTarget `
-  -NodeAddress "iqn.1991-05.com.microsoft:storage1-hvclustertarget-target" `
-  -InitiatorPortalAddress 10.10.20.36 `
-  -TargetPortalAddress 10.10.20.33 `
-  -IsPersistent $true
+    -NodeAddress $Target.NodeAddress `
+    -IsPersistent $true `
+    -InitiatorPortalAddress "10.10.20.33" `
+    -TargetPortalAddress "10.10.20.36"
 ```
 
 ## On Host 2
 ### Create Binding for iSCSI Network
 ```powershell
 New-IscsiTargetPortal `
-  -TargetPortalAddress 10.10.20.36 `
-  -InitiatorPortalAddress 10.10.20.34
-```
+    -TargetPortalAddress "10.10.20.36" `
+    -InitiatorPortalAddress "10.10.20.34"
 
-## Connect with Binding
-```powershell
+$Target = Get-IscsiTarget |
+    Where-Object NodeAddress -eq "iqn.1991-05.com.microsoft:storage1-hvclustertarget-target"
+
 Connect-IscsiTarget `
-  -NodeAddress "iqn.1991-05.com.microsoft:san-hvclustertarget-target" `
-  -InitiatorPortalAddress 10.10.20.36 `
-  -TargetPortalAddress 10.10.20.34 `
-  -IsPersistent $true
+    -NodeAddress $Target.NodeAddress `
+    -IsPersistent $true `
+    -InitiatorPortalAddress "10.10.20.34" `
+    -TargetPortalAddress "10.10.20.36"
 ```
 
-############################################################
-## On Host 1
+## Only on one host do the following to formate the disk correctly (Update your sizes based on disk created earlier)
+
+## Verify
+
 ```powershell
-$TargetPortalIP = "10.10.20.33"
+Get-IscsiTargetPortal
 
-New-IscsiTargetPortal -TargetPortalAddress $TargetPortalIP
+Get-IscsiTarget
 
-Get-IscsiTarget | Select NodeAddress, IsConnected
-
-# Connect all discovered targets
-Get-IscsiTarget | Connect-IscsiTarget -IsPersistent $true
+Get-IscsiSession
 ```
-## on Host 2
-```powershell
-$TargetPortalIP = "10.10.20.33"
-
-New-IscsiTargetPortal -TargetPortalAddress $TargetPortalIP
-Get-IscsiTarget | Connect-IscsiTarget -IsPersistent $true
-```
-##############################################################
-
-
-## On one host do the following to formate the disk correctly (Update your sizes based on disk created earlier)
 
 1. Identify the iSCSI Disks
 
@@ -121,17 +109,21 @@ Get-Disk |
         PartitionStyle,OperationalStatus,IsOffline,IsReadOnly -Auto
 ```
 Example:
+
 ```text
 Number FriendlyName    SizeGB PartitionStyle OperationalStatus IsOffline IsReadOnly
 ------ ------------    ------ -------------- ----------------- --------- ----------
 1      MSFT Virtual HD      2 RAW            Offline           True      True
 2      MSFT Virtual HD   1536 RAW            Offline           True      True
 ```
+
 In this example:
+
 ```text
 Disk 1 = 2 GB Witness
 Disk 2 = 1.5 TB CSV
 ```
+
 Verify the disk numbers and sizes before continuing. Do not assume your disk numbers will always be 1 and 2.
 
 Prepare the CSV Disk
@@ -139,6 +131,7 @@ Prepare the CSV Disk
 For this example, the CSV is Disk 2.
 
 2. Make the CSV Disk Writable and Online
+
 ```powershell
 Set-Disk -Number 2 -IsReadOnly $false
 Set-Disk -Number 2 -IsOffline $false
@@ -242,7 +235,7 @@ IsReadOnly     : False
 
 ```powershell
 Initialize-Disk -Number 1 -PartitionStyle GPT
-```powershell
+```
 
 8. Create the Witness Partition
 
@@ -292,6 +285,7 @@ CSV01             ReFS         1.5 TB
 ```
 
 ## Take disk offline
+***Note*** Only use this before the disks have been added to Failover Clustering. Once a disk is cluster-managed, manage it through Failover Clustering rather than Set-Disk.
 
 ```powershell
 Get-Disk |
@@ -325,17 +319,50 @@ You want:
 Test-Cluster -Node HV01,HV02 -Include "Inventory","Network","System Configuration","Storage"
 ```
 
+## Post Test Sanity Check
+
+```powershell
+Test-Cluster -Node HV03,HV04
+```
+
+## Sanity Check
+
+```powershell
+Get-Disk |
+    Where-Object BusType -eq 'iSCSI' |
+    Format-Table Number,
+        @{N='SizeGB';E={[math]::Round($_.Size/1GB,2)}},
+        IsOffline,IsReadOnly,IsClustered -Auto
+```
+
+## Pre-Check
+
+```powershell
+Get-ADComputer -Identity "HVCLUSTER" -ErrorAction SilentlyContinue
+Resolve-DnsName HVCLUSTER -ErrorAction SilentlyContinue
+Test-Connection 192.168.0.41 -Count 2 -Quiet
+```
+
 ## Create Cluster
 
 ```powershell
-New-Cluster -Name "HVCLUSTER" -Node HV01,HV02 -StaticAddress "192.168.0.40" -NoStorage
+New-Cluster `
+    -Name "HVCLUSTER" `
+    -Node HV03,HV04 `
+    -StaticAddress "192.168.0.41" `
+    -NoStorage
 ```
 
 ## Verify
 
 ```powershell
 Get-Cluster
-Get-ClusterNode
+Get-ClusterNode |
+    Format-Table Name,State -Auto
+Get-ClusterNetwork |
+    Format-Table Name,Address,Role,State -Auto
+Get-ClusterResource |
+    Format-Table Name,ResourceType,State,OwnerNode,OwnerGroup -Auto
 ```
 
 ## Add the iSCSI disk to the cluster
@@ -343,6 +370,14 @@ Get-ClusterNode
 ```powershell
 Get-ClusterAvailableDisk | Format-Table -Auto
 ```
+## Verify
+
+```powershell
+Get-ClusterResource |
+    Where-Object ResourceType -eq "Physical Disk" |
+    Format-Table Name,State,OwnerGroup,OwnerNode -Auto
+```
+
 ## Add Them
 ```powershell
 Get-ClusterAvailableDisk | Add-ClusterDisk
@@ -366,6 +401,28 @@ Get-ClusterSharedVolume | Format-Table -Auto
 ## Configure Witness Disk
 ```powershell
 Set-ClusterQuorum -DiskWitness "Cluster Disk 1"
+```
+
+## Final Cluster Storage Verification
+
+Verify that the CSV is configured and online:
+
+```powershell
+Get-ClusterSharedVolume |
+    Format-Table Name,State,OwnerNode -Auto
+```
+
+## Verify Quorum
+```powershell
+Get-ClusterQuorum
+```
+
+## Verify Disk and Current Owners
+
+```powershell
+Get-ClusterResource |
+    Where-Object ResourceType -eq "Physical Disk" |
+    Format-Table Name,State,OwnerGroup,OwnerNode -Auto
 ```
 
 # Switch Setup
