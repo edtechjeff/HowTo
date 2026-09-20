@@ -83,7 +83,7 @@ Or by IQN from each host’s iSCSI Initiator.
 ### Powershell Method DNS 
 ```powershell
 New-IscsiServerTarget -TargetName "HVClusterTarget" `
-  -InitiatorIds "DNSName:HV01.ad.edtechjeff.com"
+  -InitiatorIds "DNSName:HV03.ad.edtechjeff.com"
 ```
 ### Powershell Method IQN
 ```powershell
@@ -96,16 +96,16 @@ New-IscsiServerTarget `
 New-IscsiServerTarget `
   -TargetName "HVClusterTarget" `
   -InitiatorIds `
-    "IQN:iqn.1991-05.com.microsoft:hv01.ad.edtechjeff.com",
-    "IQN:iqn.1991-05.com.microsoft:hv02.ad.edtechjeff.com"
+    "IQN:iqn.1991-05.com.microsoft:hv03.ad.edtechjeff.com",
+    "IQN:iqn.1991-05.com.microsoft:hv04.ad.edtechjeff.com"
 ```
 ### Add to existing
 ```powershell
 Set-IscsiServerTarget `
   -TargetName "HVClusterTarget" `
   -InitiatorIds `
-    "IQN:iqn.1991-05.com.microsoft:hv01.ad.edtechjeff.com",
-    "IQN:iqn.1991-05.com.microsoft:hv02.ad.edtechjeff.com"
+    "IQN:iqn.1991-05.com.microsoft:hv03.ad.edtechjeff.com",
+    "IQN:iqn.1991-05.com.microsoft:hv04.ad.edtechjeff.com"
 ```
 
 ## Verify
