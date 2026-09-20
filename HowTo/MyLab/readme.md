@@ -10,16 +10,19 @@ date: January 5, 2026
 | Host Name |  IP Address | Description |
 | ---------|--------------|-------------|
 | HV01 | 192.168.0.31 | Management  |
-| HV01 | 10.10.30.31 | Cluster   |
 | HV01 | 10.10.20.31  | iSCSI       |
 | HV02 | 192.168.0.32| Management  |
-| HV02 | 10.10.30.32 | Cluster   |
 | HV02 | 10.10.20.32  | iSCSI       |
+| HV03 | 192.168.0.33 | Management |
+| HV03 | 10.10.20.33 | iSCSI |
+| HV04 | 192.168.0.34 | Management |
+| HV04 | 10.10.20.34 | iSCSI |
+| STORAGE01 | 192.168.0.36 | Management  |
+| STORAGE01 | 10.10.20.36  | iSCSI       |
+| Cluster  | 10.10.30.40 | Cluster IP  |
 | DC1      | 192.168.0.30 | Management  |
-| DC2      | 192.168.0.34 | Management  |
-| SAN      | 192.168.0.33 | Management  |
-| SAN      | 10.10.20.33  | iSCSI       |
-| Cluster  | 10.10.30.33 | Cluster IP  |
+| DC2      | 192.168.0.35 | Management  |
+
 
 
 
