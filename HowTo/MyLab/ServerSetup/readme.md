@@ -110,37 +110,153 @@ Get-IscsiTarget | Connect-IscsiTarget -IsPersistent $true
 
 ## On one host do the following to formate the disk correctly (Update your sizes based on disk created earlier)
 
-### CSV Disk
+1. Identify the iSCSI Disks
+
+Display only disks connected through iSCSI:
 ```powershell
 Get-Disk |
-Where-Object {
-    $_.BusType -eq 'iSCSI' -and
-    $_.Size -gt 1500GB
-} |
-ForEach-Object {
-    $part = New-Partition -DiskNumber $_.Number -UseMaximumSize
-    Format-Volume -Partition $part -FileSystem ReFS -NewFileSystemLabel "CSV01" -Confirm:$false
-}
+    Where-Object BusType -eq 'iSCSI' |
+    Format-Table Number,FriendlyName,
+        @{N='SizeGB';E={[math]::Round($_.Size/1GB,2)}},
+        PartitionStyle,OperationalStatus,IsOffline,IsReadOnly -Auto
 ```
-### Witness Disk
+Example:
+
+Number FriendlyName    SizeGB PartitionStyle OperationalStatus IsOffline IsReadOnly
+------ ------------    ------ -------------- ----------------- --------- ----------
+1      MSFT Virtual HD      2 RAW            Offline           True      True
+2      MSFT Virtual HD   1536 RAW            Offline           True      True
+
+In this example:
+
+Disk 1 = 2 GB Witness
+Disk 2 = 1.5 TB CSV
+
+Verify the disk numbers and sizes before continuing. Do not assume your disk numbers will always be 1 and 2.
+
+Prepare the CSV Disk
+
+For this example, the CSV is Disk 2.
+
+2. Make the CSV Disk Writable and Online
+Set-Disk -Number 2 -IsReadOnly $false
+Set-Disk -Number 2 -IsOffline $false
+
+Verify:
 ```powershell
-# Target the 2GB-ish iSCSI LUN (witness)
-$disk = Get-Disk | Where-Object { $_.BusType -eq 'iSCSI' -and $_.Size -le 3GB } | Select-Object -First 1
+Get-Disk -Number 2 |
+    Format-Table Number,Size,PartitionStyle,OperationalStatus,IsOffline,IsReadOnly -Auto
+```
+For a new disk, you want:
 
-$disk | Format-List Number, FriendlyName, Size, IsOffline, IsReadOnly, PartitionStyle
+PartitionStyle : RAW
+IsOffline      : False
+IsReadOnly     : False
+3. Initialize the CSV Disk
 
-# Make sure it's online and not read-only
-if ($disk.IsOffline) { Set-Disk -Number $disk.Number -IsOffline $false }
-if ($disk.IsReadOnly) { Set-Disk -Number $disk.Number -IsReadOnly $false }
+If the disk shows RAW, initialize it as GPT:
 
-# If it's RAW, initialize it (GPT is fine)
-if ((Get-Disk -Number $disk.Number).PartitionStyle -eq 'RAW') {
-    Initialize-Disk -Number $disk.Number -PartitionStyle GPT
-}
+Initialize-Disk -Number 2 -PartitionStyle GPT
 
-# Create partition and format
-$part = New-Partition -DiskNumber $disk.Number -UseMaximumSize -AssignDriveLetter
-Format-Volume -Partition $part -FileSystem NTFS -NewFileSystemLabel "Witness" -Confirm:$false
+Verify:
+```powershell
+Get-Disk -Number 2 |
+    Format-Table Number,PartitionStyle,OperationalStatus,IsOffline,IsReadOnly -Auto
+```
+The partition style should now be:
+
+GPT
+4. Create the CSV Partition
+```powershell
+$CSVPart = New-Partition `
+    -DiskNumber 2 `
+    -UseMaximumSize `
+    -AssignDriveLetter
+```
+
+5. Format the CSV as ReFS
+```powershell
+Format-Volume `
+    -Partition $CSVPart `
+    -FileSystem ReFS `
+    -NewFileSystemLabel "CSV01" `
+    -Confirm:$false
+```
+Verify:
+```powershell
+Get-Volume |
+    Where-Object FileSystemLabel -eq "CSV01" |
+    Format-Table DriveLetter,FileSystemLabel,FileSystem,
+        @{N='SizeGB';E={[math]::Round($_.Size/1GB,2)}},
+        HealthStatus -Auto
+```
+The CSV should show:
+
+FileSystemLabel : CSV01
+FileSystem      : ReFS
+HealthStatus    : Healthy
+Prepare the Witness Disk
+
+For this example, the 2 GB witness is Disk 1.
+
+6. Make the Witness Disk Writable and Online
+```powershell
+Set-Disk -Number 1 -IsReadOnly $false
+Set-Disk -Number 1 -IsOffline $false
+```
+Verify:
+```powershell
+Get-Disk -Number 1 |
+    Format-Table Number,Size,PartitionStyle,OperationalStatus,IsOffline,IsReadOnly -Auto
+```
+For a new disk, you want:
+
+PartitionStyle : RAW
+IsOffline      : False
+IsReadOnly     : False
+7. Initialize the Witness Disk
+```powershell
+Initialize-Disk -Number 1 -PartitionStyle GPT
+```powershell
+8. Create the Witness Partition
+```powershell
+$WitnessPart = New-Partition `
+    -DiskNumber 1 `
+    -UseMaximumSize `
+    -AssignDriveLetter
+```
+9. Format the Witness as NTFS
+```powershell
+Format-Volume `
+    -Partition $WitnessPart `
+    -FileSystem NTFS `
+    -NewFileSystemLabel "Witness" `
+    -Confirm:$false
+```
+10. Verify Both Disks
+
+Check the iSCSI disks:
+```powershell
+Get-Disk |
+    Where-Object BusType -eq 'iSCSI' |
+    Format-Table Number,
+        @{N='SizeGB';E={[math]::Round($_.Size/1GB,2)}},
+        PartitionStyle,OperationalStatus,IsOffline,IsReadOnly -Auto
+```
+Check the formatted volumes:
+```powershell
+Get-Volume |
+    Where-Object FileSystemLabel -in "Witness","CSV01" |
+    Format-Table DriveLetter,FileSystemLabel,FileSystem,
+        @{N='SizeGB';E={[math]::Round($_.Size/1GB,2)}},
+        HealthStatus -Auto
+```
+Expected result:
+
+FileSystemLabel   FileSystem   Approximate Size
+---------------   ----------   ----------------
+Witness           NTFS         2 GB
+CSV01             ReFS         1.5 TB
 
 ```
 ## Take disk offline
