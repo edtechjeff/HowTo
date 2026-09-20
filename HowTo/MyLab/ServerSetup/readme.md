@@ -121,17 +121,17 @@ Get-Disk |
         PartitionStyle,OperationalStatus,IsOffline,IsReadOnly -Auto
 ```
 Example:
-
+```text
 Number FriendlyName    SizeGB PartitionStyle OperationalStatus IsOffline IsReadOnly
 ------ ------------    ------ -------------- ----------------- --------- ----------
 1      MSFT Virtual HD      2 RAW            Offline           True      True
 2      MSFT Virtual HD   1536 RAW            Offline           True      True
-
+```
 In this example:
-
+```text
 Disk 1 = 2 GB Witness
 Disk 2 = 1.5 TB CSV
-
+```
 Verify the disk numbers and sizes before continuing. Do not assume your disk numbers will always be 1 and 2.
 
 Prepare the CSV Disk
@@ -139,34 +139,47 @@ Prepare the CSV Disk
 For this example, the CSV is Disk 2.
 
 2. Make the CSV Disk Writable and Online
+```powershell
 Set-Disk -Number 2 -IsReadOnly $false
 Set-Disk -Number 2 -IsOffline $false
+```
 
 Verify:
 ```powershell
 Get-Disk -Number 2 |
     Format-Table Number,Size,PartitionStyle,OperationalStatus,IsOffline,IsReadOnly -Auto
 ```
+
 For a new disk, you want:
 
+```text
 PartitionStyle : RAW
 IsOffline      : False
 IsReadOnly     : False
+```
+
 3. Initialize the CSV Disk
 
 If the disk shows RAW, initialize it as GPT:
 
+```powershell
 Initialize-Disk -Number 2 -PartitionStyle GPT
+```
 
 Verify:
 ```powershell
 Get-Disk -Number 2 |
     Format-Table Number,PartitionStyle,OperationalStatus,IsOffline,IsReadOnly -Auto
 ```
+
 The partition style should now be:
 
+```text
 GPT
+```
+
 4. Create the CSV Partition
+
 ```powershell
 $CSVPart = New-Partition `
     -DiskNumber 2 `
@@ -182,7 +195,9 @@ Format-Volume `
     -NewFileSystemLabel "CSV01" `
     -Confirm:$false
 ```
+
 Verify:
+
 ```powershell
 Get-Volume |
     Where-Object FileSystemLabel -eq "CSV01" |
@@ -190,35 +205,47 @@ Get-Volume |
         @{N='SizeGB';E={[math]::Round($_.Size/1GB,2)}},
         HealthStatus -Auto
 ```
+
 The CSV should show:
 
+```text
 FileSystemLabel : CSV01
 FileSystem      : ReFS
 HealthStatus    : Healthy
+```
+
 Prepare the Witness Disk
 
 For this example, the 2 GB witness is Disk 1.
 
 6. Make the Witness Disk Writable and Online
+
 ```powershell
 Set-Disk -Number 1 -IsReadOnly $false
 Set-Disk -Number 1 -IsOffline $false
 ```
 Verify:
+
 ```powershell
 Get-Disk -Number 1 |
     Format-Table Number,Size,PartitionStyle,OperationalStatus,IsOffline,IsReadOnly -Auto
 ```
 For a new disk, you want:
 
+```text
 PartitionStyle : RAW
 IsOffline      : False
 IsReadOnly     : False
+```
+
 7. Initialize the Witness Disk
+
 ```powershell
 Initialize-Disk -Number 1 -PartitionStyle GPT
 ```powershell
+
 8. Create the Witness Partition
+
 ```powershell
 $WitnessPart = New-Partition `
     -DiskNumber 1 `
@@ -233,9 +260,11 @@ Format-Volume `
     -NewFileSystemLabel "Witness" `
     -Confirm:$false
 ```
+
 10. Verify Both Disks
 
 Check the iSCSI disks:
+
 ```powershell
 Get-Disk |
     Where-Object BusType -eq 'iSCSI' |
@@ -243,7 +272,9 @@ Get-Disk |
         @{N='SizeGB';E={[math]::Round($_.Size/1GB,2)}},
         PartitionStyle,OperationalStatus,IsOffline,IsReadOnly -Auto
 ```
+
 Check the formatted volumes:
+
 ```powershell
 Get-Volume |
     Where-Object FileSystemLabel -in "Witness","CSV01" |
@@ -253,13 +284,15 @@ Get-Volume |
 ```
 Expected result:
 
+```text
 FileSystemLabel   FileSystem   Approximate Size
 ---------------   ----------   ----------------
 Witness           NTFS         2 GB
 CSV01             ReFS         1.5 TB
-
 ```
+
 ## Take disk offline
+
 ```powershell
 Get-Disk |
 Where-Object {
@@ -269,30 +302,37 @@ Set-Disk -IsOffline $true
 ```
 
 ## Sanity Check
+
 ```powershell
 Get-Disk |
 Where-Object BusType -eq 'iSCSI' |
 Select Number, PartitionStyle, IsOffline, IsReadOnly
 ```
+
 ### You want 
+
+```text
 You want:
 - GPT
 - Offline
 - Not Read-only
-
+```
 
 
 ## Run Cluster Validation (Resolve any Errors) (Run on one of the HyperV Host)
+
 ```powershell
 Test-Cluster -Node HV01,HV02 -Include "Inventory","Network","System Configuration","Storage"
 ```
 
 ## Create Cluster
+
 ```powershell
 New-Cluster -Name "HVCLUSTER" -Node HV01,HV02 -StaticAddress "192.168.0.40" -NoStorage
 ```
 
 ## Verify
+
 ```powershell
 Get-Cluster
 Get-ClusterNode
