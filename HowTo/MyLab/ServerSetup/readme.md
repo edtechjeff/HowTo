@@ -316,7 +316,7 @@ You want:
 ## Run Cluster Validation (Resolve any Errors) (Run on one of the HyperV Host)
 
 ```powershell
-Test-Cluster -Node HV01,HV02 -Include "Inventory","Network","System Configuration","Storage"
+Test-Cluster -Node HV03,HV04 -Include "Inventory","Network","System Configuration","Storage"
 ```
 
 ## Post Test Sanity Check
@@ -366,26 +366,22 @@ Get-ClusterResource |
 ```
 
 ## Add the iSCSI disk to the cluster
-## Displays the disk
+
+# See disks available to clustering
 ```powershell
 Get-ClusterAvailableDisk | Format-Table -Auto
 ```
-## Verify
 
+```powershell
+# Add them
+Get-ClusterAvailableDisk | Add-ClusterDisk
+```
+
+# Verify cluster disk resources
 ```powershell
 Get-ClusterResource |
     Where-Object ResourceType -eq "Physical Disk" |
     Format-Table Name,State,OwnerGroup,OwnerNode -Auto
-```
-
-## Add Them
-```powershell
-Get-ClusterAvailableDisk | Add-ClusterDisk
-```
-
-## Verify
-```powershell
-Get-ClusterResource | Where-Object ResourceType -eq "Physical Disk" | Format-Table Name, State, OwnerGroup -Auto
 ```
 
 ## Turn the big disk into a CSV
@@ -457,5 +453,12 @@ Set-VMHost `
 Get-VMHost | Select VirtualMachinePath, VirtualHardDiskPath
 ```
 
+## Verify Cluster Volume
+```powershell
+Get-ClusterSharedVolume |
+    Select-Object Name,@{N='Path';E={$_.SharedVolumeInfo.FriendlyVolumeName}}
+```
+
+
 ## Test Speed of your storage
-.\diskspd64.exe -c20G -b1M -d60 -o4 -t4 -W0 -Sh -L C:\ClusterStorage\Volume2\test.dat
+.\diskspd64.exe -c20G -b1M -d60 -o4 -t4 -W0 -Sh -L C:\ClusterStorage\Volume1\test.dat
