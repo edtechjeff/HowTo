@@ -289,7 +289,7 @@ Test-Cluster -Node HV01,HV02 -Include "Inventory","Network","System Configuratio
 
 ## Create Cluster
 ```powershell
-New-Cluster -Name "HVCLUSTER" -Node HV01,HV02 -StaticAddress "10.10.30.33" -NoStorage
+New-Cluster -Name "HVCLUSTER" -Node HV01,HV02 -StaticAddress "192.168.0.40" -NoStorage
 ```
 
 ## Verify
