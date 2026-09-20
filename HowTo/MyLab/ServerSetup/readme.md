@@ -56,30 +56,30 @@ Get-Service MSiSCSI
 ***Note:*** Target is the iSCSI SAN and Initiator is the HyperV iSCSI IP
 ```powershell
 New-IscsiTargetPortal `
-  -TargetPortalAddress 10.10.20.33`
-  -InitiatorPortalAddress 10.10.20.31
+  -TargetPortalAddress 10.10.20.36`
+  -InitiatorPortalAddress 10.10.20.33
 ```
 
 ## Connect with Binding
 Connect-IscsiTarget `
   -NodeAddress "iqn.1991-05.com.microsoft:san-hvclustertarget-target" `
-  -InitiatorPortalAddress 10.10.20.33 `
-  -TargetPortalAddress 10.10.20.31 `
+  -InitiatorPortalAddress 10.10.20.36 `
+  -TargetPortalAddress 10.10.20.33 `
   -IsPersistent $true
 
 ## On Host 2
 ### Create Binding for iSCSI Network
 ```powershell
 New-IscsiTargetPortal `
-  -TargetPortalAddress 10.10.20.33 `
-  -InitiatorPortalAddress 10.10.20.32
+  -TargetPortalAddress 10.10.20.36 `
+  -InitiatorPortalAddress 10.10.20.34
 ```
 
 ## Connect with Binding
 Connect-IscsiTarget `
   -NodeAddress "iqn.1991-05.com.microsoft:san-hvclustertarget-target" `
-  -InitiatorPortalAddress 10.10.20.33 `
-  -TargetPortalAddress 10.10.20.32 `
+  -InitiatorPortalAddress 10.10.20.36 `
+  -TargetPortalAddress 10.10.20.34 `
   -IsPersistent $true
 
 ############################################################
