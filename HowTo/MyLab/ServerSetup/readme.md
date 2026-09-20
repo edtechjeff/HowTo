@@ -56,7 +56,7 @@ Get-Service MSiSCSI
 ***Note:*** Target is the iSCSI SAN and Initiator is the HyperV iSCSI IP
 ```powershell
 New-IscsiTargetPortal `
-  -TargetPortalAddress 10.10.20.36`
+  -TargetPortalAddress 10.10.20.36 `
   -InitiatorPortalAddress 10.10.20.33
 ```
 
