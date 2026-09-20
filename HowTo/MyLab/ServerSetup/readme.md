@@ -63,7 +63,7 @@ New-IscsiTargetPortal `
 ## Connect with Binding
 ```powershell
 Connect-IscsiTarget `
-  -NodeAddress "iqn.1991-05.com.microsoft:san-hvclustertarget-target" `
+  -NodeAddress "iqn.1991-05.com.microsoft:storage1-hvclustertarget-target" `
   -InitiatorPortalAddress 10.10.20.36 `
   -TargetPortalAddress 10.10.20.33 `
   -IsPersistent $true
