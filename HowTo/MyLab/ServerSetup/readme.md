@@ -51,6 +51,14 @@ Start-Service MSiSCSI
 Get-Service MSiSCSI
 ```
 
+## Pull IQN (Run on each host)
+```powershell
+(Get-InitiatorPort).NodeAddress
+```
+
+# Return to Storage Setup
+
+
 ## On Host 1
 ### Create Binding for iSCSI Network
 ***Note:*** Target is the iSCSI SAN and Initiator is the HyperV iSCSI IP
@@ -86,7 +94,7 @@ Connect-IscsiTarget `
     -TargetPortalAddress "10.10.20.36"
 ```
 
-## Only on one host do the following to formate the disk correctly (Update your sizes based on disk created earlier)
+## Only on ONE host do the following to format the disk correctly (Update your sizes based on disk created earlier)
 
 ## Verify
 
