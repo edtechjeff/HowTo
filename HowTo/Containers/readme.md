@@ -1,26 +1,57 @@
-# Windows Server 2022 Container Demo with IIS
+# Windows Server 2022 Containers with Docker and IIS
 
-This guide demonstrates how to install Windows Container support on Windows Server 2022 and deploy a simple IIS website inside a Windows container.
+This guide walks through installing Windows container support on **Windows Server 2022**, installing Docker Engine, deploying an IIS container, modifying a running container, and finally building a custom reusable container image.
 
-The demonstration is designed to show the difference between a traditional virtual machine and a container, as well as introduce the concepts of **containers, images, Dockerfiles, and reproducible deployments**.
+The goal of this lab is to demonstrate the difference between:
 
-> **Note:** A container is not simply a small virtual machine. Containers package applications and their dependencies into isolated environments. Windows containers can use process isolation or Hyper-V isolation.
+- Virtual machines
+- Containers
+- Container images
+- Running containers
+- Dockerfiles
+- Reproducible application deployments
 
 ---
 
-## 1. Install the Containers Feature
+# Lab Overview
+
+By the end of this lab, we will have:
+
+```text
+Windows Server 2022
+│
+├── Containers Windows Feature
+│
+├── Docker Engine
+│
+├── Microsoft IIS Container Image
+│
+└── WebDemo Container
+    │
+    └── IIS
+        │
+        └── Custom Website
+```
+
+The website will be accessible using:
+
+```text
+http://SERVER-IP:8080
+```
+
+---
+
+# 1. Install the Windows Containers Feature
 
 Open **PowerShell as Administrator**.
 
 Install the Windows Containers feature:
 
 ```powershell
-Install-WindowsFeature Containers -Restart
+Install-WindowsFeature -Name Containers
 ```
 
-The server will restart.
-
-After logging back in, verify the feature:
+Verify the installation:
 
 ```powershell
 Get-WindowsFeature Containers
@@ -34,31 +65,93 @@ Display Name        Name          Install State
 [X] Containers      Containers    Installed
 ```
 
+> **Important**
+>
+> Installing the Windows `Containers` feature does **not** install Docker.
+>
+> The Windows feature provides the operating-system components required to support Windows containers. A container runtime is still required to create and manage containers.
+
 ---
 
-## 2. Verify the Container Runtime
+# 2. Install Docker Engine
 
-The Windows Containers feature provides Windows container support, but a **container runtime** is also required.
+Download the Docker installation helper script:
 
-If Docker or another compatible runtime has already been installed, verify it:
+```powershell
+Invoke-WebRequest -UseBasicParsing `
+"https://raw.githubusercontent.com/microsoft/Windows-Containers/Main/helpful_tools/Install-DockerCE/install-docker-ce.ps1" `
+-OutFile install-docker-ce.ps1
+```
+
+Run the installation script:
+
+```powershell
+.\install-docker-ce.ps1
+```
+
+The installation may require the server to restart.
+
+Allow the server to reboot if necessary.
+
+---
+
+# 3. Verify Docker Installation
+
+After the server restarts, open **PowerShell as Administrator**.
+
+Check Docker:
 
 ```powershell
 docker version
 ```
 
-Also check:
+Check the Docker service:
+
+```powershell
+Get-Service docker
+```
+
+The service should show:
+
+```text
+Status   Name
+------   ----
+Running  docker
+```
+
+Additional Docker information can be displayed with:
 
 ```powershell
 docker info
 ```
 
-If the `docker` command is not recognized, the container runtime still needs to be installed and configured.
+At this point we have two separate components:
 
-> **Important:** Installing the Windows `Containers` feature by itself does not install Docker.
+```text
+Windows Server 2022
+│
+├── Containers Feature
+│   │
+│   └── Provides Windows container support
+│
+└── Docker Engine
+    │
+    └── Creates and manages containers
+```
+
+Docker Engine provides commands for:
+
+- Pulling images
+- Building images
+- Creating containers
+- Starting containers
+- Stopping containers
+- Removing containers
+- Viewing container status
 
 ---
 
-## 3. Download the IIS Container Image
+# 4. Pull the Windows Server 2022 IIS Image
 
 Microsoft provides Windows container images through the Microsoft Container Registry.
 
@@ -68,7 +161,7 @@ Download the Windows Server 2022 IIS image:
 docker pull mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2022
 ```
 
-This can take some time during the first download.
+The initial download may take some time because the Windows Server Core container image is relatively large.
 
 Verify the image:
 
@@ -76,7 +169,7 @@ Verify the image:
 docker images
 ```
 
-You should see an image similar to:
+You should see something similar to:
 
 ```text
 REPOSITORY                                  TAG
@@ -85,11 +178,9 @@ mcr.microsoft.com/windows/servercore/iis    windowsservercore-ltsc2022
 
 ---
 
-# Part 1 - Run Your First IIS Container
+# 5. Create the IIS Container
 
-## 4. Create the IIS Container
-
-Run:
+Create a container named `WebDemo`:
 
 ```powershell
 docker run -d `
@@ -104,22 +195,41 @@ The options mean:
 |---|---|
 | `docker run` | Creates and starts a container |
 | `-d` | Runs the container in the background |
-| `-p 8080:80` | Maps host TCP port 8080 to container TCP port 80 |
+| `-p 8080:80` | Maps host port 8080 to container port 80 |
 | `--name WebDemo` | Names the container `WebDemo` |
+
+The port mapping can be visualized as:
+
+```text
+Client Computer
+      │
+      │ HTTP
+      ▼
+Windows Server
+Port 8080
+      │
+      │ Docker Port Mapping
+      ▼
+WebDemo Container
+Port 80
+      │
+      ▼
+     IIS
+```
 
 ---
 
-## 5. Verify the Container
+# 6. Verify the Container
 
-Run:
+Display running containers:
 
 ```powershell
 docker ps
 ```
 
-You should see `WebDemo` running.
+You should see the `WebDemo` container.
 
-To see all containers, including stopped containers:
+To display both running and stopped containers:
 
 ```powershell
 docker ps -a
@@ -127,7 +237,7 @@ docker ps -a
 
 ---
 
-## 6. Open the Website
+# 7. Open the IIS Website
 
 Determine the IP address of the Windows Server:
 
@@ -135,7 +245,7 @@ Determine the IP address of the Windows Server:
 Get-NetIPAddress -AddressFamily IPv4
 ```
 
-From another computer, browse to:
+From another computer, open a browser and navigate to:
 
 ```text
 http://SERVER-IP:8080
@@ -151,11 +261,9 @@ You should see the default IIS website.
 
 ---
 
-# Part 2 - Modify the Running Container
+# 8. Open PowerShell Inside the Container
 
-One way to demonstrate how containers work is to modify the website directly inside the running container.
-
-## 7. Open PowerShell Inside the Container
+One of the easiest ways to demonstrate container isolation is to open a PowerShell session inside the running container.
 
 Run:
 
@@ -163,15 +271,15 @@ Run:
 docker exec -it WebDemo powershell
 ```
 
-Your PowerShell session is now running **inside the container**.
+You are now executing PowerShell **inside the container**.
 
-Change to the IIS web root:
+Change to the IIS web directory:
 
 ```powershell
 cd C:\inetpub\wwwroot
 ```
 
-List the files:
+Display the files:
 
 ```powershell
 dir
@@ -185,9 +293,9 @@ C:\inetpub\wwwroot
 
 ---
 
-## 8. Remove the Default IIS Page
+# 9. Remove the Default IIS Page
 
-Run:
+While still inside the container, remove the default IIS page:
 
 ```powershell
 Remove-Item C:\inetpub\wwwroot\iisstart.htm -ErrorAction SilentlyContinue
@@ -195,26 +303,28 @@ Remove-Item C:\inetpub\wwwroot\iisstart.htm -ErrorAction SilentlyContinue
 
 ---
 
-## 9. Create a Custom Website
+# 10. Create a Custom Website
 
-While still inside the container, run:
+While still inside the container, create a new `index.html`:
 
 ```powershell
 @"
 <html>
+
 <head>
-    <title>Hyper-V Container Demo</title>
+    <title>Windows Container Demo</title>
 </head>
 
 <body>
 
     <h1>Hello from my Windows Container!</h1>
 
-    <h2>Windows Server 2022 + IIS</h2>
+    <h2>Windows Server 2022 + Docker + IIS</h2>
 
-    <p>This website is running inside a Windows container.</p>
+    <p>This website is being served from inside a Windows container.</p>
 
 </body>
+
 </html>
 "@ | Set-Content C:\inetpub\wwwroot\index.html
 ```
@@ -241,51 +351,65 @@ The custom website should now appear.
 
 ---
 
-# Part 3 - Demonstrate Container Lifecycle
+# 11. Stop the Container
 
-This is an excellent point to demonstrate how quickly containers can be stopped and started.
-
-## Stop the Container
+Stop the container:
 
 ```powershell
 docker stop WebDemo
 ```
 
-Check:
+Check its status:
 
 ```powershell
 docker ps
 ```
 
-Refresh the website.
+Because `docker ps` only displays running containers, `WebDemo` should no longer appear.
 
-It should no longer respond.
-
----
-
-## Start the Container
-
-```powershell
-docker start WebDemo
-```
-
-Refresh the website.
-
-The website should return almost immediately.
-
----
-
-## View Container Status
+Display all containers:
 
 ```powershell
 docker ps -a
 ```
 
+`WebDemo` should now show as stopped.
+
+Refresh the website.
+
+The website should no longer respond.
+
 ---
 
-# Part 4 - Delete the Container
+# 12. Start the Container
 
-Now demonstrate an important container concept.
+Start it again:
+
+```powershell
+docker start WebDemo
+```
+
+Verify:
+
+```powershell
+docker ps
+```
+
+Refresh:
+
+```text
+http://SERVER-IP:8080
+```
+
+The website should return very quickly.
+
+This demonstrates one of the major differences between starting a traditional virtual machine and starting an existing container.
+
+---
+
+# 13. Delete the Container
+
+Now we can demonstrate an important container concept.
 
 Delete the container:
 
@@ -299,17 +423,17 @@ Verify:
 docker ps -a
 ```
 
-The `WebDemo` container should be gone.
+`WebDemo` should be gone.
 
 Refresh the website.
 
-The website is gone as well.
+The website is also gone.
 
 ---
 
-# Part 5 - Recreate the Original Container
+# 14. Recreate the Container from the Microsoft Image
 
-Run the original Microsoft IIS image again:
+Create another container using the original Microsoft IIS image:
 
 ```powershell
 docker run -d `
@@ -318,21 +442,23 @@ docker run -d `
     mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2022
 ```
 
-Open:
+Browse to:
 
 ```text
 http://SERVER-IP:8080
 ```
 
-Notice that your custom website is **gone**.
+Notice something important:
 
-The container was recreated from the original Microsoft image.
+**Our customized website is gone.**
 
-This demonstrates an important container concept:
+The container was created from Microsoft's original IIS image, so it returned to its original state.
 
-> **Changes made manually inside a container are not how applications should normally be deployed. Containers should be reproducible from an image.**
+This demonstrates an important container principle:
 
-Remove the demonstration container again:
+> **Containers should generally be treated as disposable. Important application configuration should be built into an image or stored outside the container rather than manually configured inside a running container.**
+
+Remove this container before continuing:
 
 ```powershell
 docker rm -f WebDemo
@@ -340,9 +466,9 @@ docker rm -f WebDemo
 
 ---
 
-# Part 6 - Build Our Own Container Image
+# 15. Build Our Own Container Image
 
-Now we will create our own image containing the custom website.
+Instead of manually changing the container every time it is created, we can build our website into our own image.
 
 Create a working directory:
 
@@ -356,18 +482,19 @@ Change into it:
 cd C:\ContainerDemo
 ```
 
-Our directory will eventually contain:
+Eventually the directory will contain:
 
 ```text
 C:\ContainerDemo
 │
 ├── Dockerfile
+│
 └── index.html
 ```
 
 ---
 
-## 10. Create index.html
+# 16. Create index.html
 
 Create the website:
 
@@ -376,7 +503,7 @@ Create the website:
 <html>
 
 <head>
-    <title>Container Demo</title>
+    <title>My Container Website</title>
 </head>
 
 <body>
@@ -385,7 +512,7 @@ Create the website:
 
     <h2>Windows Server 2022</h2>
 
-    <p>Hello from my Windows container!</p>
+    <p>Hello from my custom Windows container!</p>
 
     <p>This website was built directly into a container image.</p>
 
@@ -403,25 +530,17 @@ Get-Content C:\ContainerDemo\index.html
 
 ---
 
-# Part 7 - Create the Dockerfile
+# 17. Create the Dockerfile
 
-A **Dockerfile** contains the instructions used to build a container image.
+A **Dockerfile** contains the instructions Docker uses to build an image.
 
-Create the file:
+Create the Dockerfile:
 
 ```powershell
 New-Item -Path C:\ContainerDemo\Dockerfile -ItemType File
 ```
 
-> **Important:** The file must be named exactly `Dockerfile`.
->
-> It should NOT be:
->
-> ```text
-> Dockerfile.txt
-> ```
-
-Open it with Notepad:
+Open it:
 
 ```powershell
 notepad C:\ContainerDemo\Dockerfile
@@ -439,55 +558,94 @@ COPY index.html C:/inetpub/wwwroot/index.html
 
 Save the file.
 
+> **Important**
+>
+> The file must be named:
+>
+> ```text
+> Dockerfile
+> ```
+>
+> Not:
+>
+> ```text
+> Dockerfile.txt
+> ```
+
+Verify:
+
+```powershell
+Get-ChildItem C:\ContainerDemo
+```
+
+You should see:
+
+```text
+Dockerfile
+index.html
+```
+
 ---
 
-# Part 8 - Understand the Dockerfile
+# 18. Understanding the Dockerfile
 
-### FROM
+The Dockerfile contains three primary instructions.
+
+## FROM
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2022
 ```
 
-This specifies the image we are starting with.
+`FROM` specifies the base image.
 
-In this example, Microsoft provides:
+We are starting with Microsoft's Windows Server Core IIS image.
 
-- Windows Server Core
-- IIS
-- Container image
+Conceptually:
+
+```text
+Microsoft Windows Server Core + IIS
+                │
+                ▼
+          Our Dockerfile
+                │
+                ▼
+        Our Custom Image
+```
 
 ---
 
-### RUN
+## RUN
 
 ```dockerfile
 RUN powershell -Command Remove-Item C:\inetpub\wwwroot\iisstart.htm -Force
 ```
 
-This removes the default IIS start page while the image is being built.
+This executes a command while the image is being built.
+
+In this case, it removes the default IIS start page.
 
 ---
 
-### COPY
+## COPY
 
 ```dockerfile
 COPY index.html C:/inetpub/wwwroot/index.html
 ```
 
-This copies our custom website into the container image.
+This copies our custom `index.html` from the build directory into the image.
 
 ---
 
-# Part 9 - Build the Image
+# 19. Build the Custom Image
 
-Make sure you are in:
+Make sure you are in the correct directory:
 
 ```powershell
 cd C:\ContainerDemo
 ```
 
-Verify:
+Check:
 
 ```powershell
 dir
@@ -512,13 +670,15 @@ The period at the end is important:
 .
 ```
 
-It tells Docker to use the current directory as the build context.
+It means:
+
+> Use the current directory as the Docker build context.
 
 ---
 
-## 11. Verify the Image
+# 20. Verify the Custom Image
 
-Run:
+Display the available images:
 
 ```powershell
 docker images
@@ -530,13 +690,21 @@ You should now see:
 my-iis-site
 ```
 
-This is **our image**, rather than Microsoft's original IIS image.
+You now have two important images:
+
+```text
+Microsoft IIS Image
+        │
+        │ Dockerfile
+        ▼
+  my-iis-site
+```
 
 ---
 
-# Part 10 - Run Our Custom Image
+# 21. Create a Container from Our Image
 
-Create a container from our image:
+Create a new container:
 
 ```powershell
 docker run -d `
@@ -545,7 +713,7 @@ docker run -d `
     my-iis-site
 ```
 
-Check it:
+Verify:
 
 ```powershell
 docker ps
@@ -557,13 +725,13 @@ Browse to:
 http://SERVER-IP:8080
 ```
 
-Our custom website should appear.
+The custom website should appear.
 
 ---
 
-# Part 11 - Destroy and Recreate It
+# 22. Destroy and Recreate the Container
 
-Here's the important demonstration.
+Now comes the most useful part of the demonstration.
 
 Delete the container:
 
@@ -571,9 +739,7 @@ Delete the container:
 docker rm -f WebDemo
 ```
 
-The container is completely gone.
-
-Verify:
+Verify that it is gone:
 
 ```powershell
 docker ps -a
@@ -588,9 +754,13 @@ docker run -d `
     my-iis-site
 ```
 
-Refresh the website.
+Refresh:
 
-The customized website returns immediately.
+```text
+http://SERVER-IP:8080
+```
+
+The customized website immediately returns.
 
 Why?
 
@@ -598,9 +768,9 @@ Because the website is now part of the **image**.
 
 ---
 
-# Container vs Image
+# Dockerfile vs Image vs Container
 
-It is important to understand the difference.
+These three concepts are important to understand:
 
 ```text
 Dockerfile
@@ -614,17 +784,40 @@ Container Image
 Running Container
 ```
 
-The **Dockerfile** contains the build instructions.
+## Dockerfile
 
-The **image** is the reusable application package created from those instructions.
+The Dockerfile contains the **instructions** for creating an image.
 
-The **container** is a running instance of that image.
+Think of it as the recipe.
 
-You can create many containers from the same image.
+## Image
+
+The image is the **reusable application package** created from the Dockerfile.
+
+It can be used repeatedly to create containers.
+
+## Container
+
+A container is a **running instance of an image**.
+
+Multiple containers can be created from the same image.
+
+For example:
+
+```text
+             my-iis-site
+                  │
+        ┌─────────┼─────────┐
+        │         │         │
+        ▼         ▼         ▼
+     Web01      Web02      Web03
+```
+
+All three containers could be created from exactly the same image.
 
 ---
 
-# Container vs Virtual Machine
+# Containers vs Virtual Machines
 
 A traditional Hyper-V environment might look like:
 
@@ -644,84 +837,134 @@ Physical Server
         └── Application
 ```
 
-With containers:
+Each virtual machine contains its own operating-system environment.
+
+Containers approach application deployment differently:
 
 ```text
 Windows Server
 │
 ├── Container Runtime
 │
-├── Container: Website
-│   └── IIS Application
+├── Web Container
+│   └── IIS Website
 │
-├── Container: Application
+├── Application Container
 │   └── Application
 │
-└── Container: Service
+└── Service Container
     └── Service
 ```
 
-Rather than deploying an entire server for every application, containers allow applications to be packaged into isolated and reproducible environments.
+Containers are designed around packaging and running applications rather than creating another traditional server for every application.
+
+---
+
+# Windows Container Isolation
+
+Windows containers can use different isolation models.
+
+## Process Isolation
+
+With process isolation, containers share the host Windows kernel while maintaining isolated application environments.
+
+Conceptually:
+
+```text
+Windows Server Host
+│
+├── Windows Kernel
+│
+├── Container A
+├── Container B
+└── Container C
+```
+
+## Hyper-V Isolation
+
+Windows containers can also use **Hyper-V isolation**.
+
+In this mode, Hyper-V provides an additional isolation boundary using a lightweight utility virtual machine.
+
+Conceptually:
+
+```text
+Windows Server
+│
+└── Hyper-V
+    │
+    └── Lightweight Utility VM
+        │
+        └── Container
+```
+
+This is a useful demonstration of how **Hyper-V and containers can work together rather than being competing technologies**.
 
 ---
 
 # Useful Docker Commands
 
-List running containers:
+## Show Running Containers
 
 ```powershell
 docker ps
 ```
 
-List all containers:
+## Show All Containers
 
 ```powershell
 docker ps -a
 ```
 
-List images:
+## Show Images
 
 ```powershell
 docker images
 ```
 
-Stop a container:
+## Stop a Container
 
 ```powershell
 docker stop WebDemo
 ```
 
-Start a container:
+## Start a Container
 
 ```powershell
 docker start WebDemo
 ```
 
-Restart a container:
+## Restart a Container
 
 ```powershell
 docker restart WebDemo
 ```
 
-Open PowerShell inside a container:
+## Open PowerShell Inside a Container
 
 ```powershell
 docker exec -it WebDemo powershell
 ```
 
-View container logs:
+## View Container Logs
 
 ```powershell
 docker logs WebDemo
 ```
 
-Delete a container:
+## Inspect a Container
+
+```powershell
+docker inspect WebDemo
+```
+
+## Delete a Container
 
 ```powershell
 docker rm -f WebDemo
 ```
 
-Delete an image:
+## Delete an Image
 
 ```powershell
 docker image rm my-iis-site
@@ -729,25 +972,86 @@ docker image rm my-iis-site
 
 ---
 
+# Complete Lab Workflow
+
+The complete workflow used in this demonstration is:
+
+```text
+1. Install Windows Containers feature
+              │
+              ▼
+2. Install Docker Engine
+              │
+              ▼
+3. Pull Microsoft IIS image
+              │
+              ▼
+4. Create WebDemo container
+              │
+              ▼
+5. View default IIS website
+              │
+              ▼
+6. Modify website inside container
+              │
+              ▼
+7. Delete container
+              │
+              ▼
+8. Discover manual changes are gone
+              │
+              ▼
+9. Create index.html
+              │
+              ▼
+10. Create Dockerfile
+              │
+              ▼
+11. Build my-iis-site image
+              │
+              ▼
+12. Create WebDemo from our image
+              │
+              ▼
+13. Delete WebDemo
+              │
+              ▼
+14. Recreate WebDemo
+              │
+              ▼
+15. Website immediately returns
+```
+
+---
+
 # Key Takeaways
 
-A **virtual machine** virtualizes a complete computer and normally runs a complete guest operating system.
+A **virtual machine** virtualizes a complete computer and normally contains a complete guest operating-system environment.
 
-A **container** provides an isolated environment for an application without requiring a traditional full VM for every application instance.
+A **container** packages an application into an isolated and reproducible environment.
 
 A **container image** is the reusable package used to create containers.
 
-A **Dockerfile** documents how an image should be built.
+A **Dockerfile** contains the instructions for building an image.
 
-Instead of manually configuring containers after they are created, applications and configuration should normally be incorporated into the image.
+A **running container** is an instance of an image.
+
+The Windows **Containers feature** provides Windows container support but does not by itself install Docker Engine.
+
+Docker Engine provides the tools used to build images and create and manage containers.
+
+Containers should generally be considered **disposable**.
+
+Instead of manually configuring every container after it is created, the desired application and configuration should be defined in the image.
 
 This makes container deployments:
 
 - Repeatable
 - Portable
 - Consistent
+- Easier to automate
 - Easy to destroy and recreate
 
-The most important concept demonstrated in this lab is:
+The central idea demonstrated by this lab is:
 
-> **Don't build the server and then install the application. Define the application environment and reproduce it from the image.**
+> **Build the application environment into an image, then create disposable containers from that image.**
