@@ -537,26 +537,14 @@ A **Dockerfile** contains the instructions Docker uses to build an image.
 Create the Dockerfile:
 
 ```powershell
-New-Item -Path C:\ContainerDemo\Dockerfile -ItemType File
-```
-
-Open it:
-
-```powershell
-notepad C:\ContainerDemo\Dockerfile
-```
-
-Add:
-
-```dockerfile
+@"
 FROM mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2022
 
 RUN powershell -Command Remove-Item C:\inetpub\wwwroot\iisstart.htm -Force
 
 COPY index.html C:/inetpub/wwwroot/index.html
+"@ | Set-Content -Path .\Dockerfile
 ```
-
-Save the file.
 
 > **Important**
 >
